@@ -1,7 +1,7 @@
 # <Hello_World.exe> 👾
 
 ## 🚀 About Me
-I'm Ruchir, a budding full-stack developer with a passion for creating and experimenting. When I'm not debugging code or building new projects, you might find me exploring virtual worlds or watching anime.
+I'm Ruchir, a budding full-stack developer / ML engineer with a passion for creating and experimenting. When I'm not debugging code or building new projects, you might find me exploring virtual worlds or watching anime.
 
 - 🌱 Currently mastering the full stack web development universe
 - 🤖 Love training new ML models and seeing what they can do

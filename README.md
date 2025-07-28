@@ -42,20 +42,3 @@ I'm Ruchir, a budding full-stack developer with a passion for creating and exper
 ![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black) 
 ![Keras](https://img.shields.io/badge/Keras-%23D00000.svg?style=for-the-badge&logo=Keras&logoColor=white) 
 ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
-
-
-## 📊 GitHub Stats
-![](https://github-readme-stats.vercel.app/api?username=ruxir-ig&theme=gruvbox&hide_border=false&include_all_commits=true&count_private=true)<br/>
-![](https://nirzak-streak-stats.vercel.app/?user=ruxir-ig&theme=gruvbox&hide_border=false)<br/>
-![](https://github-readme-stats.vercel.app/api/top-langs/?username=ruxir-ig&theme=gruvbox&hide_border=false&include_all_commits=true&count_private=true&layout=compact)
-
-## 🏆 GitHub Trophies
-![](https://github-profile-trophy.vercel.app/?username=ruxir-ig&theme=radical&no-frame=false&no-bg=true&margin-w=4)
-
-### 🔝 Top Contributed Repos
-![](https://github-contributor-stats.vercel.app/api?username=ruxir-ig&limit=5&theme=gruvbox&combine_all_yearly_contributions=true)
-
----
-
-<!-- Visitor count -->
-[![](https://visitcount.itsvg.in/api?id=ruxir-ig&icon=0&color=9)](https://visitcount.itsvg.in)

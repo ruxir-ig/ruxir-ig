@@ -17,8 +17,7 @@ Previously contributed to recursive tooling initiatives and the soft architectur
 
 ---
 
-> Code is not written. It accumulates. 
-> Implementation is negotiable. Intention is not
+> Code is not written. It accumulates.
 
 ---
 

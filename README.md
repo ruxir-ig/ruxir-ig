@@ -1,4 +1,4 @@
-# Ruchir Kalokhe
+# Building still, I guess
 
 Technically inclined toward systems that resist explanation.  
 Focused on implicit coherence, layered environments, and the fine line between intention and accident.

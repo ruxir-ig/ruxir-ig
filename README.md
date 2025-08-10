@@ -6,17 +6,6 @@ Focused on implicit coherence, layered environments, and the fine line between i
 Previously contributed to recursive tooling initiatives and the soft architecture of uncertainty. Occasionally involved in digital rituals, usually after hours.
 
 ---
-
-## Currently Learning
-
-- Parallel ambiguity in human–machine expectations  
-- Recursive overcommitment under deterministic deadlines  
-- Ambient cognition through layered abstraction  
-- Lossy understanding of well-documented code  
-- Rats (gray, quiet, oddly familiar)
-
----
-
 > Code is not written. It accumulates.
 
 ---

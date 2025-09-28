@@ -32,3 +32,7 @@ Still unsure if the architecture is elegant or just inevitable.
 ---
 
 > README last updated under conditions of questionable clarity.
+
+---
+
+> My [Resume](main.pdf).

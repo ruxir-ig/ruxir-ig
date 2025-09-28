@@ -63,6 +63,7 @@
   #project-heading("SAR Image Colorization - Smart India Hackathon 2024 project")[
     - Implemented a deep learning model using PyTorch and GANs to colorize grayscale Synthetic Aperture Radar (SAR) images into realistic RGB representations via encoder-decoder architecture
     - Trained on paired SAR and optical datasets with features like custom generator, CUDA support, and TensorBoard visualization
+    - https://github.com/ruxir-ig/SAR-Image-Colorization
   ]
 
   #project-heading("RAG 2.0 (Collaborator) - Ranked in top 200 at Hackrx Hackathon")[

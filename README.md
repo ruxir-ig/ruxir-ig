@@ -1,7 +1,6 @@
 
 [<img src="./Ruchir Kalokhe-signature.svg" alt="Digital Signature" width="300"/>](https://signature.cnrad.dev/)
 
-> # Ruchir Kalokhe
 
 ## Building still, I guess
 

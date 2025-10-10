@@ -20,6 +20,10 @@
   github-username: github
 )
 
+#custom-title("Career Objective")[
+  Aspiring AI/ML engineer passionate about deep learning and quantum computing, seeking opportunities to build innovative solutions for real-world challenges.
+]
+
 #custom-title("Education")[
   #education-heading(
     "PES Modern College of Engineering (PES MCOE)", "Pune, India",
@@ -39,43 +43,44 @@
   ]
 ]
 
-
-
 #custom-title("Projects")[
-  #project-heading("Quantum Key Distribution (QKD) Simulator")[
-    - Developed two variants: A TypeScript implementation using Next.js for web-based BB84 protocol simulation, focusing on cryptographic security in web environments
-    - Next.js based: https://github.com/ruxir-ig/QKD_sim
-    - Python implementation using Streamlit and IBM Qiskit library to model secure communication protocols
-    - Qiskit based: https://github.com/ruxir-ig/qkd-sim-py
+  #project-heading("MineX (Collaborator) - Smart India Hackathon 2025")[
+    - Developing AI-driven Life Cycle Assessment (LCA) tool for advancing circularity and sustainability in metallurgy and mining
+    - https://github.com/PurveshMali/MineX
   ]
-  #project-heading("VERBALIZE Lip-Reader")[
-    - Built a deep learning model with TensorFlow for lip reading from video inputs, enabling silent speech recognition
-    - https://github.com/ruxir-ig/VERBALIZE_Lip-Reader
-  ]
-  #project-heading("Fresh Blog (Collaborator)")[
-    - Co-created and contributed to a blog showcasing technical write-ups and project documentation focused on AI, ML, and software engineering
-    - https://github.com/aryamaddel/frsh
-  ]
-  #project-heading("GitGet Backend (Collaborator)")[
-    - Contributed to a TypeScript-based backend for a Git repository management tool, enhancing API functionalities
-    - https://github.com/NevroHelios/gitget-backend
-  ]
-  #project-heading("SAR Image Colorization - Smart India Hackathon 2024 project")[
-    - Implemented a deep learning model using PyTorch and GANs to colorize grayscale Synthetic Aperture Radar (SAR) images into realistic RGB representations via encoder-decoder architecture
-    - Trained on paired SAR and optical datasets with features like custom generator, CUDA support, and TensorBoard visualization
+  
+  #project-heading("SAR Image Colorization - Smart India Hackathon 2024")[
+    - Implemented PyTorch and GAN-based model to colorize grayscale SAR images into realistic RGB representations
+    - Trained on paired SAR-optical datasets with custom generator, CUDA support, and TensorBoard visualization
     - https://github.com/ruxir-ig/SAR-Image-Colorization
   ]
 
-  #project-heading("RAG 2.0 (Collaborator) - Ranked in top 200 at Hackrx Hackathon")[
-    - Contributed to a Retrieval Augmented Generation (RAG) system with Gradio for intelligent document analysis and natural language querying
-    - Features include multi-format document support (PDF, DOCX, etc.), semantic search with FAISS/ChromaDB, and context-aware answers using LangChain and OpenAI/Hugging Face models
-    - https://github.com/KrishnaNaicker/RAG-2.0
+  #project-heading("VERBALIZE Lip-Reader")[
+    - Built deep learning model with TensorFlow for lip reading from video inputs, enabling silent speech recognition
+    - https://github.com/ruxir-ig/VERBALIZE_Lip-Reader
   ]
-  #project-heading("MineX (Collaborator)")[
-    - Currently developing an innovative project for Smart India Hackathon 2025
-    - Problem Statement: Al-Driven Life Cycle Assessment (LCA) Tool for Advancing Circulanty and Sustainability in Metallurgy and Mining
-    - https://github.com/PurveshMali/MineX
+
+  #project-heading("Quantum Key Distribution (QKD) Simulator")[
+    - Developed TypeScript/Next.js implementation for web-based BB84 protocol simulation focusing on cryptographic security (https://github.com/ruxir-ig/QKD_sim)
+    - Python implementation using Streamlit and IBM Qiskit to model secure quantum communication protocols (https://github.com/ruxir-ig/qkd-sim-py)
   ]
+
+  #project-heading("GitGet Backend (Collaborator)")[
+    - Contributed to TypeScript-based backend for Git repository management tool, enhancing API functionalities
+    - https://github.com/NevroHelios/gitget-backend
+  ]
+
+  #project-heading("Fresh Blog (Collaborator)")[
+    - Co-created technical blog showcasing AI, ML, and software engineering write-ups and project documentation
+    - https://github.com/aryamaddel/frsh
+  ]
+]
+
+#custom-title("Extra Curricular Activities & Accomplishments")[
+  - *Smart India Hackathon 2025* - Participant developing MineX project
+  - *Smart India Hackathon 2024* - Developed SAR Image Colorization solution
+  - *HackRx Hackathon* - Mentored team project ranked Top 200
+  - *Open Source Contributor* - Active collaborator on multiple GitHub projects
 ]
 
 #custom-title("Skills")[

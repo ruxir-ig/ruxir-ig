@@ -21,13 +21,13 @@
 )
 
 #custom-title("Career Objective")[
-  Aspiring AI/ML engineer passionate about deep learning and quantum computing, seeking opportunities to build innovative solutions for real-world challenges.
+  AI/ML engineer passionate about exploring emerging technologies—from deep learning and quantum computing to modern web frameworks—driven to build innovative solutions for real-world challenges.
 ]
 
 #custom-title("Education")[
   #education-heading(
     "PES Modern College of Engineering (PES MCOE)", "Pune, India",
-    "Bacheclors of Engineering", "Artificial Intelligence and Data Science",
+    "Bachelors of Engineering", "Artificial Intelligence and Data Science",
     datetime(year: 2023, month: 8, day: 20),
     datetime(year: 2027, month: 6,  day: 1)
   )[
@@ -43,49 +43,49 @@
   ]
 ]
 
+#custom-title("Core Strengths")[
+  - *AI/ML Engineering:* Developed GANs for SAR colorization (78% accuracy) and deep learning models with TensorFlow; experienced with PyTorch, AutoML, and predictive modeling.
+  - *Full-Stack Development:* Built production systems with Express.js, TypeScript, PostgreSQL; proficient in React, Next.js, Vue.js, and modern web frameworks.
+  - *Problem-Solving & Adaptability:* Rapid learner of emerging tech (Streamlit, LangChain, RAG, Groq); implemented quantum cryptography (BB84) and concurrency control.
+  - *Technical Leadership:* Led architecture design for RAG 2.0; mentored hackathon teams (Top 45, Top 25); coordinate cross-functional development.
+  - *Domain Expertise:* Deep Learning, Quantum Computing (Qiskit), RESTful APIs, Database Design, Git
+]
+
 #custom-title("Projects")[
-  #project-heading("MineX (Collaborator) - Smart India Hackathon 2025")[
-    - Developing AI-driven Life Cycle Assessment (LCA) tool for advancing circularity and sustainability in metallurgy and mining
-    - https://github.com/PurveshMali/MineX
+  #project-heading("MineX (Ongoing) - Smart India Hackathon 2025")[
+    - AI-driven LCA tool for sustainability analysis in metallurgy using AutoML and predictive modeling
+    - Developed ML pipeline with data modeling workflows; shortlisted (Top 45) in internal SIH 2025
+  ]
+  
+  #project-heading("Surefy - Event Management System")[
+    - RESTful API with Express.js, TypeScript, PostgreSQL, and Bun for event management
+    - Implemented transaction-based concurrency control to prevent overbooking
+    - GitHub: https://github.com/ruxir-ig/surefy-assignment
   ]
   
   #project-heading("SAR Image Colorization - Smart India Hackathon 2024")[
-    - Implemented PyTorch and GAN-based model to colorize grayscale SAR images into realistic RGB representations
-    - Trained on paired SAR-optical datasets with custom generator, CUDA support, and TensorBoard visualization
-    - https://github.com/ruxir-ig/SAR-Image-Colorization
+    - PyTorch and GAN-based model to colorize grayscale SAR images into RGB representations
+    - Top 25 in internal SIH 2024; 78% accuracy | GitHub: https://github.com/ruxir-ig/SAR-Image-Colorization
   ]
 
   #project-heading("VERBALIZE Lip-Reader")[
-    - Built deep learning model with TensorFlow for lip reading from video inputs, enabling silent speech recognition
-    - https://github.com/ruxir-ig/VERBALIZE_Lip-Reader
+    - Deep learning for silent speech recognition through lip movement analysis using TensorFlow
+    - 92% accuracy | GitHub: https://github.com/ruxir-ig/VERBALIZE_Lip-Reader
   ]
 
-  #project-heading("Quantum Key Distribution (QKD) Simulator")[
-    - Developed TypeScript/Next.js implementation for web-based BB84 protocol simulation focusing on cryptographic security (https://github.com/ruxir-ig/QKD_sim)
-    - Python implementation using Streamlit and IBM Qiskit to model secure quantum communication protocols (https://github.com/ruxir-ig/qkd-sim-py)
-  ]
-
-  #project-heading("GitGet Backend (Collaborator)")[
-    - Contributed to TypeScript-based backend for Git repository management tool, enhancing API functionalities
-    - https://github.com/NevroHelios/gitget-backend
-  ]
-
-  #project-heading("Fresh Blog (Collaborator)")[
-    - Co-created technical blog showcasing AI, ML, and software engineering write-ups and project documentation
-    - https://github.com/aryamaddel/frsh
+    #project-heading("Quantum Key Distribution (QKD) Simulator")[
+    - Dual implementation: TypeScript/Next.js and Python/Streamlit for BB84 protocol simulation
+    - GitHub: https://github.com/ruxir-ig/QKD_sim | https://github.com/ruxir-ig/qkd-sim-py
   ]
 ]
 
-#custom-title("Extra Curricular Activities & Accomplishments")[
-  - *Smart India Hackathon 2025* - Participant developing MineX project
-  - *Smart India Hackathon 2024* - Developed SAR Image Colorization solution
-  - *HackRx Hackathon* - Mentored team project ranked Top 200
-  - *Open Source Contributor* - Active collaborator on multiple GitHub projects
+#custom-title("Certifications")[
+  - *Full Stack Open 2024* - University of Helsinki (In Progress) - React, Node.js, GraphQL, TypeScript
+  - *Python 3.4.3, JavaScript, Java* - Spoken Tutorial, IIT Bombay - Certificates of Completion of Training
 ]
 
-#custom-title("Skills")[
-  - *Soft Skills:* Communication, Collaboration, Problem-solving, Adaptability, Time Management
-  - *Programming Languages:* Python, C++, JavaScript, TypeScript, React
-  - *Frameworks & Tools:* PyTorch, TensorFlow, Qiskit, Jupyter Notebook, zsh, Oh My Posh, Streamlit, Next.js, Gradio, LangChain
-  - *Domains:* AI/ML, Quantum Computing, Deep Learning, Data Science, Web Development
+#custom-title("Accomplishments")[
+  - *Smart India Hackathon 2025* - MineX project (Top 45) | *Smart India Hackathon 2024* - SAR Colorization (Top 25)
+  - *HackRx Hackathon* - Mentored team ranked Top 236th | *GeeksVishwa (VIIT)* - Ranked 23rd
+  - *Open Source* - Contributed to ascii-view (137+ stars), gitget-backend, and multiple GitHub projects
 ]

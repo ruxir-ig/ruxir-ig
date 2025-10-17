@@ -85,7 +85,7 @@
 ]
 
 #custom-title("Accomplishments")[
-  - *Smart India Hackathon 2025* - MineX project (Top 45) | *Smart India Hackathon 2024* - SAR Colorization (Top 25)
+  - *Smart India Hackathon 2025* - MineX project (Top 25) | *Smart India Hackathon 2024* - SAR Colorization (Top 25)
   - *HackRx Hackathon* - Mentored team ranked Top 236th | *GeeksVishwa (VIIT)* - Ranked 23rd
   - *Open Source* - Contributed to ascii-view (137+ stars), gitget-backend, and multiple GitHub projects
 ]

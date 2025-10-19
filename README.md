@@ -1,5 +1,5 @@
 
-[<img src="./Ruchir Kalokhe-signature.svg" alt="Digital Signature" width="300"/>](https://signature.cnrad.dev/)
+[<img src="./assets/Ruchir Kalokhe-signature.svg" alt="Digital Signature" width="300"/>](https://signature.cnrad.dev/)
 
 
 ## Building still, I guess
@@ -34,4 +34,4 @@ Still unsure if the architecture is elegant or just inevitable.
 
 ---
 
-> My [Resume](main.pdf).
+> My [Resume](resume/main.pdf).

@@ -1,0 +1,385 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #0d0d0d;
+    --text: #e8e8e8;
+    --text-dim: #888888;
+    --accent: #00d4ff;
+    --border: #2a2a2a;
+}
+
+body {
+    font-family: 'Geist Mono', 'Courier New', monospace;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    font-size: 16px;
+}
+
+#tsparticles {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: auto;
+}
+
+main {
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 80px;
+    pointer-events: none;
+}
+
+main * {
+    pointer-events: auto;
+}
+
+.container {
+    max-width: 100%;
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 100px 0;
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.hero .signature {
+    width: 300px;
+    height: auto;
+    margin-bottom: 32px;
+    filter: brightness(1.1);
+}
+
+.hero h1 {
+    font-size: 56px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+}
+
+.hero .subtitle {
+    font-size: 18px;
+    color: var(--text-dim);
+    margin-bottom: 24px;
+    font-weight: 500;
+}
+
+.hero .bio {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text-dim);
+    margin-bottom: 32px;
+}
+
+.hero .links {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.hero .links a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.2s ease;
+    font-weight: 500;
+}
+
+.hero .links a:hover {
+    color: var(--accent);
+}
+
+.hero .links .resume-btn {
+    padding: 8px 20px;
+    border: 1px solid var(--border);
+    transition: all 0.2s ease;
+}
+
+.hero .links .resume-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+section {
+    padding: 80px 0;
+}
+
+section h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+.experience-item {
+    margin-bottom: 40px;
+}
+
+.experience-item h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.experience-item .meta {
+    font-size: 15px;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+}
+
+.experience-item p {
+    color: var(--text-dim);
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.project-card {
+    padding: 24px;
+    border: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.project-card:hover {
+    border-color: var(--border);
+}
+
+.project-card h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.project-card p {
+    color: var(--text-dim);
+    margin-bottom: 16px;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.project-card .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.project-card .tags span {
+    font-size: 13px;
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-weight: 500;
+}
+
+.project-card a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 15px;
+    transition: opacity 0.2s ease;
+    margin-right: 16px;
+    font-weight: 500;
+}
+
+.project-card a:hover {
+    opacity: 0.7;
+}
+
+.explore-more {
+    text-align: left;
+    margin-top: 24px;
+    font-size: 16px;
+    color: var(--text-dim);
+}
+
+.explore-more a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.explore-more a:hover {
+    opacity: 0.7;
+}
+
+.education-item {
+    margin-bottom: 32px;
+}
+
+.education-item h3 {
+    font-size: 19px;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.education-item .institution {
+    color: var(--text-dim);
+    margin-bottom: 4px;
+    font-size: 16px;
+}
+
+.education-item .meta {
+    font-size: 15px;
+    color: var(--text-dim);
+}
+
+.divider {
+    height: 1px;
+    background: var(--border);
+    margin: 40px 0;
+}
+
+.education h3 {
+    font-size: 22px;
+    margin-bottom: 16px;
+    margin-top: 32px;
+    font-weight: 600;
+}
+
+.certifications, .accomplishments {
+    list-style: none;
+    margin-bottom: 32px;
+}
+
+.certifications li, .accomplishments li {
+    color: var(--text-dim);
+    padding-left: 20px;
+    margin-bottom: 10px;
+    position: relative;
+    font-size: 15px;
+}
+
+.certifications li::before, .accomplishments li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+@media (max-width: 1024px) {
+    main {
+        padding: 0 40px;
+    }
+
+    .hero .signature {
+        width: 250px;
+    }
+
+    .hero h1 {
+        font-size: 44px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 15px;
+    }
+
+    main {
+        padding: 0 24px;
+    }
+
+    .hero {
+        padding: 60px 0;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .hero .signature {
+        width: 200px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero .subtitle {
+        font-size: 16px;
+    }
+
+    .hero .bio {
+        font-size: 15px;
+    }
+
+    section {
+        padding: 60px 0;
+    }
+
+    section h2 {
+        font-size: 26px;
+        margin-bottom: 32px;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Additional dynamic content styles */
+.loading {
+    text-align: center;
+    padding: 100px 0;
+    color: var(--text-dim);
+}
+
+.experience-item ul,
+.certifications,
+.accomplishments {
+    list-style: none;
+    margin-top: 16px;
+}
+
+.core-strengths {
+    list-style: none;
+    margin-bottom: 32px;
+}
+
+.core-strengths li {
+    color: var(--text-dim);
+    padding-left: 20px;
+    margin-bottom: 16px;
+    position: relative;
+    font-size: 15px;
+}
+
+.core-strengths li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+.core-strengths strong {
+    color: var(--text);
+    display: block;
+    margin-bottom: 4px;
+}

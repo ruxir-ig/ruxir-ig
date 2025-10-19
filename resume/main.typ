@@ -54,7 +54,7 @@
 #custom-title("Projects")[
   #project-heading("MineX (Ongoing) - Smart India Hackathon 2025")[
     - AI-driven LCA tool for sustainability analysis in metallurgy using AutoML and predictive modeling
-    - Developed ML pipeline with data modeling workflows; shortlisted (Top 45) in internal SIH 2025
+    - Developed ML pipeline with data modeling workflows; shortlisted (Top 25) in internal SIH 2025
   ]
   
   #project-heading("Surefy - Event Management System")[

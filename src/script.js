@@ -376,17 +376,13 @@ function renderContent(sections) {
       const interests = document.createElement("div");
       interests.className = "interests";
       interests.innerHTML = `
-        <span>Computer Vision</span>
-        <span>·</span>
-        <span>Quantum Computing</span>
-        <span>·</span>
         <span>Deep Learning</span>
         <span>·</span>
-        <span>Systems Design</span>
+        <span>Full-Stack Development</span>
         <span>·</span>
-        <span>Sustainability Tech</span>
+        <span>Computer Vision</span>
         <span>·</span>
-        <span>Modern Web Development</span>
+        <span>Generative AI</span>
       `;
       heroContent.appendChild(interests);
 

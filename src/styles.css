@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&display=swap");
 
 * {
     margin: 0;
@@ -14,8 +14,35 @@
     --border: #2a2a2a;
 }
 
+/* Light Theme */
+[data-theme="light"] {
+    --bg: #ffffff;
+    --text: #1a1a1a;
+    --text-dim: #666666;
+    --accent: #0096cc;
+    --border: #e0e0e0;
+}
+
+/* Dark Theme (default) */
+[data-theme="dark"] {
+    --bg: #0d0d0d;
+    --text: #e8e8e8;
+    --text-dim: #888888;
+    --accent: #00d4ff;
+    --border: #2a2a2a;
+}
+
+/* Gruvbox Theme */
+[data-theme="gruvbox"] {
+    --bg: #282828;
+    --text: #ebdbb2;
+    --text-dim: #a89984;
+    --accent: #fabd2f;
+    --border: #3c3836;
+}
+
 body {
-    font-family: 'Geist Mono', 'Courier New', monospace;
+    font-family: "Geist Mono", "Courier New", monospace;
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
@@ -71,8 +98,28 @@ main * {
 .hero h1 {
     font-size: 56px;
     font-weight: 700;
-    margin-bottom: 12px;
+    margin-bottom: 20px;
     letter-spacing: -0.02em;
+}
+
+.interests {
+    font-size: 14px;
+    color: var(--text-dim);
+    margin-bottom: 24px;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.interests span {
+    display: inline;
+}
+
+.interests span:not(:nth-child(2n)) {
+    transition: color 0.2s ease;
+}
+
+.interests span:not(:nth-child(2n)):hover {
+    color: var(--accent);
 }
 
 .hero .subtitle {
@@ -89,37 +136,94 @@ main * {
     margin-bottom: 32px;
 }
 
-.hero .links {
+.social-links {
     display: flex;
-    gap: 24px;
-    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 32px;
+    align-items: center;
 }
 
-.hero .links a {
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.social-link svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--text);
+    transition: stroke 0.3s ease;
+}
+
+.social-link:hover {
+    border-color: var(--accent);
+    background: rgba(0, 212, 255, 0.05);
+}
+
+.social-link:hover svg {
+    stroke: var(--accent);
+}
+
+.resume-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border: 1px solid var(--border);
     color: var(--text);
     text-decoration: none;
     font-size: 16px;
-    transition: color 0.2s ease;
     font-weight: 500;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.02);
 }
 
-.hero .links a:hover {
-    color: var(--accent);
+.resume-btn svg {
+    stroke: var(--text);
+    transition: stroke 0.3s ease;
 }
 
-.hero .links .resume-btn {
-    padding: 8px 20px;
-    border: 1px solid var(--border);
-    transition: all 0.2s ease;
-}
-
-.hero .links .resume-btn:hover {
+.resume-btn:hover {
     border-color: var(--accent);
     color: var(--accent);
+    background: rgba(0, 212, 255, 0.05);
+}
+
+.resume-btn:hover svg {
+    stroke: var(--accent);
 }
 
 section {
     padding: 80px 0;
+}
+
+.philosophy-container {
+    max-width: 600px;
+}
+
+.philosophy-quote {
+    font-size: 16px;
+    color: var(--text-dim);
+    line-height: 1.8;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    border-left: 2px solid var(--border);
+    font-style: italic;
+    transition: border-color 0.3s ease;
+}
+
+.philosophy-quote:hover {
+    border-left-color: var(--accent);
 }
 
 section h2 {
@@ -259,12 +363,14 @@ section h2 {
     font-weight: 600;
 }
 
-.certifications, .accomplishments {
+.certifications,
+.accomplishments {
     list-style: none;
     margin-bottom: 32px;
 }
 
-.certifications li, .accomplishments li {
+.certifications li,
+.accomplishments li {
     color: var(--text-dim);
     padding-left: 20px;
     margin-bottom: 10px;
@@ -272,16 +378,98 @@ section h2 {
     font-size: 15px;
 }
 
-.certifications li::before, .accomplishments li::before {
-    content: '>';
+.certifications li::before,
+.accomplishments li::before {
+    content: ">";
     position: absolute;
     left: 0;
     color: var(--accent);
 }
 
-@media (max-width: 1024px) {
+/* Theme Switcher */
+.theme-switcher {
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.theme-switcher:hover {
+    opacity: 1;
+}
+
+.theme-slider {
+    display: flex;
+    align-items: center;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 4px;
+    gap: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.theme-option {
+    padding: 8px 16px;
+    border: none;
+    background: transparent;
+    color: var(--text-dim);
+    cursor: pointer;
+    border-radius: 16px;
+    font-family: "Geist Mono", "Courier New", monospace;
+    font-size: 12px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.theme-option:hover {
+    color: var(--text);
+}
+
+.theme-option.active {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+.theme-option[data-theme="gruvbox"] {
+    max-width: 0;
+    padding: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .theme-option[data-theme="gruvbox"] {
+    max-width: 24px;
+    padding: 8px 6px;
+    opacity: 0.5;
+}
+
+[data-theme="dark"] .theme-option[data-theme="gruvbox"]:hover {
+    max-width: 100px;
+    padding: 8px 16px;
+    opacity: 1;
+}
+
+[data-theme="gruvbox"] .theme-option[data-theme="gruvbox"] {
+    max-width: 100px;
+    padding: 8px 16px;
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .theme-switcher {
+        top: 20px;
+        right: 20px;
+    }
+
     main {
-        padding: 0 40px;
+        padding: 0 24px;
     }
 
     .hero .signature {
@@ -372,7 +560,7 @@ html {
 }
 
 .core-strengths li::before {
-    content: '>';
+    content: ">";
     position: absolute;
     left: 0;
     color: var(--accent);

@@ -1,6 +1,6 @@
 # Ruchir Kalokhe
 
-ruchirkalokhe@gmail.com | +91 85306 62440 | [GitHub](https://github.com/ruxir-ig) | [LinkedIn](https://linkedin.com/in/ruchirkalokhe) | [ruxir-ig.github.io](https://ruxir-ig.github.io)
+ruchirkalokhe@gmail.com | +91 85306 62440 | [GitHub](https://github.com/ruxir-ig) | [LinkedIn](https://linkedin.com/in/ruchirkalokhe) | [ruchir.dev](https://ruchir.dev)
 
 ---
 

@@ -304,7 +304,6 @@ async function loadContent() {
   }
 }
 
-
 function reorderSections(sections) {
   // Extract name section
   const nameSection = sections.find((s) => s.type === "name");
@@ -365,7 +364,14 @@ function renderContent(sections) {
       signature.src = "assets/Ruchir Kalokhe-signature.svg";
       signature.alt = section.content;
       signature.className = "signature";
-      heroContent.appendChild(signature);
+
+      const signatureLink = document.createElement("a");
+      signatureLink.href = "https://signature.cnrad.dev/";
+      signatureLink.target = "_blank";
+      signatureLink.rel = "noopener noreferrer";
+      signatureLink.title = "Visit signature.cnrad.dev";
+      signatureLink.appendChild(signature);
+      heroContent.appendChild(signatureLink);
 
       // Add name
       const h1 = document.createElement("h1");

@@ -11,7 +11,7 @@ AI/ML engineer passionate about exploring emerging technologies—from deep lear
 
 ## Education
 
-### PES Modern College of Engineering (PES MCOE)
+### PES Modern College of Engineering (Savitribai Phule Pune University)
 **Bachelors of Engineering** - Artificial Intelligence and Data Science  
 *Pune, India*
 

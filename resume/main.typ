@@ -26,7 +26,7 @@
 
 #custom-title("Education")[
   #education-heading(
-    "PES Modern College of Engineering (PES MCOE)", "Pune, India",
+    "PES Modern College of Engineering (Savitribai Phule Pune University)", "Pune, India",
     "Bachelors of Engineering", "Artificial Intelligence and Data Science",
     datetime(year: 2023, month: 8, day: 20),
     datetime(year: 2027, month: 6,  day: 1)

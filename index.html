@@ -1,28 +1,357 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Ruchir Kalokhe - AI/ML Engineer" />
-        <title>Ruchir Kalokhe</title>
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <script src="https://cdn.jsdelivr.net/npm/tsparticles-engine@2.12.0/tsparticles.engine.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.12.0/tsparticles.slim.bundle.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-        <link rel="stylesheet" href="src/styles.css" />
-        <!-- Vercel Web Analytics snippet -->
-        <script>
-          window.va = window.va || function(){ (window.vaq = window.vaq || []).push(arguments); };
-        </script>
-        <script defer src="/_vercel/insights/script.js"></script>
-    </head>
-    <body>
-        <div id="tsparticles"></div>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Ruchir Kalokhe - AI/ML Engineer & Full-Stack Developer" />
+    <meta name="theme-color" content="#101010" />
+    <title>Ruchir Kalokhe | AI/ML Engineer</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/geist@1.0.0/dist/fonts/geist-mono/style.css" rel="stylesheet">
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <link rel="stylesheet" href="src/styles.css" />
+</head>
+<body>
+    <!-- Minimal Glass Header -->
+    <header class="glass-header">
+        <div class="header-content">
+            <div class="header-left">
+                <img src="assets/github-pfp.png" alt="Profile" class="profile-avatar" />
+                <span class="header-path"><span class="path-dim">~/</span><span class="path-name">.ruchir</span></span>
+            </div>
+            <nav class="header-nav">
+                <a href="#projects">PROJECTS</a>
+                <a href="#accomplishments">ACCOMPLISHMENTS</a>
+                <a href="#education">EDUCATION</a>
+            </nav>
+        </div>
+    </header>
 
-        <main id="content">
-            <div class="loading">Loading...</div>
-        </main>
+    <!-- Hidden Control Drawer -->
+    <div class="control-drawer" id="controlDrawer">
+        <!-- Tactile Handle / Button -->
+        <button class="drawer-handle" id="drawerHandle" title="Toggle System Controls">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/>
+                <line x1="12" y1="22" x2="12" y2="15.5"/>
+                <polyline points="22 8.5 12 15.5 2 8.5"/>
+            </svg>
+            <span class="drawer-label">SYS</span>
+            <div class="drawer-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
 
-        <script src="src/script.js"></script>
-    </body>
+        <!-- Control Panel -->
+        <div class="control-panel">
+            <div class="panel-header">MODULES</div>
+            
+            <!-- AI / ML Toggle -->
+            <div class="analogue-toggle" data-filter="ai-ml">
+                <span class="toggle-label">AI / ML</span>
+                <div class="toggle-switch active">
+                    <div class="toggle-track">
+                        <div class="toggle-knob"></div>
+                    </div>
+                    <div class="toggle-led"></div>
+                </div>
+            </div>
+            
+            <!-- WEB / SYS Toggle -->
+            <div class="analogue-toggle" data-filter="web-sys">
+                <span class="toggle-label">WEB / SYS</span>
+                <div class="toggle-switch active">
+                    <div class="toggle-track">
+                        <div class="toggle-knob"></div>
+                    </div>
+                    <div class="toggle-led"></div>
+                </div>
+            </div>
+
+            <div class="panel-version">v.1.0.4</div>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <!-- Terminal Hero -->
+        <section class="terminal-section">
+            <div class="terminal-window" id="terminalWindow">
+                <div class="terminal-glow"></div>
+                <div class="terminal-header">
+                    <div class="terminal-dots">
+                        <span class="dot-red"></span>
+                        <span class="dot-yellow"></span>
+                        <span class="dot-green"></span>
+                    </div>
+                    <div class="terminal-title">ruchir@arch-linux:~</div>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-line">
+                        <span class="prompt">❯</span>
+                        <span class="command">~ source config.sh && ./init_profile.py <span class="flag">--verbose</span></span>
+                        <span class="cursor"></span>
+                    </div>
+                    <div class="terminal-output">
+                        <span class="info-badge">i</span> Loading modules... [TensorFlow, PyTorch, React]
+                    </div>
+                    <div class="terminal-output">
+                        <span class="info-badge">i</span> Mounting volumes... /projects /skills
+                    </div>
+                    <div class="terminal-output">
+                        >> <span class="text-success">SYSTEM INITIALIZED.</span> <span class="text-accent">WELCOME</span>, <span class="text-accent">USER</span>.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <h1 class="hero-name">Ruchir Kalokhe</h1>
+            <div class="hero-role">
+                <span class="role-indicator"></span>
+                <span class="role-text">AI/ML Engineer & Full-Stack Developer</span>
+            </div>
+            <p class="hero-objective">
+                AI/ML engineer passionate about exploring emerging technologies—from deep learning and quantum computing to modern web frameworks—driven to build innovative solutions for real-world challenges.
+            </p>
+            <div class="hero-links">
+                <a href="mailto:ruchirkalokhe@gmail.com" class="hero-link">
+                    EMAIL
+                </a>
+                <span class="link-separator">/</span>
+                <a href="https://github.com/ruxir-ig" target="_blank" class="hero-link">
+                    GITHUB
+                </a>
+                <span class="link-separator">/</span>
+                <a href="https://linkedin.com/in/ruchirkalokhe" target="_blank" class="hero-link">
+                    LINKEDIN
+                </a>
+                <span class="link-separator">/</span>
+                <a href="https://x.com/ruchirkalokhe" target="_blank" class="hero-link">
+                    TWITTER
+                </a>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <div class="section-header">
+                <span class="section-number">I.</span>
+                <h2 class="section-title">Projects</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="projects-container" id="projectsContainer">
+                <!-- MineX -->
+                <article class="project-card" data-category="ai-ml">
+                    <div class="project-header">
+                        <div class="project-meta">
+                            <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/>
+                                <line x1="12" y1="22" x2="12" y2="15.5"/>
+                                <polyline points="22 8.5 12 15.5 2 8.5"/>
+                            </svg>
+                            <h3 class="project-title">MineX (Ongoing) - Smart India Hackathon 2025</h3>
+                        </div>
+                        <div class="project-tech">
+                            <i class="devicon-python-plain" title="Python"></i>
+                            <i class="devicon-tensorflow-original" title="TensorFlow"></i>
+                            <i class="devicon-scikitlearn-plain" title="Scikit-learn"></i>
+                            <i class="devicon-git-plain" title="Git"></i>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        AI-driven LCA tool for sustainability analysis in metallurgy using AutoML and predictive modeling. Developed ML pipeline with data modeling workflows; shortlisted (Top 25) in internal SIH 2025.
+                    </p>
+                </article>
+
+                <!-- Surefy -->
+                <article class="project-card" data-category="web-sys">
+                    <div class="project-header">
+                        <div class="project-meta">
+                            <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/>
+                                <line x1="12" y1="22" x2="12" y2="15.5"/>
+                                <polyline points="22 8.5 12 15.5 2 8.5"/>
+                            </svg>
+                            <h3 class="project-title">Surefy - Event Management System</h3>
+                            <a href="https://github.com/ruxir-ig/surefy-assignment" target="_blank" class="ext-link">EXT_LINK</a>
+                        </div>
+                        <div class="project-tech">
+                            <i class="devicon-typescript-plain" title="TypeScript"></i>
+                            <i class="devicon-express-original" title="Express.js"></i>
+                            <i class="devicon-postgresql-plain" title="PostgreSQL"></i>
+                            <i class="devicon-bun-plain" title="Bun"></i>
+                            <i class="devicon-nodejs-plain" title="Node.js"></i>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        RESTful API with Express.js, TypeScript, PostgreSQL, and Bun for event management. Implemented transaction-based concurrency control to prevent overbooking.
+                    </p>
+                </article>
+
+                <!-- SAR Image Colorization -->
+                <article class="project-card" data-category="ai-ml">
+                    <div class="project-header">
+                        <div class="project-meta">
+                            <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/>
+                                <line x1="12" y1="22" x2="12" y2="15.5"/>
+                                <polyline points="22 8.5 12 15.5 2 8.5"/>
+                            </svg>
+                            <h3 class="project-title">SAR Image Colorization - Smart India Hackathon 2024</h3>
+                            <a href="https://github.com/ruxir-ig/SAR-Image-Colorization" target="_blank" class="ext-link">EXT_LINK</a>
+                        </div>
+                        <div class="project-tech">
+                            <i class="devicon-python-plain" title="Python"></i>
+                            <i class="devicon-pytorch-original" title="PyTorch"></i>
+                            <i class="devicon-opencv-plain" title="OpenCV"></i>
+                            <i class="devicon-numpy-plain" title="NumPy"></i>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        PyTorch and GAN-based model to colorize grayscale SAR images into RGB representations. Top 25 in internal SIH 2024; 78% accuracy.
+                    </p>
+                </article>
+
+                <!-- VERBALIZE Lip-Reader -->
+                <article class="project-card" data-category="ai-ml">
+                    <div class="project-header">
+                        <div class="project-meta">
+                            <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/>
+                                <line x1="12" y1="22" x2="12" y2="15.5"/>
+                                <polyline points="22 8.5 12 15.5 2 8.5"/>
+                            </svg>
+                            <h3 class="project-title">VERBALIZE Lip-Reader</h3>
+                            <a href="https://github.com/ruxir-ig/VERBALIZE_Lip-Reader" target="_blank" class="ext-link">EXT_LINK</a>
+                        </div>
+                        <div class="project-tech">
+                            <i class="devicon-python-plain" title="Python"></i>
+                            <i class="devicon-tensorflow-original" title="TensorFlow"></i>
+                            <i class="devicon-opencv-plain" title="OpenCV"></i>
+                            <i class="devicon-keras-plain" title="Keras"></i>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Deep learning for silent speech recognition through lip movement analysis using TensorFlow. 92% accuracy.
+                    </p>
+                </article>
+
+                <!-- QKD Simulator -->
+                <article class="project-card" data-category="web-sys">
+                    <div class="project-header">
+                        <div class="project-meta">
+                            <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/>
+                                <line x1="12" y1="22" x2="12" y2="15.5"/>
+                                <polyline points="22 8.5 12 15.5 2 8.5"/>
+                            </svg>
+                            <h3 class="project-title">Quantum Key Distribution (QKD) Simulator</h3>
+                            <a href="https://github.com/ruxir-ig/QKD_sim" target="_blank" class="ext-link">EXT_LINK</a>
+                        </div>
+                        <div class="project-tech">
+                            <i class="devicon-nextjs-plain" title="Next.js"></i>
+                            <i class="devicon-typescript-plain" title="TypeScript"></i>
+                            <i class="devicon-python-plain" title="Python"></i>
+                            <i class="devicon-streamlit-plain" title="Streamlit"></i>
+                            <i class="devicon-react-original" title="React"></i>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Dual implementation: TypeScript/Next.js and Python/Streamlit for BB84 protocol simulation.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Accomplishments Section -->
+        <section id="accomplishments" class="section">
+            <div class="section-header">
+                <span class="section-number">II.</span>
+                <h2 class="section-title">Accomplishments</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="accomplishments-list">
+                <div class="accomplishment-item">
+                    <span class="accomplishment-bullet">◆</span>
+                    <p><strong>Smart India Hackathon 2025</strong> - MineX project (Top 25)</p>
+                </div>
+                <div class="accomplishment-item">
+                    <span class="accomplishment-bullet">◆</span>
+                    <p><strong>Smart India Hackathon 2024</strong> - SAR Colorization (Top 25)</p>
+                </div>
+                <div class="accomplishment-item">
+                    <span class="accomplishment-bullet">◆</span>
+                    <p><strong>HackRx Hackathon</strong> - Mentored team ranked Top 236th</p>
+                </div>
+                <div class="accomplishment-item">
+                    <span class="accomplishment-bullet">◆</span>
+                    <p><strong>GeeksVishwa (VIIT)</strong> - Ranked 23rd</p>
+                </div>
+                <div class="accomplishment-item">
+                    <span class="accomplishment-bullet">◆</span>
+                    <p><strong>Open Source</strong> - Contributed to ascii-view (137+ stars), gitget-backend, and multiple GitHub projects</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="section">
+            <div class="section-header">
+                <span class="section-number">III.</span>
+                <h2 class="section-title">Education</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="education-list">
+                <div class="education-card glass-card">
+                    <div class="education-content">
+                        <h3 class="education-school">PES Modern College of Engineering (PES MCOE)</h3>
+                        <p class="education-degree">B.E. in Artificial Intelligence and Data Science</p>
+                        <p class="education-location">Pune, India</p>
+                    </div>
+                    <div class="education-meta">
+                        <span class="education-duration">Aug 2023 – Jun 2027</span>
+                    </div>
+                </div>
+                <div class="education-card glass-card">
+                    <div class="education-content">
+                        <h3 class="education-school">Hutchings High School & Junior College</h3>
+                        <p class="education-degree">High School Diploma</p>
+                        <p class="education-location">Pune, India</p>
+                    </div>
+                    <div class="education-meta">
+                        <span class="education-duration">Sep 2008 – May 2021</span>
+                        <span class="education-grade">Percentage: 84%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p class="footer-copy">© 2025 Ruchir Kalokhe</p>
+                </div>
+                <div class="footer-center">
+                    <a href="https://signature.cnrad.dev/" target="_blank" rel="noopener noreferrer" title="Create your own signature" class="footer-signature">
+                        <svg width="200" height="60" viewBox="0 0 650 200" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 238 40 L 418 40 L 223 160 L 373 100 L 478 40 L 238 40 L 493 100 L 73 100 L 553 100 L 538 40 L 493 100 L 373 100 L 178 40" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="footer-right">
+                    <p class="footer-tagline"><span>Linux</span> • <span>AI</span> • <span>Web</span></p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="src/script.js"></script>
+</body>
 </html>

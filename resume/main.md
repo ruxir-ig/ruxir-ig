@@ -37,6 +37,7 @@ AI/ML engineer passionate about exploring emerging technologies—from deep lear
 ### MineX (Ongoing) - Smart India Hackathon 2025
 - AI-driven LCA tool for sustainability analysis in metallurgy using AutoML and predictive modeling
  - Developed ML pipeline with data modeling workflows; shortlisted (Top 25) in internal SIH 2025
+ - Website: https://circular-metal-lab.vercel.app/
 
 ### Surefy - Event Management System
 - RESTful API with Express.js, TypeScript, PostgreSQL, and Bun for event management

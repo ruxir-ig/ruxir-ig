@@ -66,7 +66,7 @@ AI/ML engineer passionate about exploring emerging technologies—from deep lear
 
 ## Accomplishments
 
-- **Smart India Hackathon 2025** - MineX project (Top 25) | **Smart India Hackathon 2024** - SAR Colorization (Top 25)
+- **Smart India Hackathon** - Top 25 in internal SIH 2025 (MineX) and internal SIH 2024 (SAR Colorization)
  - **HackRx Hackathon** - Mentored team ranked Top 236th | **GeeksVishwa (VIIT)** - Ranked 23rd
  - **Open Source** - Contributed to ascii-view (137+ stars), gitget-backend, and multiple GitHub projects
 

@@ -518,6 +518,23 @@ a {
     margin-bottom: 4rem;
 }
 
+.section-note {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.section-note::before {
+    content: "◆";
+    font-size: 0.6rem;
+}
+
 section[id] {
     scroll-margin-top: 5.5rem;
 }

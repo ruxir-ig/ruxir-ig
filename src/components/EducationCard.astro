@@ -1,0 +1,93 @@
+---
+interface Props {
+  degree: string;
+  school: string;
+  duration: string;
+  gpa?: string;
+}
+
+const { degree, school, duration, gpa = "" } = Astro.props;
+---
+
+<article class="edu-card">
+  <div>
+    <div class="edu-header">
+      <span class="edu-degree">{degree}</span>
+      {gpa && <span class="edu-status">{gpa}</span>}
+    </div>
+    <h3 class="edu-school">{school}</h3>
+    <div class="edu-meta">
+      <span>{duration}</span>
+    </div>
+  </div>
+</article>
+
+<style>
+  .edu-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: start;
+    transition: all 0.3s ease;
+    border-radius: 0.5rem;
+  }
+
+  .edu-card:hover {
+    border-color: var(--accent);
+    background: var(--surface-elevated);
+    box-shadow: 0 8px 24px rgba(6, 182, 212, 0.1);
+  }
+
+  .edu-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .edu-degree {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .edu-status {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--muted);
+    padding: 0.1rem 0.4rem;
+    border: 1px solid var(--border-dim);
+    border-radius: 0.25rem;
+  }
+
+  .edu-school {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+  }
+
+  .edu-meta {
+    display: flex;
+    gap: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 768px) {
+    .edu-card {
+      grid-template-columns: 1fr;
+    }
+
+    .edu-meta {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+  }
+</style>

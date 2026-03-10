@@ -1,0 +1,116 @@
+---
+interface Props {
+  year: string;
+  company: string;
+  title: string;
+  status?: string;
+  responsibilities?: string[];
+}
+
+const { year, company, title, status, responsibilities = [] } = Astro.props;
+---
+
+<article class="exp-card">
+  <div>
+    <div class="exp-header">
+      <span class="exp-role">{title}</span>
+      {status && <span class="exp-status">{status}</span>}
+    </div>
+    <h3 class="exp-company">{company}</h3>
+    {responsibilities.length > 0 && (
+      <div class="exp-meta">
+        {responsibilities.map((resp) => (
+          <span>{resp}</span>
+        ))}
+      </div>
+    )}
+  </div>
+  <div class="exp-year">{year}</div>
+</article>
+
+<style>
+  .exp-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: start;
+    transition: all 0.3s ease;
+    border-radius: 0.5rem;
+  }
+
+  .exp-card:hover {
+    border-color: var(--accent);
+    background: var(--surface-elevated);
+    box-shadow: 0 8px 24px rgba(6, 182, 212, 0.1);
+  }
+
+  .exp-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .exp-role {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .exp-status {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: #22c55e;
+    padding: 0.4rem 0.7rem;
+    border: 1px solid #22c55e;
+    border-radius: 0.25rem;
+    width: fit-content;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .exp-company {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+    color: var(--primary);
+  }
+
+  .exp-meta {
+    display: flex;
+    gap: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+  }
+
+  .exp-year {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--accent);
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 768px) {
+    .exp-card {
+      grid-template-columns: 1fr;
+    }
+
+    .exp-year {
+      order: -1;
+    }
+
+    .exp-meta {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+  }
+</style>

@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import ExperienceCard from '../components/ExperienceCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import AccomplishmentItem from '../components/AccomplishmentItem.astro';
+import EducationCard from '../components/EducationCard.astro';
+import { hero, experience, projects, accomplishments, education } from '../data/portfolio';
+
+const pageTitle = "Ruchir Kalokhe - Portfolio";
+const pageDescription = "Personal portfolio of Ruchir Kalokhe, AI/ML enthusiast and Full-Stack Developer";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <div class="layout-grid">
+    <Sidebar />
+    
+    <main class="main-content">
+      <!-- Hero Section -->
+      <Hero name={hero.name} role={hero.role} bio={hero.bio} />
+
+      <!-- Experience Section -->
+      <section class="content-section" id="experience" data-section="experience">
+        <SectionHeader number="01" title="Experience" status="CURATED" />
+        <div class="experience-list">
+          {experience.map((exp) => (
+            <ExperienceCard
+              year={exp.year}
+              company={exp.company}
+              title={exp.title}
+              status={exp.status}
+              responsibilities={exp.responsibilities}
+            />
+          ))}
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section class="content-section" id="projects" data-section="projects">
+        <SectionHeader number="02" title="Projects" status="FEATURED" />
+        <div class="projects-grid">
+          {projects.map((project) => (
+            <ProjectCard
+              id={project.id}
+              name={project.name}
+              description={project.description}
+              tags={project.tags}
+              link={project.link}
+              tech={project.tech}
+            />
+          ))}
+        </div>
+      </section>
+
+      <!-- Accomplishments Section -->
+      <section class="content-section" id="accomplishments" data-section="accomplishments">
+        <SectionHeader number="03" title="Accomplishments" status="TIMELINE" />
+        <div class="accomplishments-grid">
+          {accomplishments.map((acc) => (
+            <AccomplishmentItem
+              year={acc.year}
+              title={acc.title}
+              description={acc.description}
+            />
+          ))}
+        </div>
+      </section>
+
+      <!-- Education Section -->
+      <section class="content-section" id="education" data-section="education">
+        <SectionHeader number="04" title="Education" status="CURRENT" />
+        <div class="education-list">
+          {education.map((edu) => (
+            <EducationCard
+              degree={edu.degree}
+              school={edu.school}
+              duration={edu.duration}
+              gpa={edu.gpa}
+            />
+          ))}
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <div class="footer-left">
+          © 2025 Ruchir Kalokhe
+        </div>
+        <div class="footer-center">
+          <div>designed & developed</div>
+        </div>
+        <div class="footer-right">
+          v1.0 / en
+        </div>
+      </footer>
+    </main>
+  </div>
+</BaseLayout>
+
+<style>
+  :global(.nav-link.active) {
+    color: var(--accent);
+    border-left-color: var(--accent);
+  }
+</style>

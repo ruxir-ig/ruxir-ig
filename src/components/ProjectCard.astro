@@ -1,0 +1,136 @@
+---
+interface Props {
+  id: string;
+  name: string;
+  description: string;
+  tags?: string[];
+  link?: string;
+  tech?: string[];
+}
+
+const { id, name, description, tags = [], link = "#", tech = [] } = Astro.props;
+---
+
+<article class="project-card">
+  <div class="card-header">
+    <div class="project-meta">
+      <span class="project-id">{id}</span>
+      <span class="project-type">PROJECT</span>
+    </div>
+    {link && link !== "#" && (
+      <a href={link} target="_blank" rel="noopener noreferrer" class="ext-link">
+        EXT_LINK <i class="fas fa-arrow-right"></i>
+      </a>
+    )}
+  </div>
+
+  <h3 class="project-title">{name}</h3>
+  <p class="project-description">{description}</p>
+
+  {tech && tech.length > 0 && (
+    <div class="project-tech">
+      {tech.map((icon) => (
+        <i class={icon}></i>
+      ))}
+    </div>
+  )}
+</article>
+
+<style>
+  .project-card {
+    background: var(--surface);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    transition: all 0.3s ease;
+    position: relative;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+  }
+
+  .project-card:hover {
+    background: var(--surface-elevated);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(6, 182, 212, 0.12);
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .project-id {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .project-type {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .ext-link {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 0.35rem 0.75rem;
+    transition: all 0.3s ease;
+    border-radius: 0.25rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+  }
+
+  .ext-link:hover {
+    background: var(--accent);
+    color: var(--surface);
+    border-color: var(--accent);
+  }
+
+  .project-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+  }
+
+  .project-description {
+    font-size: 0.9rem;
+    color: var(--secondary);
+    line-height: 1.6;
+    flex-grow: 1;
+  }
+
+  .project-tech {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-dim);
+  }
+
+  .project-tech i {
+    font-size: 1.5rem;
+    color: var(--muted);
+    transition: all 0.3s ease;
+  }
+
+  .project-card:hover .project-tech i {
+    color: var(--accent);
+  }
+</style>

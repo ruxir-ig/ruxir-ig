@@ -1,0 +1,66 @@
+---
+import '../styles/globals.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title = "Ruchir Kalokhe - Portfolio", description = "Personal portfolio of Ruchir Kalokhe, AI/ML enthusiast and Full-Stack Developer" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  </head>
+  <body>
+    <slot />
+    <script>
+      // Smooth scroll behavior and active link tracking
+      document.addEventListener('DOMContentLoaded', () => {
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('[data-section]');
+
+        window.addEventListener('scroll', () => {
+          let current = '';
+          sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (scrollY >= sectionTop - 200) {
+              current = section.getAttribute('data-section');
+            }
+          });
+
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+              link.classList.add('active');
+            }
+          });
+        });
+
+        // Smooth scroll to anchor links
+        navLinks.forEach(link => {
+          link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (href?.startsWith('#')) {
+              e.preventDefault();
+              const target = document.querySelector(href);
+              if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+              }
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

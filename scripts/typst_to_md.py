@@ -186,9 +186,10 @@ def format_section_content(content):
                     lines.append(convert_typst_markup(details))
                 lines.append("")
     
-    elif 'experience-heading(' in content:
-        # Future-proof: handle experience sections
-        entries = parse_function_call(content, 'experience-heading')
+    elif 'work-heading(' in content or 'experience-heading(' in content:
+        # Future-proof: handle resume experience sections
+        func_name = 'work-heading' if 'work-heading(' in content else 'experience-heading'
+        entries = parse_function_call(content, func_name)
         for args, details in entries:
             if len(args) >= 3:
                 lines.append(f"### {args[0]}")

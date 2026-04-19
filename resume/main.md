@@ -6,7 +6,57 @@ ruchirkalokhe@gmail.com | +91 85306 62440 | [GitHub](https://github.com/ruxir-ig
 
 ## Career Objective
 
-AI/ML engineer passionate about exploring emerging technologies—from deep learning and quantum computing to modern web frameworks—driven to build innovative solutions for real-world challenges.
+AI/ML and full-stack engineer building GPU orchestration and async inference systems. Interested in applied AI, infrastructure, and product engineering.
+
+
+## Experience
+
+### Generative AI Intern
+**In2peta Services Private Limited** | *Remote*
+
+- Built a cloud GPU compute platform supporting multi-provider orchestration across Modal, RunPod, and Koyeb with dynamic provider routing and failover
+ - Designed async ML inference pipeline using BullMQ and Redis; implemented prediction polling, webhook delivery, and full job lifecycle management
+ - Integrated video generation models (text-to-video, lip-sync) with GFPGAN post-processing into production REST APIs via Docker-based deployments
+ - Implemented Stripe-based usage billing with Prisma ORM and PostgreSQL, and conducted a security audit that remediated 15+ vulnerabilities
+
+
+
+## Leadership & Activities
+
+### IMACE 2026 - Management Team Member, GDSC PESMCOE
+- Managed, organized, and judged hackathon events for IMACE 2026
+ - Coordinated GQuiz Up, Pitch and Innovate, and Poster Presentation events
+ - Supported AI/ML community programs and an open innovation hackathon for PES Modern College of Engineering
+
+
+
+## Projects
+
+### Silent Failure Detector - OpenEnv Round 1 Bootcamp (2026)
+- OpenEnv-compliant RL environment for training agents to detect confidently wrong AI outputs (hallucination detection)
+ - Programmatic reward signal with deterministic graders—no LLM-judge dependency; three difficulty tiers (easy/medium/hard)
+ - GitHub: https://github.com/ruxir-ig/silent-failure-detector
+
+### MuseTalk API - Real-Time Lip Synchronization
+- REST API wrapper for MuseTalk: real-time high-quality lip synchronization using latent space inpainting
+ - Deep learning pipeline for audio-visual sync with GFPGAN face enhancement, built with Python and Docker
+ - GitHub: https://github.com/ruxir-ig/MuseTalk-API
+
+### SAR Image Colorization - Smart India Hackathon 2024 (Top 25)
+- PyTorch and GAN-based model to colorize grayscale SAR images into RGB representations; 78% accuracy
+ - GitHub: https://github.com/ruxir-ig/SAR-Image-Colorization
+
+
+
+## Certifications
+
+- **Google Cloud** badges and **Python 3.4.3, JavaScript, Java** certificates from Spoken Tutorial, IIT Bombay
+
+
+## Accomplishments
+
+- **Smart India Hackathon** - Top 25 in internal SIH 2024 (SAR Colorization); **HackRx** mentoring and **GeeksVishwa** ranked 23rd
+ - **Open Source** - Contributed to ascii-view, nitch and filed a public t3code issue
 
 
 ## Education
@@ -16,57 +66,9 @@ AI/ML engineer passionate about exploring emerging technologies—from deep lear
 *Pune, India*
 
 ### Hutchings High School & Junior College
-**High School Diploma** - Graduation Year: 2021  
+**High School Diploma** - CISCE 10th Board Exam  
 *Pune, India*
 
-- Percentage: 84%
+- Grade: 84%
 
-
-
-## Core Strengths
-
-- **AI/ML Engineering:** Developed GANs for SAR colorization (78% accuracy) and deep learning models with TensorFlow; experienced with PyTorch, AutoML, and predictive modeling.
- - **Full-Stack Development:** Built production systems with Express.js, TypeScript, PostgreSQL; proficient in React, Next.js, Vue.js, and modern web frameworks.
- - **Problem-Solving & Adaptability:** Rapid learner of emerging tech (Streamlit, LangChain, RAG, Groq); implemented quantum cryptography (BB84) and concurrency control.
- - **Technical Leadership:** Led architecture design for RAG 2.0; mentored hackathon teams (Top 45, Top 25); coordinate cross-functional development.
- - **Domain Expertise:** Deep Learning, Quantum Computing (Qiskit), RESTful APIs, Database Design, Git
-
-
-## Projects
-
-### MineX (Ongoing) - Smart India Hackathon 2025
-- AI-driven LCA tool for sustainability analysis in metallurgy using AutoML and predictive modeling
- - Developed ML pipeline with data modeling workflows; shortlisted (Top 25) in internal SIH 2025
- - Website: https://circular-metal-lab.vercel.app/
-
-### Surefy - Event Management System
-- RESTful API with Express.js, TypeScript, PostgreSQL, and Bun for event management
- - Implemented transaction-based concurrency control to prevent overbooking
- - GitHub: https://github.com/ruxir-ig/surefy-assignment
-
-### SAR Image Colorization - Smart India Hackathon 2024
-- PyTorch and GAN-based model to colorize grayscale SAR images into RGB representations
- - Top 25 in internal SIH 2024; 78% accuracy | GitHub: https://github.com/ruxir-ig/SAR-Image-Colorization
-
-### VERBALIZE Lip-Reader
-- Deep learning for silent speech recognition through lip movement analysis using TensorFlow
- - 92% accuracy | GitHub: https://github.com/ruxir-ig/VERBALIZE_Lip-Reader
-
-### Quantum Key Distribution (QKD) Simulator
-- Dual implementation: TypeScript/Next.js and Python/Streamlit for BB84 protocol simulation
- - GitHub: https://github.com/ruxir-ig/QKD_sim | https://github.com/ruxir-ig/qkd-sim-py
-
-
-
-## Certifications
-
-- **Full Stack Open 2024** - University of Helsinki (In Progress) - React, Node.js, GraphQL, TypeScript
- - **Python 3.4.3, JavaScript, Java** - Spoken Tutorial, IIT Bombay - Certificates of Completion of Training
-
-
-## Accomplishments
-
-- **Smart India Hackathon** - Top 25 in internal SIH 2025 (MineX) and internal SIH 2024 (SAR Colorization)
- - **HackRx Hackathon** - Mentored team ranked Top 236th | **GeeksVishwa (VIIT)** - Ranked 23rd
- - **Open Source** - Contributed to ascii-view (137+ stars), gitget-backend, and multiple GitHub projects
 

@@ -50,7 +50,7 @@ AI/ML and full-stack engineer building GPU orchestration and async inference sys
 
 ## Certifications
 
-- **Google Cloud** badges and **Python 3.4.3, JavaScript, Java** certificates from Spoken Tutorial, IIT Bombay
+- **Python 3.4.3, JavaScript, Java** certificates from Spoken Tutorial, IIT Bombay
 
 
 ## Accomplishments

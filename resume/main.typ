@@ -31,7 +31,7 @@
     "Generative AI Intern",
     "In2peta Services Private Limited", "Remote",
     datetime(year: 2025, month: 12, day: 1),
-    datetime(year: 9999, month: 1, day: 1)
+    datetime(year: 2026, month: 5, day: 31)
   )[
     - Built a cloud GPU compute platform supporting multi-provider orchestration across Modal, RunPod, and Koyeb with dynamic provider routing and failover
     - Designed async ML inference pipeline using BullMQ and Redis; implemented prediction polling, webhook delivery, and full job lifecycle management

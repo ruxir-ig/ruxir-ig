@@ -1,0 +1,156 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   DESIGN TOKENS — Nordic Cinematic / Fujifilm Cold Film
+   ═══════════════════════════════════════════════════════════════════════
+   A design system rooted in the tension between editorial cinema
+   and the clinical precision of backend engineering.
+   
+   Inspired by: Sam Kolder grading, Fujifilm Classic Neg/Eterna,
+   crushed blacks, desaturated highlands, and 35mm grain.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ─── SURFACE SYSTEM ─────────────────────────────────────────────────
+     Deep, atmospheric darkness with subtle tonal separation.
+     Think: the difference between shadow and void in a film still.
+  */
+  --surface-void:              #0a0a0a;  /* true black — page bg edge bleeds */
+  --surface-base:              #111110;  /* primary canvas — crushed black */
+  --surface-dim:               #141413;  /* slightly lifted — major sections */
+  --surface-raised:            #1a1a19;  /* cards, containers — like darkroom paper */
+  --surface-elevated:          #222221;  /* modals, popovers, nav */
+  --surface-bright:            #2d2d2b;  /* hover states, active elements */
+  --surface-glare:             #3a3938;  /* maximum elevation — tooltips, focus rings */
+
+  /* ─── TEXT SYSTEM ────────────────────────────────────────────────────
+     Off-whites calibrated to feel like light through haze.
+     Not sterile white — the warmth of sunlight on snow at golden hour.
+  */
+  --text-primary:              #f0ede8;  /* primary copy — warm parchment white */
+  --text-secondary:            #b8b4ad;  /* secondary — like aged silver */
+  --text-tertiary:             #7d7a74;  /* muted — captions, timestamps */
+  --text-ghost:                #4a4844;  /* barely visible — decorative, watermarks */
+  --text-inverse:              #111110;  /* text on light surfaces */
+
+  /* ─── ACCENT: FUJIFILM RED ──────────────────────────────────────────
+     The signature. Used like a red "REC" dot on a camera body.
+     Extremely sparing — only for primary CTAs and status pings.
+  */
+  --accent-primary:            #c4432b;  /* Fujifilm red — warm, filmic, not neon */
+  --accent-primary-hover:      #d65a42;  /* slightly lifted for hover */
+  --accent-primary-dim:        #8b2f1e;  /* pressed / muted state */
+  --accent-primary-ghost:      rgba(196, 67, 43, 0.08); /* tinted backgrounds */
+  --accent-primary-glow:       rgba(196, 67, 43, 0.15); /* subtle halos */
+
+  /* ─── ACCENT: ICY BLUE ─────────────────────────────────────────────
+     Cold highlights — like moonlight on glacial water.
+     Used for links, secondary emphasis, and code syntax.
+  */
+  --accent-cold:               #8ba7c4;  /* desaturated ice blue */
+  --accent-cold-hover:         #a3bdd6;  /* lighter on hover */
+  --accent-cold-dim:           #5c7a96;  /* pressed */
+  --accent-cold-ghost:         rgba(139, 167, 196, 0.06);
+  --accent-cold-glow:          rgba(139, 167, 196, 0.12);
+
+  /* ─── ACCENT: SAGE / MOSS ──────────────────────────────────────────
+     Organic counterpoint. Like lichen on volcanic rock.
+     Used for success states, tags, and "nature" references.
+  */
+  --accent-sage:               #8a9f8c;  /* muted forest */
+  --accent-sage-hover:         #a0b5a2;
+  --accent-sage-dim:           #5d6f5f;
+  --accent-sage-ghost:         rgba(138, 159, 140, 0.06);
+
+  /* ─── ACCENT: AMBER / FILM ─────────────────────────────────────────
+     Warm film tone — like tungsten light bleeding into frame.
+     Used for warnings, highlights, and warm editorial moments.
+  */
+  --accent-amber:              #c9a84c;  /* aged gold — Kodak warmth */
+  --accent-amber-hover:        #d9bc6a;
+  --accent-amber-dim:          #8f7735;
+  --accent-amber-ghost:        rgba(201, 168, 76, 0.06);
+
+  /* ─── BORDERS & SEPARATORS ─────────────────────────────────────────
+     Architectural lines — think: the edge of a film frame.
+  */
+  --border-subtle:             #1e1e1d;  /* barely there — tonal separation */
+  --border-default:            #2a2a28;  /* standard dividers */
+  --border-strong:             #3d3d3a;  /* emphasized edges */
+  --border-focus:              #c4432b;  /* focus rings — Fujifilm red */
+  --border-cold:               #5c7a96;  /* cold emphasis borders */
+
+  /* ─── SHADOWS & DEPTH ──────────────────────────────────────────────
+     No soft, fuzzy box-shadows. Sharp, cinematic depth.
+  */
+  --shadow-sm:                 0 1px 2px rgba(0, 0, 0, 0.6);
+  --shadow-md:                 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg:                 0 12px 40px rgba(0, 0, 0, 0.6);
+  --shadow-inset:              inset 0 1px 4px rgba(0, 0, 0, 0.4);
+  --shadow-glow-red:           0 0 30px rgba(196, 67, 43, 0.08);
+  --shadow-glow-cold:          0 0 30px rgba(139, 167, 196, 0.06);
+
+  /* ─── SPACING SCALE ────────────────────────────────────────────────
+     Base unit: 4px. Geometric progression for rhythm.
+     Generous vertical spacing = cinematic breathing room.
+  */
+  --space-1:                   4px;
+  --space-2:                   8px;
+  --space-3:                   12px;
+  --space-4:                   16px;
+  --space-5:                   20px;
+  --space-6:                   24px;
+  --space-8:                   32px;
+  --space-10:                  40px;
+  --space-12:                  48px;
+  --space-16:                  64px;
+  --space-20:                  80px;
+  --space-24:                  96px;
+  --space-32:                  128px;
+  --space-40:                  160px;
+
+  /* ─── LAYOUT ───────────────────────────────────────────────────────
+     Wide, cinematic container. Think 21:9 framing on a 16:9 screen.
+  */
+  --container-max:             1200px;
+  --container-narrow:          720px;   /* reading lane — blog posts */
+  --container-wide:            1440px;  /* hero sections, full bleed */
+  --gutter:                    24px;
+  --margin-mobile:             20px;
+  --margin-desktop:            64px;
+  --section-gap:               128px;   /* aggressive vertical rhythm */
+  --section-gap-mobile:        80px;
+
+  /* ─── RADII ────────────────────────────────────────────────────────
+     Sharp. Architectural. No rounded corners.
+     Exception: tiny pill badges get 2px max.
+  */
+  --radius-none:               0;
+  --radius-xs:                 2px;     /* only for inline badges */
+  --radius-sm:                 3px;     /* subtle softening on small elements */
+
+  /* ─── TRANSITIONS ──────────────────────────────────────────────────
+     Deliberate, not bouncy. Like a slow dolly push.
+  */
+  --ease-out:                  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:               cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring:               cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast:             120ms;
+  --duration-base:             200ms;
+  --duration-slow:             400ms;
+  --duration-cinematic:        800ms;
+
+  /* ─── Z-INDEX SCALE ────────────────────────────────────────────────*/
+  --z-base:                    1;
+  --z-above:                   10;
+  --z-nav:                     100;
+  --z-overlay:                 500;
+  --z-modal:                   1000;
+  --z-toast:                   9999;
+
+  /* ─── FILM GRAIN & EFFECTS ─────────────────────────────────────────
+     Cinematic texture overlays.
+  */
+  --grain-opacity:             0.03;
+  --vignette-opacity:          0.4;
+  --blur-nav:                  20px;
+  --blur-glass:                40px;
+}

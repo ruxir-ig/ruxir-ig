@@ -1,0 +1,259 @@
+---
+import Base from '../layouts/Base.astro';
+
+const entries = [
+  {
+    date: '2026.05',
+    category: 'Infrastructure',
+    title: 'Building GPU Inference Pipelines at Scale',
+    excerpt: 'Notes on serving ML models in production — job orchestration, model lifecycle management, and the operational details that make GPU workloads reliable. Lessons from building In2peta\'s model platform.',
+    readTime: '8 min',
+  },
+  {
+    date: '2026.03',
+    category: 'Backend',
+    title: 'Deployment Guardrails That Actually Work',
+    excerpt: 'Billing safety, idempotency, rate limiting, and access control — the invisible infrastructure that keeps production systems honest. A collection of patterns from real deployment debugging.',
+    readTime: '6 min',
+  },
+  {
+    date: '2025.12',
+    category: 'ML Research',
+    title: 'SAR Image Colorization: Lessons from GAN Training',
+    excerpt: 'What we learned building a GAN-based model for satellite imagery colorization — encoder-decoder experiments, training instability, and the gap between research papers and working systems.',
+    readTime: '10 min',
+  },
+  {
+    date: '2025.10',
+    category: 'Open Source',
+    title: 'Adopting Abandoned Packages on the AUR',
+    excerpt: 'The story of taking over nitch-git on the Arch User Repository — packaging decisions, community expectations, and maintaining software you didn\'t write.',
+    readTime: '5 min',
+  },
+];
+---
+
+<Base title="Journal" description="Technical writing, research notes, and engineering reflections.">
+
+  <section class="page-header section">
+    <div class="container">
+      <div class="breadcrumb hero-animate" style="--delay: 0">
+        <a href="/">Home</a>
+        <span class="breadcrumb__sep">/</span>
+        <span>Journal</span>
+      </div>
+      <h1 class="page-title hero-animate" style="--delay: 1">Research<br/>Journal</h1>
+      <p class="page-subtitle hero-animate" style="--delay: 2">
+        Technical writing, research notes, and reflections on building systems.
+      </p>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container">
+      <div class="journal-entries">
+        {entries.map((entry, i) => (
+          <article class="journal-entry" data-reveal style={`--stagger: ${i + 1}`}>
+            <div class="entry-meta">
+              <span class="entry-date">{entry.date}</span>
+              <span class="entry-category">{entry.category}</span>
+            </div>
+            <div class="entry-content">
+              <h2 class="entry-title">{entry.title}</h2>
+              <p class="entry-excerpt">{entry.excerpt}</p>
+              <div class="entry-footer">
+                <span class="entry-readtime">{entry.readTime} read</span>
+                <span class="entry-link">Read Entry →</span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="journal-end" data-reveal style="--stagger: 6">
+        <div class="end-line"></div>
+        <p class="end-text">More entries in progress. Building and writing in parallel.</p>
+      </div>
+    </div>
+  </section>
+
+</Base>
+
+
+<style>
+  .page-header {
+    padding-top: 120px;
+  }
+
+  .page-title {
+    font-family: var(--font-display);
+    font-size: clamp(42px, 8vw, 72px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1;
+    color: var(--text-primary);
+    margin: var(--space-6) 0 var(--space-6);
+  }
+
+  .page-subtitle {
+    font-size: var(--text-body-lg);
+    color: var(--text-tertiary);
+    max-width: 520px;
+  }
+
+  .hero-animate {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: hero-reveal 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    animation-delay: calc(var(--delay) * 120ms + 100ms);
+  }
+
+  @keyframes hero-reveal {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+
+  /* ─── JOURNAL ENTRIES ─── */
+  .journal-entries {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .journal-entry {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: var(--space-8);
+    padding: var(--space-10) 0;
+    border-bottom: 1px solid var(--border-subtle);
+    transition: background 0.3s ease;
+    cursor: pointer;
+  }
+
+  .journal-entry:first-child {
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .journal-entry:hover {
+    background: linear-gradient(90deg, transparent, var(--surface-dim) 20%, var(--surface-dim) 80%, transparent);
+  }
+
+  .entry-meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding-top: var(--space-1);
+  }
+
+  .entry-date {
+    font-family: var(--font-mono);
+    font-size: var(--text-caption);
+    letter-spacing: var(--text-caption-ls);
+    color: var(--text-ghost);
+  }
+
+  .entry-category {
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    font-weight: var(--text-label-weight);
+    letter-spacing: var(--text-label-ls);
+    text-transform: uppercase;
+    color: var(--accent-primary);
+  }
+
+  .entry-content {
+    max-width: 640px;
+  }
+
+  .entry-title {
+    font-family: var(--font-display);
+    font-size: var(--text-h3);
+    font-weight: 400;
+    color: var(--text-primary);
+    line-height: 1.25;
+    margin-bottom: var(--space-4);
+    transition: color 0.2s ease;
+  }
+
+  .journal-entry:hover .entry-title {
+    color: var(--accent-cold);
+  }
+
+  .entry-excerpt {
+    font-size: var(--text-body);
+    color: var(--text-tertiary);
+    line-height: 1.65;
+    margin-bottom: var(--space-5);
+  }
+
+  .entry-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .entry-readtime {
+    font-family: var(--font-mono);
+    font-size: var(--text-caption);
+    letter-spacing: var(--text-caption-ls);
+    color: var(--text-ghost);
+  }
+
+  .entry-link {
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    letter-spacing: var(--text-label-ls);
+    text-transform: uppercase;
+    color: var(--accent-cold);
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: opacity 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+                transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .journal-entry:hover .entry-link {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+
+  /* ─── END STATE ─── */
+  .journal-end {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-6);
+    padding: var(--space-16) 0 var(--space-8);
+  }
+
+  .end-line {
+    width: 48px;
+    height: 1px;
+    background: var(--border-default);
+  }
+
+  .end-text {
+    font-family: var(--font-mono);
+    font-size: var(--text-caption);
+    letter-spacing: var(--text-caption-ls);
+    color: var(--text-ghost);
+    text-align: center;
+  }
+
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .page-header { padding-top: 100px; }
+    .journal-entry {
+      grid-template-columns: 1fr;
+      gap: var(--space-3);
+      padding: var(--space-7) 0;
+    }
+    .entry-meta {
+      flex-direction: row;
+      gap: var(--space-4);
+      align-items: center;
+    }
+    .entry-link { opacity: 1; transform: none; }
+  }
+</style>

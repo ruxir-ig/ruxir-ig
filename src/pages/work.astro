@@ -1,0 +1,532 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Work" description="Career timeline, projects, and technical explorations.">
+
+  <section class="page-header section">
+    <div class="container">
+      <div class="breadcrumb hero-animate" style="--delay: 0">
+        <a href="/">Home</a>
+        <span class="breadcrumb__sep">/</span>
+        <span>Work</span>
+      </div>
+      <h1 class="page-title hero-animate" style="--delay: 1">Career &<br/>Projects</h1>
+      <p class="page-subtitle hero-animate" style="--delay: 2">
+        A curated timeline of professional experience, technical explorations,
+        and open-source contributions.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ═══ EXPERIENCE ═══ -->
+  <section class="section">
+    <div class="container">
+      <div data-reveal>
+        <span class="section-label">01 — Experience</span>
+        <h2 class="section-title">Where I've Been.</h2>
+      </div>
+
+      <div class="timeline" data-reveal style="--stagger: 1">
+        <div class="timeline-entry">
+          <div class="timeline-date">
+            <span class="date-range">Dec 2025 — May 2026</span>
+            <span class="date-location">Remote</span>
+          </div>
+          <div class="timeline-line">
+            <div class="timeline-dot"></div>
+          </div>
+          <div class="timeline-content">
+            <h3 class="timeline-company">In2peta Services Pvt. Ltd.</h3>
+            <p class="timeline-role">Gen AI Intern — Backend & ML Infrastructure</p>
+            <ul class="timeline-list">
+              <li>Built backend and inference infrastructure for the GPU model platform using TypeScript, Fastify, PostgreSQL, Redis, Prisma, BullMQ, and Docker</li>
+              <li>Implemented job orchestration, model lifecycle flows, runtime packaging, API workflows, and model-serving paths</li>
+              <li>Worked across CI/CD, Docker builds, runtime configuration, and Modal/Koyeb deployment flows</li>
+              <li>Debugged production deployment issues across API, runtime, catalog, and inference layers</li>
+              <li>Added guardrails for billing safety, idempotency, rate limiting, and access control</li>
+            </ul>
+            <div class="timeline-tags">
+              <span class="tag">TypeScript</span>
+              <span class="tag">Fastify</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Redis</span>
+              <span class="tag">Docker</span>
+              <span class="tag">BullMQ</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ PROJECTS ═══ -->
+  <section class="section">
+    <div class="container">
+      <div data-reveal>
+        <span class="section-label">02 — Projects</span>
+        <h2 class="section-title">What I've Built.</h2>
+      </div>
+
+      <!-- Featured Project -->
+      <div class="project-featured" data-reveal style="--stagger: 1">
+        <div class="project-featured-content">
+          <div class="project-tags">
+            <span class="tag tag--accent">Platform</span>
+            <span class="tag">Graph Traversal</span>
+            <span class="tag">Anomaly Detection</span>
+          </div>
+          <h3 class="project-title">TraceLink</h3>
+          <p class="project-subtitle">Supply Chain Traceability Platform</p>
+          <ul class="project-details">
+            <li>Evolved a hackathon prototype into an actively iterated platform with CI, deployment fixes, and frontend/backend integration</li>
+            <li>Implemented contaminated-batch tracing with BFS graph propagation and entropy-based anomaly detection</li>
+            <li>Probabilistic imputation for incomplete records and offline-first workflows for factory shop-floor use</li>
+          </ul>
+        </div>
+        <div class="project-featured-meta">
+          <div class="meta-block">
+            <span class="meta-label">Type</span>
+            <span class="meta-value">Full-Stack Platform</span>
+          </div>
+          <div class="meta-block">
+            <span class="meta-label">Status</span>
+            <span class="meta-value"><span class="status-dot"></span> Active Development</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Grid -->
+      <div class="project-grid">
+        <div class="project-card" data-reveal style="--stagger: 2">
+          <div class="project-tags">
+            <span class="tag tag--cold">API</span>
+            <span class="tag">GPU</span>
+          </div>
+          <h3 class="project-card-title">MuseTalk API</h3>
+          <p class="project-card-desc">REST API for real-time talking-head video generation with MuseTalk. Optimized GFPGAN pipeline for 1.8× inference throughput improvement.</p>
+          <div class="project-card-footer">
+            <a href="https://github.com/ruxir-ig/MuseTalk-API" target="_blank" rel="noopener" class="project-link">GitHub →</a>
+          </div>
+        </div>
+
+        <div class="project-card" data-reveal style="--stagger: 3">
+          <div class="project-tags">
+            <span class="tag tag--sage">Research</span>
+            <span class="tag">GANs</span>
+          </div>
+          <h3 class="project-card-title">SAR Image Colorization</h3>
+          <p class="project-card-desc">GAN-based PyTorch model to colorize grayscale SAR satellite imagery into RGB. Encoder-decoder experiments for terrain reconstruction. Top 25 SIH 2024.</p>
+          <div class="project-card-footer">
+            <a href="https://github.com/ruxir-ig/SAR-Image-Colorization" target="_blank" rel="noopener" class="project-link">GitHub →</a>
+          </div>
+        </div>
+
+        <div class="project-card" data-reveal style="--stagger: 4">
+          <div class="project-tags">
+            <span class="tag">OSS</span>
+            <span class="tag">Linux</span>
+          </div>
+          <h3 class="project-card-title">Open Source & Linux Tooling</h3>
+          <p class="project-card-desc">Maintain nitch-git on the Arch User Repository. Contribute to tooling projects including ascii-view and backend utilities. Linux-first development workflows.</p>
+          <div class="project-card-footer">
+            <a href="https://github.com/ruxir-ig" target="_blank" rel="noopener" class="project-link">GitHub →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ EDUCATION & ACTIVITIES ═══ -->
+  <section class="section">
+    <div class="container">
+      <div class="edu-activities-grid">
+        <div data-reveal>
+          <span class="section-label">03 — Education</span>
+          <div class="edu-block">
+            <h3 class="edu-school">PES Modern College of Engineering</h3>
+            <p class="edu-detail">Savitribai Phule Pune University</p>
+            <p class="edu-degree">B.E. in Artificial Intelligence & Data Science</p>
+            <span class="edu-date">Aug 2023 — Jun 2027 · Pune, India</span>
+          </div>
+        </div>
+
+        <div data-reveal style="--stagger: 1">
+          <span class="section-label">04 — Activities</span>
+          <ul class="activities-list">
+            <li>Organizer & contributor at Google Developer Group on Campus PES MCOE — hackathons and technical events</li>
+            <li>Participated in AI and systems hackathons including MCCIA AI Hackathon 2026</li>
+            <li>Build and maintain side projects across ML infrastructure, backend systems, Linux tooling, and web workflows</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Base>
+
+
+<style>
+  .page-header {
+    padding-top: 120px;
+  }
+
+  .page-title {
+    font-family: var(--font-display);
+    font-size: clamp(42px, 8vw, 72px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1;
+    color: var(--text-primary);
+    margin: var(--space-6) 0 var(--space-6);
+  }
+
+  .page-subtitle {
+    font-size: var(--text-body-lg);
+    color: var(--text-tertiary);
+    max-width: 520px;
+  }
+
+  /* Hero page-load animations */
+  .hero-animate {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: hero-reveal 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    animation-delay: calc(var(--delay) * 120ms + 100ms);
+  }
+
+  @keyframes hero-reveal {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+
+  /* ─── TIMELINE ─── */
+  .timeline-entry {
+    display: grid;
+    grid-template-columns: 200px 32px 1fr;
+    gap: 0;
+  }
+
+  .timeline-date {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 4px;
+    text-align: right;
+    padding-right: var(--space-4);
+  }
+
+  .date-range {
+    font-family: var(--font-mono);
+    font-size: var(--text-caption);
+    letter-spacing: var(--text-caption-ls);
+    color: var(--text-tertiary);
+  }
+
+  .date-location {
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    letter-spacing: var(--text-label-ls);
+    text-transform: uppercase;
+    color: var(--text-ghost);
+  }
+
+  .timeline-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .timeline-line::after {
+    content: '';
+    position: absolute;
+    top: 12px;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent-primary), var(--border-subtle), transparent);
+  }
+
+  .timeline-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent-primary);
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  .timeline-content {
+    padding-left: var(--space-6);
+    padding-bottom: var(--space-12);
+  }
+
+  .timeline-company {
+    font-family: var(--font-display);
+    font-size: var(--text-h4);
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: var(--space-1);
+  }
+
+  .timeline-role {
+    font-family: var(--font-mono);
+    font-size: var(--text-body-sm);
+    color: var(--text-tertiary);
+    margin-bottom: var(--space-5);
+  }
+
+  .timeline-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-5);
+  }
+
+  .timeline-list li {
+    position: relative;
+    padding-left: var(--space-5);
+    font-size: var(--text-body-sm);
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .timeline-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--text-ghost);
+  }
+
+  .timeline-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+
+  /* ─── FEATURED PROJECT ─── */
+  .project-featured {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: var(--space-8);
+    background: linear-gradient(135deg, var(--surface-raised) 0%, var(--surface-dim) 100%);
+    border: 1px solid var(--border-default);
+    padding: var(--space-10);
+    margin-bottom: var(--space-6);
+    transition: border-color 0.3s ease;
+  }
+
+  .project-featured:hover {
+    border-color: var(--border-strong);
+  }
+
+  .project-tags {
+    display: flex;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+
+  .project-title {
+    font-family: var(--font-display);
+    font-size: var(--text-h2);
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: var(--space-2);
+  }
+
+  .project-subtitle {
+    font-family: var(--font-mono);
+    font-size: var(--text-body-sm);
+    color: var(--text-tertiary);
+    margin-bottom: var(--space-5);
+  }
+
+  .project-details {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .project-details li {
+    position: relative;
+    padding-left: var(--space-5);
+    font-size: var(--text-body-sm);
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .project-details li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--text-ghost);
+  }
+
+  .project-featured-meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    padding-top: var(--space-2);
+    border-left: 1px solid var(--border-subtle);
+    padding-left: var(--space-6);
+  }
+
+  .meta-block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .meta-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    font-weight: var(--text-label-weight);
+    letter-spacing: var(--text-label-ls);
+    text-transform: uppercase;
+    color: var(--text-ghost);
+  }
+
+  .meta-value {
+    font-size: var(--text-body-sm);
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+
+  /* ─── PROJECT GRID ─── */
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+  }
+
+  .project-card {
+    background: var(--surface-raised);
+    border: 1px solid var(--border-default);
+    padding: var(--space-7);
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .project-card:hover {
+    border-color: var(--border-strong);
+    transform: translateY(-2px);
+  }
+
+  .project-card-title {
+    font-family: var(--font-display);
+    font-size: var(--text-h4);
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: var(--space-3);
+  }
+
+  .project-card-desc {
+    font-size: var(--text-body-sm);
+    color: var(--text-tertiary);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .project-card-footer {
+    margin-top: var(--space-5);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .project-link {
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    letter-spacing: var(--text-label-ls);
+    text-transform: uppercase;
+    color: var(--accent-cold);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .project-link:hover { color: var(--accent-cold-hover); }
+
+
+  /* ─── EDUCATION & ACTIVITIES ─── */
+  .edu-activities-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+  }
+
+  .edu-block {
+    margin-top: var(--space-5);
+  }
+
+  .edu-school {
+    font-family: var(--font-display);
+    font-size: var(--text-h4);
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: var(--space-1);
+  }
+
+  .edu-detail {
+    font-size: var(--text-body-sm);
+    color: var(--text-tertiary);
+    margin-bottom: var(--space-2);
+  }
+
+  .edu-degree {
+    font-size: var(--text-body);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-2);
+  }
+
+  .edu-date {
+    font-family: var(--font-mono);
+    font-size: var(--text-caption);
+    letter-spacing: var(--text-caption-ls);
+    color: var(--text-ghost);
+  }
+
+  .activities-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin-top: var(--space-5);
+  }
+
+  .activities-list li {
+    position: relative;
+    padding-left: var(--space-5);
+    font-size: var(--text-body-sm);
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .activities-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--text-ghost);
+  }
+
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .page-header { padding-top: 100px; }
+    .timeline-entry { grid-template-columns: 1fr; gap: var(--space-3); }
+    .timeline-date { text-align: left; padding-right: 0; }
+    .timeline-line { display: none; }
+    .timeline-content { padding-left: 0; }
+    .project-featured { grid-template-columns: 1fr; padding: var(--space-6); }
+    .project-featured-meta { border-left: none; padding-left: 0; border-top: 1px solid var(--border-subtle); padding-top: var(--space-5); }
+    .project-grid { grid-template-columns: 1fr; }
+    .edu-activities-grid { grid-template-columns: 1fr; gap: var(--space-10); }
+  }
+</style>

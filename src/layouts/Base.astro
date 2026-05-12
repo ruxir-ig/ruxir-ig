@@ -1,0 +1,99 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  class?: string;
+}
+
+const {
+  title,
+  description = 'Backend engineer & AI researcher. Systems, intelligence, and the spaces between.',
+  class: className = '',
+} = Astro.props;
+
+const path = Astro.url.pathname;
+const fullTitle = title === 'Home' ? 'Ruchir Kalokhe' : `${title} — Ruchir Kalokhe`;
+
+const nav = [
+  { href: '/', label: 'Home' },
+  { href: '/work', label: 'Work' },
+  { href: '/journal', label: 'Journal' },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#111110" />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <title>{fullTitle}</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body class={className}>
+
+  <nav class="site-nav" id="site-nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="Home">ruchir.dev</a>
+      <div class="nav-links">
+        {nav.map(n => (
+          <a
+            href={n.href}
+            class:list={['nav-link', { active: path === n.href }]}
+          >
+            {n.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="type-caption">© 2026 Ruchir Kalokhe — Pune, India</span>
+        <div class="footer-links">
+          <a href="https://github.com/ruxir-ig" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://linkedin.com/in/ruchirkalokhe" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:ruchirkalokhe@gmail.com">Email</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '-30px' });
+    document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+
+    const nav = document.getElementById('site-nav');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          nav?.classList.toggle('scrolled', window.scrollY > 60);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  </script>
+</body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>

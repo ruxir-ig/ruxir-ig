@@ -1,3 +1,8 @@
+#set par(
+  justify: false,
+  leading: 0.66em
+)
+
 #import "@preview/simple-technical-resume:0.1.0": *
 
 #let name = "Ruchir Kalokhe"
@@ -8,8 +13,13 @@
 #let personal-site = "ruchir.dev"
 
 #show: resume.with(
-  top-margin: 0.45in,
-  personal-info-font-size: 9.2pt,
+  top-margin: 0.36in,
+  bottom-margin: 0.36in,
+  left-margin: 0.55in,
+  right-margin: 0.55in,
+  font: "Libertinus Serif",
+  font-size: 10pt,
+  personal-info-font-size: 9pt,
   author-position: center,
   personal-info-position: center,
   author-name: name,
@@ -20,73 +30,83 @@
   github-username: github
 )
 
-#custom-title("Career Objective")[
-  AI/ML engineer passionate about exploring emerging technologies—from deep learning and quantum computing to modern web frameworks—driven to build innovative solutions for real-world challenges.
+#set list(spacing: 0.26em)
+#set heading(numbering: none)
+
+#show heading: it => {
+  v(0.42em)
+  set text(size: 10.8pt, weight: "bold")
+  it
+  v(0.06em)
+}
+
+#custom-title("About", spacing-between: 0.08em)[
+  I like building things that sit somewhere between ML, web engineering, and developer tooling. Most of my learning has come from experimenting, shipping side projects, breaking systems, and working through the small deployment and product details until they feel right.
 ]
 
-#custom-title("Education")[
-  #education-heading(
-    "PES Modern College of Engineering (Savitribai Phule Pune University)", "Pune, India",
-    "Bachelors of Engineering", "Artificial Intelligence and Data Science",
-    datetime(year: 2023, month: 8, day: 20),
-    datetime(year: 2027, month: 6,  day: 1)
-  )[
-
-  ]
-  #education-heading(
-    "Hutchings High School & Junior College", "Pune, India",
-    "High School Diploma", "Graduation Year: 2021",
-    datetime(year: 2008, month: 9, day: 1),
-    datetime(year: 2021, month: 5, day: 1)
-  )[
-    - Percentage: 84%
-  ]
-]
-
-#custom-title("Core Strengths")[
-  - *AI/ML Engineering:* Developed GANs for SAR colorization (78% accuracy) and deep learning models with TensorFlow; experienced with PyTorch, AutoML, and predictive modeling.
-  - *Full-Stack Development:* Built production systems with Express.js, TypeScript, PostgreSQL; proficient in React, Next.js, Vue.js, and modern web frameworks.
-  - *Problem-Solving & Adaptability:* Rapid learner of emerging tech (Streamlit, LangChain, RAG, Groq); implemented quantum cryptography (BB84) and concurrency control.
-  - *Technical Leadership:* Led architecture design for RAG 2.0; mentored hackathon teams (Top 45, Top 25); coordinate cross-functional development.
-  - *Domain Expertise:* Deep Learning, Quantum Computing (Qiskit), RESTful APIs, Database Design, Git
-]
-
-#custom-title("Projects")[
-  #project-heading("MineX (Ongoing) - Smart India Hackathon 2025")[
-    - AI-driven LCA tool for sustainability analysis in metallurgy using AutoML and predictive modeling
-    - Developed ML pipeline with data modeling workflows; shortlisted (Top 25) in internal SIH 2025
-    - Website: https://circular-metal-lab.vercel.app/
-  ]
-  
-  #project-heading("Surefy - Event Management System")[
-    - RESTful API with Express.js, TypeScript, PostgreSQL, and Bun for event management
-    - Implemented transaction-based concurrency control to prevent overbooking
-    - GitHub: https://github.com/ruxir-ig/surefy-assignment
-  ]
-  
-  #project-heading("SAR Image Colorization - Smart India Hackathon 2024")[
-    - PyTorch and GAN-based model to colorize grayscale SAR images into RGB representations
-    - Top 25 in internal SIH 2024; 78% accuracy | GitHub: https://github.com/ruxir-ig/SAR-Image-Colorization
-  ]
-
-  #project-heading("VERBALIZE Lip-Reader")[
-    - Deep learning for silent speech recognition through lip movement analysis using TensorFlow
-    - 92% accuracy | GitHub: https://github.com/ruxir-ig/VERBALIZE_Lip-Reader
-  ]
-
-    #project-heading("Quantum Key Distribution (QKD) Simulator")[
-    - Dual implementation: TypeScript/Next.js and Python/Streamlit for BB84 protocol simulation
-    - GitHub: https://github.com/ruxir-ig/QKD_sim | https://github.com/ruxir-ig/qkd-sim-py
+#custom-title("Experience", spacing-between: 0.08em)[
+  #grid(
+    columns: (70%, 30%),
+    align(left)[*In2peta Services Pvt. Ltd.* \
+      Gen AI Intern, Backend & ML Infrastructure],
+    align(right)[*Remote* \ Dec 2025 -- May 2026],
+  )
+  #v(-0.15em)
+  #[
+    - Built backend and inference infrastructure for IN2PETA's GPU model platform using TypeScript, Fastify, PostgreSQL, Redis, Prisma, BullMQ, and Docker
+    - Implemented job orchestration, model lifecycle flows, runtime packaging, API workflows, and model-serving paths for hosted AI workloads
+    - Worked across CI/CD, Docker builds, runtime configuration, environment handling, and Modal/Koyeb deployment flows
+    - Debugged production deployment issues across API, runtime, catalog, and inference layers with attention to observability and operational reliability
+    - Added and reviewed guardrails for billing safety, idempotency, rate limiting, access control, and deployment-safe operational behavior
   ]
 ]
 
-#custom-title("Certifications")[
-  - *Full Stack Open 2024* - University of Helsinki (In Progress) - React, Node.js, GraphQL, TypeScript
-  - *Python 3.4.3, JavaScript, Java* - Spoken Tutorial, IIT Bombay - Certificates of Completion of Training
+#custom-title("Projects", spacing-between: 0.08em)[
+  #project-heading("TraceLink — Supply Chain Traceability Platform")[
+    - Evolved a hackathon prototype into an actively iterated platform with CI, deployment fixes, runtime configuration, notifications/history handling, and frontend/backend integration
+    - Implemented contaminated-batch tracing with BFS graph propagation, entropy-based anomaly detection, and probabilistic imputation for incomplete records
+    - Continued improving deployment migration, operational reliability, offline-first workflows, and UX for factory shop-floor use
+  ]
+
+  #project-heading("MuseTalk API")[
+    - Built a REST API for real-time talking-head video generation with MuseTalk, including model orchestration and deployment support
+    - Improved inference throughput by 1.8x by optimizing the GFPGAN enhancement pipeline
+    - Worked through runtime dependencies, inference paths, and serving concerns around a GPU-heavy media pipeline
+    - GitHub: https://github.com/ruxir-ig/MuseTalk-API
+  ]
+
+  #project-heading("SAR Image Colorization (Smart India Hackathon 2024)")[
+    - Built a GAN-based PyTorch model to colorize grayscale SAR satellite imagery into RGB
+    - Implemented encoder-decoder experiments for terrain reconstruction from low-context satellite imagery
+    - Reached Top 25 during internal SIH selections
+    - GitHub: https://github.com/ruxir-ig/SAR-Image-Colorization
+  ]
+
+  #project-heading("Open Source & Linux Tooling")[
+    - Maintain *nitch-git* on the Arch User Repository after adopting the abandoned package
+    - Contributed to tooling projects including *ascii-view* and backend utilities
+    - Work in Linux-first environments with attention to packaging, CLI ergonomics, and reproducible development workflows
+  ]
 ]
 
-#custom-title("Accomplishments")[
-  - *Smart India Hackathon* - Top 25 in internal SIH 2025 (MineX) and internal SIH 2024 (SAR Colorization)
-  - *HackRx Hackathon* - Mentored team ranked Top 236th | *GeeksVishwa (VIIT)* - Ranked 23rd
-  - *Open Source* - Contributed to ascii-view (137+ stars), gitget-backend, and multiple GitHub projects
+#custom-title("Skills", spacing-between: 0.08em)[
+  - *Languages & Frameworks:* Python, TypeScript, JavaScript, Fastify, Node.js, TensorFlow, PyTorch
+  - *ML & Systems:* Model Serving, GPU Inference, SGLang, GANs, Async Systems, REST APIs
+  - *Infrastructure:* Docker, CI/CD, PostgreSQL, Redis, Prisma, BullMQ, Modal, Linux
+]
+
+#custom-title("Education", spacing-between: 0.08em)[
+  #grid(
+    columns: (70%, 30%),
+    align(left)[*PES Modern College of Engineering (Savitribai Phule Pune University)* \
+      B.E. in Artificial Intelligence and Data Science],
+    align(right)[*Pune, India* \
+      Aug 2023 -- Jun 2027],
+  )
+]
+
+#custom-title("Activities", spacing-between: 0.08em)[
+  - Organizer and contributor at Google Developer Group on Campus PES MCOE hackathons and technical events
+  - Participated in AI and systems hackathons including MCCIA AI Hackathon 2026
+  - Build and maintain practical side projects across ML infrastructure, backend systems, Linux tooling, and web workflows
 ]

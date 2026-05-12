@@ -4,9 +4,68 @@ ruchirkalokhe@gmail.com | +91 85306 62440 | [GitHub](https://github.com/ruxir-ig
 
 ---
 
-## Career Objective
+## Summary
 
-AI/ML engineer passionate about exploring emerging technologies—from deep learning and quantum computing to modern web frameworks—driven to build innovative solutions for real-world challenges.
+Backend and data-oriented engineering student building reliable async pipelines, database-backed services, and production infrastructure. Interested in data engineering, distributed systems, and analytics platforms.
+
+
+## Skills
+
+- Python, SQL, PostgreSQL, Redis, BullMQ, Prisma
+ - Docker, REST APIs, async job processing, webhook-based integrations
+ - Cloud platforms: Modal, RunPod, Koyeb
+ - Applied ML: PyTorch, TensorFlow, scikit-learn
+
+
+## Experience
+
+### Generative AI Intern
+**In2peta Services Private Limited** | *Remote*
+
+- Built a distributed compute platform that routed long-running jobs across multiple cloud GPU providers with failover for higher service reliability
+ - Designed an async processing pipeline using BullMQ and Redis; implemented polling, webhook delivery, retries, and end-to-end job lifecycle tracking
+ - Shipped Docker-based REST APIs for production ML workloads, packaging model execution behind stable service interfaces and operational workflows
+ - Implemented usage billing and persistence with Prisma ORM and PostgreSQL, tying application events to durable storage while remediating 15+ production security issues
+
+
+
+## Leadership & Activities
+
+### IMACE 2026 - Management Team Member, GDSC PESMCOE
+- Managed, organized, and judged hackathon events for IMACE 2026
+ - Coordinated GQuiz Up, Pitch and Innovate, and Poster Presentation events
+ - Supported AI/ML community programs and an open innovation hackathon for PES Modern College of Engineering
+
+
+
+## Projects
+
+### MINEX - Smart India Hackathon 2025
+- AI-driven sustainability analysis tool for metallurgy with an AutoML and predictive modeling workflow over structured domain data
+ - Focused on turning input data into comparable outputs for lifecycle analysis and decision support
+ - Website: https://circular-metal-lab.vercel.app/
+
+### MuseTalk API - Real-Time Lip Synchronization
+- Built a production-oriented REST API for video generation with Docker-based deployment, health checks, and streaming downloads for large outputs
+ - Optimized the GFPGAN enhancement pipeline to reduce redundant face detection, improving processing speed by about 1.8x on benchmark runs
+ - GitHub: https://github.com/ruxir-ig/MuseTalk-API
+
+### Clawrrency - Cooperative Currency System for AI Bots
+- Designed a TypeScript system for bot-to-bot digital transactions with a SQLite-backed ledger, SDK/CLI packages, and validator-network architecture
+ - Modeled protocol components for governance, identity, and transaction validation, emphasizing system design over one-off application logic
+ - GitHub: https://github.com/ruxir-ig/clawrrency
+
+
+
+## Certifications
+
+- **Python 3.4.3, JavaScript, Java** certificates from Spoken Tutorial, IIT Bombay
+
+
+## Accomplishments
+
+- **Smart India Hackathon** - Top 25 in internal SIH 2024 (SAR Colorization); **HackRx** mentoring and **GeeksVishwa** ranked 23rd
+ - **Open Source** - Contributed to ascii-view, nitch and filed a public t3code issue
 
 
 ## Education
@@ -15,58 +74,12 @@ AI/ML engineer passionate about exploring emerging technologies—from deep lear
 **Bachelors of Engineering** - Artificial Intelligence and Data Science  
 *Pune, India*
 
+- Relevant coursework: Data Structures, Database Management Systems, Artificial Intelligence, Machine Learning
+
 ### Hutchings High School & Junior College
-**High School Diploma** - Graduation Year: 2021  
+**High School Diploma** - CISCE 10th Board Exam  
 *Pune, India*
 
-- Percentage: 84%
+- Grade: 84%
 
-
-
-## Core Strengths
-
-- **AI/ML Engineering:** Developed GANs for SAR colorization (78% accuracy) and deep learning models with TensorFlow; experienced with PyTorch, AutoML, and predictive modeling.
- - **Full-Stack Development:** Built production systems with Express.js, TypeScript, PostgreSQL; proficient in React, Next.js, Vue.js, and modern web frameworks.
- - **Problem-Solving & Adaptability:** Rapid learner of emerging tech (Streamlit, LangChain, RAG, Groq); implemented quantum cryptography (BB84) and concurrency control.
- - **Technical Leadership:** Led architecture design for RAG 2.0; mentored hackathon teams (Top 45, Top 25); coordinate cross-functional development.
- - **Domain Expertise:** Deep Learning, Quantum Computing (Qiskit), RESTful APIs, Database Design, Git
-
-
-## Projects
-
-### MineX (Ongoing) - Smart India Hackathon 2025
-- AI-driven LCA tool for sustainability analysis in metallurgy using AutoML and predictive modeling
- - Developed ML pipeline with data modeling workflows; shortlisted (Top 25) in internal SIH 2025
- - Website: https://circular-metal-lab.vercel.app/
-
-### Surefy - Event Management System
-- RESTful API with Express.js, TypeScript, PostgreSQL, and Bun for event management
- - Implemented transaction-based concurrency control to prevent overbooking
- - GitHub: https://github.com/ruxir-ig/surefy-assignment
-
-### SAR Image Colorization - Smart India Hackathon 2024
-- PyTorch and GAN-based model to colorize grayscale SAR images into RGB representations
- - Top 25 in internal SIH 2024; 78% accuracy | GitHub: https://github.com/ruxir-ig/SAR-Image-Colorization
-
-### VERBALIZE Lip-Reader
-- Deep learning for silent speech recognition through lip movement analysis using TensorFlow
- - 92% accuracy | GitHub: https://github.com/ruxir-ig/VERBALIZE_Lip-Reader
-
-### Quantum Key Distribution (QKD) Simulator
-- Dual implementation: TypeScript/Next.js and Python/Streamlit for BB84 protocol simulation
- - GitHub: https://github.com/ruxir-ig/QKD_sim | https://github.com/ruxir-ig/qkd-sim-py
-
-
-
-## Certifications
-
-- **Full Stack Open 2024** - University of Helsinki (In Progress) - React, Node.js, GraphQL, TypeScript
- - **Python 3.4.3, JavaScript, Java** - Spoken Tutorial, IIT Bombay - Certificates of Completion of Training
-
-
-## Accomplishments
-
-- **Smart India Hackathon** - Top 25 in internal SIH 2025 (MineX) and internal SIH 2024 (SAR Colorization)
- - **HackRx Hackathon** - Mentored team ranked Top 236th | **GeeksVishwa (VIIT)** - Ranked 23rd
- - **Open Source** - Contributed to ascii-view (137+ stars), gitget-backend, and multiple GitHub projects
 

@@ -1,6 +1,5 @@
 {
-  "buildCommand": "echo 'Static site'",
-  "outputDirectory": ".",
-  "framework": null,
-  "installCommand": null
+  "buildCommand": "bun run build",
+  "outputDirectory": "dist",
+  "framework": "astro"
 }

@@ -1,6 +1,9 @@
-#import "@preview/simple-technical-resume:0.1.0": *
+#set par(
+  justify: false,
+  leading: 0.66em
+)
 
-#set text(size: 9pt)
+#import "@preview/simple-technical-resume:0.1.0": *
 
 #let name = "Ruchir Kalokhe"
 #let phone = "+91 85306 62440"
@@ -10,8 +13,13 @@
 #let personal-site = "ruchir.dev"
 
 #show: resume.with(
-  top-margin: 0.3in,
-  personal-info-font-size: 8.8pt,
+  top-margin: 0.36in,
+  bottom-margin: 0.36in,
+  left-margin: 0.55in,
+  right-margin: 0.55in,
+  font: "Libertinus Serif",
+  font-size: 10pt,
+  personal-info-font-size: 9pt,
   author-position: center,
   personal-info-position: center,
   author-name: name,
@@ -22,76 +30,83 @@
   github-username: github
 )
 
-#custom-title("Career Objective")[
-  AI/ML and full-stack engineer building GPU orchestration and async inference systems. Interested in applied AI, infrastructure, and product engineering.
+#set list(spacing: 0.26em)
+#set heading(numbering: none)
+
+#show heading: it => {
+  v(0.42em)
+  set text(size: 10.8pt, weight: "bold")
+  it
+  v(0.06em)
+}
+
+#custom-title("About", spacing-between: 0.08em)[
+  I like building things that sit somewhere between ML, web engineering, and developer tooling. Most of my learning has come from experimenting, shipping side projects, breaking systems, and working through the small deployment and product details until they feel right.
 ]
 
-#custom-title("Experience")[
-  #work-heading(
-    "Generative AI Intern",
-    "In2peta Services Private Limited", "Remote",
-    datetime(year: 2025, month: 12, day: 1),
-    datetime(year: 2026, month: 5, day: 31)
-  )[
-    - Built a cloud GPU compute platform supporting multi-provider orchestration across Modal, RunPod, and Koyeb with dynamic provider routing and failover
-    - Designed async ML inference pipeline using BullMQ and Redis; implemented prediction polling, webhook delivery, and full job lifecycle management
-    - Integrated video generation models (text-to-video, lip-sync) with GFPGAN post-processing into production REST APIs via Docker-based deployments
-    - Implemented Stripe-based usage billing with Prisma ORM and PostgreSQL, and conducted a security audit that remediated 15+ vulnerabilities
+#custom-title("Experience", spacing-between: 0.08em)[
+  #grid(
+    columns: (70%, 30%),
+    align(left)[*In2peta Services Pvt. Ltd.* \
+      Gen AI Intern, Backend & ML Infrastructure],
+    align(right)[*Remote* \ Dec 2025 -- May 2026],
+  )
+  #v(-0.15em)
+  #[
+    - Built backend and inference infrastructure for IN2PETA's GPU model platform using TypeScript, Fastify, PostgreSQL, Redis, Prisma, BullMQ, and Docker
+    - Implemented job orchestration, model lifecycle flows, runtime packaging, API workflows, and model-serving paths for hosted AI workloads
+    - Worked across CI/CD, Docker builds, runtime configuration, environment handling, and Modal/Koyeb deployment flows
+    - Debugged production deployment issues across API, runtime, catalog, and inference layers with attention to observability and operational reliability
+    - Added and reviewed guardrails for billing safety, idempotency, rate limiting, access control, and deployment-safe operational behavior
   ]
 ]
 
-#custom-title("Leadership & Activities")[
-  #project-heading("IMACE 2026 - Management Team Member, GDSC PESMCOE")[
-    - Managed, organized, and judged hackathon events for IMACE 2026
-    - Coordinated GQuiz Up, Pitch and Innovate, and Poster Presentation events
-    - Supported AI/ML community programs and an open innovation hackathon for PES Modern College of Engineering
-  ]
-]
-
-#custom-title("Projects")[
-  #project-heading("Silent Failure Detector - OpenEnv Round 1 Bootcamp (2026)")[
-    - OpenEnv-compliant RL environment for training agents to detect confidently wrong AI outputs (hallucination detection)
-    - Programmatic reward signal with deterministic graders—no LLM-judge dependency; three difficulty tiers (easy/medium/hard)
-    - GitHub: https://github.com/ruxir-ig/silent-failure-detector
+#custom-title("Projects", spacing-between: 0.08em)[
+  #project-heading("TraceLink — Supply Chain Traceability Platform")[
+    - Evolved a hackathon prototype into an actively iterated platform with CI, deployment fixes, runtime configuration, notifications/history handling, and frontend/backend integration
+    - Implemented contaminated-batch tracing with BFS graph propagation, entropy-based anomaly detection, and probabilistic imputation for incomplete records
+    - Continued improving deployment migration, operational reliability, offline-first workflows, and UX for factory shop-floor use
   ]
 
-  #project-heading("MuseTalk API - Real-Time Lip Synchronization")[
-    - REST API wrapper for MuseTalk: real-time high-quality lip synchronization using latent space inpainting
-    - Deep learning pipeline for audio-visual sync with GFPGAN face enhancement, built with Python and Docker
+  #project-heading("MuseTalk API")[
+    - Built a REST API for real-time talking-head video generation with MuseTalk, including model orchestration and deployment support
+    - Improved inference throughput by 1.8x by optimizing the GFPGAN enhancement pipeline
+    - Worked through runtime dependencies, inference paths, and serving concerns around a GPU-heavy media pipeline
     - GitHub: https://github.com/ruxir-ig/MuseTalk-API
   ]
 
-  #project-heading("SAR Image Colorization - Smart India Hackathon 2024 (Top 25)")[
-    - PyTorch and GAN-based model to colorize grayscale SAR images into RGB representations; 78% accuracy
+  #project-heading("SAR Image Colorization (Smart India Hackathon 2024)")[
+    - Built a GAN-based PyTorch model to colorize grayscale SAR satellite imagery into RGB
+    - Implemented encoder-decoder experiments for terrain reconstruction from low-context satellite imagery
+    - Reached Top 25 during internal SIH selections
     - GitHub: https://github.com/ruxir-ig/SAR-Image-Colorization
   ]
-]
 
-#custom-title("Certifications")[
-  - *Python 3.4.3, JavaScript, Java* certificates from Spoken Tutorial, IIT Bombay
-]
-
-#custom-title("Accomplishments")[
-  - *Smart India Hackathon* - Top 25 in internal SIH 2024 (SAR Colorization); *HackRx* mentoring and *GeeksVishwa* ranked 23rd
-  - *Open Source* - Contributed to ascii-view, nitch and filed a public t3code issue
-]
-
-#custom-title("Education")[
-  #education-heading(
-    "PES Modern College of Engineering (Savitribai Phule Pune University)", "Pune, India",
-    "Bachelors of Engineering", "Artificial Intelligence and Data Science",
-    datetime(year: 2023, month: 8, day: 20),
-    datetime(year: 2027, month: 6, day: 1)
-  )[
-
+  #project-heading("Open Source & Linux Tooling")[
+    - Maintain *nitch-git* on the Arch User Repository after adopting the abandoned package
+    - Contributed to tooling projects including *ascii-view* and backend utilities
+    - Work in Linux-first environments with attention to packaging, CLI ergonomics, and reproducible development workflows
   ]
+]
 
-  #education-heading(
-    "Hutchings High School & Junior College", "Pune, India",
-    "High School Diploma", "CISCE 10th Board Exam",
-    datetime(year: 2008, month: 6, day: 1),
-    datetime(year: 2021, month: 5, day: 1)
-  )[
-    - Grade: 84%
-  ]
+#custom-title("Skills", spacing-between: 0.08em)[
+  - *Languages & Frameworks:* Python, TypeScript, JavaScript, Fastify, Node.js, TensorFlow, PyTorch
+  - *ML & Systems:* Model Serving, GPU Inference, SGLang, GANs, Async Systems, REST APIs
+  - *Infrastructure:* Docker, CI/CD, PostgreSQL, Redis, Prisma, BullMQ, Modal, Linux
+]
+
+#custom-title("Education", spacing-between: 0.08em)[
+  #grid(
+    columns: (70%, 30%),
+    align(left)[*PES Modern College of Engineering (Savitribai Phule Pune University)* \
+      B.E. in Artificial Intelligence and Data Science],
+    align(right)[*Pune, India* \
+      Aug 2023 -- Jun 2027],
+  )
+]
+
+#custom-title("Activities", spacing-between: 0.08em)[
+  - Organizer and contributor at Google Developer Group on Campus PES MCOE hackathons and technical events
+  - Participated in AI and systems hackathons including MCCIA AI Hackathon 2026
+  - Build and maintain practical side projects across ML infrastructure, backend systems, Linux tooling, and web workflows
 ]

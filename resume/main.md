@@ -4,9 +4,17 @@ ruchirkalokhe@gmail.com | +91 85306 62440 | [GitHub](https://github.com/ruxir-ig
 
 ---
 
-## Career Objective
+## Summary
 
-AI/ML and full-stack engineer building GPU orchestration and async inference systems. Interested in applied AI, infrastructure, and product engineering.
+Backend and data-oriented engineering student building reliable async pipelines, database-backed services, and production infrastructure. Interested in data engineering, distributed systems, and analytics platforms.
+
+
+## Skills
+
+- Python, SQL, PostgreSQL, Redis, BullMQ, Prisma
+ - Docker, REST APIs, async job processing, webhook-based integrations
+ - Cloud platforms: Modal, RunPod, Koyeb
+ - Applied ML: PyTorch, TensorFlow, scikit-learn
 
 
 ## Experience
@@ -14,10 +22,10 @@ AI/ML and full-stack engineer building GPU orchestration and async inference sys
 ### Generative AI Intern
 **In2peta Services Private Limited** | *Remote*
 
-- Built a cloud GPU compute platform supporting multi-provider orchestration across Modal, RunPod, and Koyeb with dynamic provider routing and failover
- - Designed async ML inference pipeline using BullMQ and Redis; implemented prediction polling, webhook delivery, and full job lifecycle management
- - Integrated video generation models (text-to-video, lip-sync) with GFPGAN post-processing into production REST APIs via Docker-based deployments
- - Implemented Stripe-based usage billing with Prisma ORM and PostgreSQL, and conducted a security audit that remediated 15+ vulnerabilities
+- Built a distributed compute platform that routed long-running jobs across multiple cloud GPU providers with failover for higher service reliability
+ - Designed an async processing pipeline using BullMQ and Redis; implemented polling, webhook delivery, retries, and end-to-end job lifecycle tracking
+ - Shipped Docker-based REST APIs for production ML workloads, packaging model execution behind stable service interfaces and operational workflows
+ - Implemented usage billing and persistence with Prisma ORM and PostgreSQL, tying application events to durable storage while remediating 15+ production security issues
 
 
 
@@ -32,19 +40,20 @@ AI/ML and full-stack engineer building GPU orchestration and async inference sys
 
 ## Projects
 
-### Silent Failure Detector - OpenEnv Round 1 Bootcamp (2026)
-- OpenEnv-compliant RL environment for training agents to detect confidently wrong AI outputs (hallucination detection)
- - Programmatic reward signal with deterministic graders—no LLM-judge dependency; three difficulty tiers (easy/medium/hard)
- - GitHub: https://github.com/ruxir-ig/silent-failure-detector
+### MINEX - Smart India Hackathon 2025
+- AI-driven sustainability analysis tool for metallurgy with an AutoML and predictive modeling workflow over structured domain data
+ - Focused on turning input data into comparable outputs for lifecycle analysis and decision support
+ - Website: https://circular-metal-lab.vercel.app/
 
 ### MuseTalk API - Real-Time Lip Synchronization
-- REST API wrapper for MuseTalk: real-time high-quality lip synchronization using latent space inpainting
- - Deep learning pipeline for audio-visual sync with GFPGAN face enhancement, built with Python and Docker
+- Built a production-oriented REST API for video generation with Docker-based deployment, health checks, and streaming downloads for large outputs
+ - Optimized the GFPGAN enhancement pipeline to reduce redundant face detection, improving processing speed by about 1.8x on benchmark runs
  - GitHub: https://github.com/ruxir-ig/MuseTalk-API
 
-### SAR Image Colorization - Smart India Hackathon 2024 (Top 25)
-- PyTorch and GAN-based model to colorize grayscale SAR images into RGB representations; 78% accuracy
- - GitHub: https://github.com/ruxir-ig/SAR-Image-Colorization
+### Clawrrency - Cooperative Currency System for AI Bots
+- Designed a TypeScript system for bot-to-bot digital transactions with a SQLite-backed ledger, SDK/CLI packages, and validator-network architecture
+ - Modeled protocol components for governance, identity, and transaction validation, emphasizing system design over one-off application logic
+ - GitHub: https://github.com/ruxir-ig/clawrrency
 
 
 
@@ -64,6 +73,8 @@ AI/ML and full-stack engineer building GPU orchestration and async inference sys
 ### PES Modern College of Engineering (Savitribai Phule Pune University)
 **Bachelors of Engineering** - Artificial Intelligence and Data Science  
 *Pune, India*
+
+- Relevant coursework: Data Structures, Database Management Systems, Artificial Intelligence, Machine Learning
 
 ### Hutchings High School & Junior College
 **High School Diploma** - CISCE 10th Board Exam  

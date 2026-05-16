@@ -19,10 +19,10 @@ import Base from '../layouts/Base.astro';
         <span class="hero-animate" style="--delay: 1">Ruchir</span>
         <span class="hero-animate" style="--delay: 2">Kalokhe</span>
       </h1>
-      <p class="hero-role hero-animate" style="--delay: 3">Backend Engineer & AI Researcher</p>
+      <p class="hero-role hero-animate" style="--delay: 3">Backend Engineer & AI Research Enthusiast</p>
       <p class="hero-sub hero-animate" style="--delay: 4">
-        Building at the intersection of ML infrastructure,<br class="hide-mobile" />
-        web engineering, and developer tooling.
+        Building ML infrastructure and backend systems<br class="hide-mobile" />
+        while moving deeper into AI research.
       </p>
       <div class="hero-cta hero-animate" style="--delay: 5">
         <a href="/work" class="btn-ghost">View Work</a>
@@ -147,44 +147,6 @@ import Base from '../layouts/Base.astro';
 
       <div class="work-cta" data-reveal style="--stagger: 4">
         <a href="/work" class="btn-ghost">All Projects & Career →</a>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ═══ INTERESTS — FILM FRAMES ═══ -->
-  <section class="section interests-section">
-    <div class="container">
-      <div data-reveal>
-        <span class="section-label">03 — Off-Screen</span>
-        <h2 class="section-title">Interests.</h2>
-      </div>
-
-      <div class="interests-grid">
-        <div class="interest-frame" data-reveal style="--stagger: 1">
-          <span class="interest-icon">✈</span>
-          <span class="interest-name">Travel</span>
-        </div>
-        <div class="interest-frame" data-reveal style="--stagger: 2">
-          <span class="interest-icon">◈</span>
-          <span class="interest-name">Anime</span>
-        </div>
-        <div class="interest-frame" data-reveal style="--stagger: 3">
-          <span class="interest-icon">▶</span>
-          <span class="interest-name">Cinema</span>
-        </div>
-        <div class="interest-frame" data-reveal style="--stagger: 4">
-          <span class="interest-icon">◆</span>
-          <span class="interest-name">Games</span>
-        </div>
-        <div class="interest-frame" data-reveal style="--stagger: 5">
-          <span class="interest-icon">▪</span>
-          <span class="interest-name">Linux</span>
-        </div>
-        <div class="interest-frame" data-reveal style="--stagger: 6">
-          <span class="interest-icon">◎</span>
-          <span class="interest-name">Photography</span>
-        </div>
       </div>
     </div>
   </section>
@@ -485,49 +447,6 @@ import Base from '../layouts/Base.astro';
     padding-top: var(--space-4);
   }
 
-
-  /* ─── INTERESTS ─── */
-  .interests-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: var(--space-3);
-  }
-
-  .interest-frame {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-3);
-    aspect-ratio: 1;
-    border: 1px solid var(--border-subtle);
-    background: var(--surface-dim);
-    transition: border-color 0.3s ease, background 0.3s ease;
-  }
-
-  .interest-frame:hover {
-    border-color: var(--border-strong);
-    background: var(--surface-raised);
-  }
-
-  .interest-icon {
-    font-size: 20px;
-    color: var(--text-ghost);
-    transition: color 0.3s ease;
-  }
-
-  .interest-frame:hover .interest-icon { color: var(--accent-primary); }
-
-  .interest-name {
-    font-family: var(--font-mono);
-    font-size: var(--text-label);
-    font-weight: var(--text-label-weight);
-    letter-spacing: var(--text-label-ls);
-    text-transform: uppercase;
-    color: var(--text-tertiary);
-  }
-
-
   /* ─── RESPONSIVE ─── */
   @media (max-width: 768px) {
     .hero-content { padding-top: 100px; }
@@ -536,11 +455,6 @@ import Base from '../layouts/Base.astro';
     .about-grid { grid-template-columns: 1fr; gap: var(--space-8); }
     .work-grid { grid-template-columns: 1fr; }
     .work-card--featured { grid-column: auto; }
-    .interests-grid { grid-template-columns: repeat(3, 1fr); }
     .hero-scroll { display: none; }
-  }
-
-  @media (max-width: 480px) {
-    .interests-grid { grid-template-columns: repeat(2, 1fr); }
   }
 </style>

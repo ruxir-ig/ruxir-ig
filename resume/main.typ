@@ -55,7 +55,7 @@
   #[
     - Built backend and inference infrastructure for IN2PETA's GPU model platform using TypeScript, Fastify, PostgreSQL, Redis, Prisma, BullMQ, and Docker
     - Implemented job orchestration, model lifecycle flows, runtime packaging, API workflows, and model-serving paths for hosted AI workloads
-    - Worked across CI/CD, Docker builds, runtime configuration, environment handling, and Modal/Koyeb deployment flows
+    - Worked across Docker builds, runtime configuration, environment handling, and Modal/Koyeb deployment flows
     - Debugged production deployment issues across API, runtime, catalog, and inference layers with attention to observability and operational reliability
     - Added and reviewed guardrails for billing safety, idempotency, rate limiting, access control, and deployment-safe operational behavior
   ]
@@ -92,7 +92,7 @@
 #custom-title("Skills", spacing-between: 0.08em)[
   - *Languages & Frameworks:* Python, TypeScript, JavaScript, Fastify, Node.js, TensorFlow, PyTorch
   - *ML & Systems:* Model Serving, GPU Inference, SGLang, GANs, Async Systems, REST APIs
-  - *Infrastructure:* Docker, CI/CD, PostgreSQL, Redis, Prisma, BullMQ, Modal, Linux
+  - *Infrastructure:* Docker, PostgreSQL, Redis, Prisma, BullMQ, Modal, Linux
 ]
 
 #custom-title("Education", spacing-between: 0.08em)[

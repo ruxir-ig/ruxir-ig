@@ -315,7 +315,7 @@ import Base from '../layouts/Base.astro';
     gap: var(--space-8);
     background: linear-gradient(135deg, var(--surface-raised) 0%, var(--surface-dim) 100%);
     border: 1px solid var(--border-default);
-    padding: var(--space-10);
+    padding: var(--space-12);
     margin-bottom: var(--space-6);
     transition: border-color 0.3s ease;
   }
@@ -410,9 +410,10 @@ import Base from '../layouts/Base.astro';
   .project-card {
     background: var(--surface-raised);
     border: 1px solid var(--border-default);
-    padding: var(--space-7);
+    padding: var(--space-8);
     display: flex;
     flex-direction: column;
+    gap: var(--space-3);
     transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
@@ -433,11 +434,10 @@ import Base from '../layouts/Base.astro';
     font-size: var(--text-body-sm);
     color: var(--text-tertiary);
     line-height: 1.6;
-    flex: 1;
   }
 
   .project-card-footer {
-    margin-top: var(--space-5);
+    margin-top: auto;
     padding-top: var(--space-4);
     border-top: 1px solid var(--border-subtle);
   }
@@ -524,7 +524,7 @@ import Base from '../layouts/Base.astro';
     .timeline-date { text-align: left; padding-right: 0; }
     .timeline-line { display: none; }
     .timeline-content { padding-left: 0; }
-    .project-featured { grid-template-columns: 1fr; padding: var(--space-6); }
+    .project-featured { grid-template-columns: 1fr; padding: var(--space-7); }
     .project-featured-meta { border-left: none; padding-left: 0; border-top: 1px solid var(--border-subtle); padding-top: var(--space-5); }
     .project-grid { grid-template-columns: 1fr; }
     .edu-activities-grid { grid-template-columns: 1fr; gap: var(--space-10); }

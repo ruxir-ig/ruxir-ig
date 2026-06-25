@@ -1,0 +1,174 @@
+---
+import Base from '../layouts/Base.astro';
+import { landingVariants, workVariants } from '../data/site';
+---
+
+<Base title="Layouts" description="Layout exploration — browse every landing and work variant.">
+  <section class="lab">
+    <div class="container">
+      <div class="lab__head">
+        <span class="section-label">Layout Lab</span>
+        <h1 class="lab__title">Pick a <em>direction.</em></h1>
+        <p class="lab__sub">
+          Ten live prototypes across the full spectrum — restrained to radical.
+          Each is a real route you can open, feel, and react to. Later we strip the
+          rest and promote one to the main endpoint.
+        </p>
+      </div>
+
+      <div class="lab__group">
+        <div class="lab__grouphead">
+          <span class="lab__kind">Landing</span>
+          <span class="lab__hint">/1 → /5</span>
+        </div>
+        <div class="lab__grid">
+          {landingVariants.map((v, i) => (
+            <a class="cell" href={v.path} data-reveal style={`--stagger:${i + 1}`}>
+              <div class="cell__top">
+                <span class="cell__num">{v.id}</span>
+                <span class="cell__vibe">{v.vibe}</span>
+              </div>
+              <h3 class="cell__name">{v.name}</h3>
+              <p class="cell__blurb">{v.blurb}</p>
+              <span class="cell__go">Open {v.path} →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div class="lab__group">
+        <div class="lab__grouphead">
+          <span class="lab__kind">Work</span>
+          <span class="lab__hint">/work/1 → /work/5</span>
+        </div>
+        <div class="lab__grid">
+          {workVariants.map((v, i) => (
+            <a class="cell" href={v.path} data-reveal style={`--stagger:${i + 1}`}>
+              <div class="cell__top">
+                <span class="cell__num">{v.id}</span>
+                <span class="cell__vibe">{v.vibe}</span>
+              </div>
+              <h3 class="cell__name">{v.name}</h3>
+              <p class="cell__blurb">{v.blurb}</p>
+              <span class="cell__go">Open {v.path} →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div class="lab__note" data-reveal>
+        <span class="section-label">Reference</span>
+        <p>
+          The live site still lives at <a href="/">/</a> and <a href="/work">/work</a> —
+          these experiments are additive and won't touch them until you choose.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .lab { padding: 132px 0 40px; }
+  .lab__head { max-width: 680px; margin-bottom: var(--space-20); }
+  .lab__title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(40px, 7vw, 72px);
+    line-height: 1;
+    color: var(--text-primary);
+    margin: var(--space-4) 0 var(--space-5);
+  }
+  .lab__title em { font-style: italic; color: var(--accent-amber); }
+  .lab__sub { font-size: var(--text-body-lg); color: var(--text-tertiary); line-height: 1.6; }
+
+  .lab__group { margin-bottom: var(--space-20); }
+  .lab__grouphead {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: var(--space-6);
+  }
+  .lab__kind {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--text-h3);
+    color: var(--text-primary);
+  }
+  .lab__hint {
+    font-family: var(--font-mono);
+    font-size: var(--text-caption);
+    letter-spacing: var(--text-caption-ls);
+    color: var(--text-ghost);
+  }
+
+  .lab__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: var(--space-4);
+  }
+
+  .cell {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-6);
+    background: var(--surface-raised);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-card);
+    text-decoration: none;
+    transition: transform var(--duration-slow) var(--ease-out),
+                border-color var(--duration-base) var(--ease-out),
+                box-shadow var(--duration-slow) var(--ease-out);
+  }
+  .cell:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-lg);
+  }
+  .cell__top { display: flex; align-items: center; justify-content: space-between; }
+  .cell__num {
+    font-family: var(--font-display);
+    font-size: 34px;
+    line-height: 1;
+    color: var(--accent-primary);
+  }
+  .cell__vibe {
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    letter-spacing: var(--text-label-ls);
+    text-transform: uppercase;
+    color: var(--text-ghost);
+  }
+  .cell__name {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: var(--text-h4);
+    color: var(--text-primary);
+  }
+  .cell__blurb { font-size: var(--text-body-sm); color: var(--text-tertiary); line-height: 1.6; flex: 1; }
+  .cell__go {
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    letter-spacing: var(--text-label-ls);
+    text-transform: uppercase;
+    color: var(--accent-cold);
+    margin-top: var(--space-2);
+  }
+  .cell:hover .cell__go { color: var(--accent-cold-hover); }
+
+  .lab__note {
+    margin-top: var(--space-16);
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--border-subtle);
+    font-size: var(--text-body-sm);
+    color: var(--text-tertiary);
+  }
+  .lab__note a { color: var(--accent-cold); }
+
+  @media (max-width: 768px) {
+    .lab { padding: 112px 0 24px; }
+    .lab__head { margin-bottom: var(--space-12); }
+  }
+</style>

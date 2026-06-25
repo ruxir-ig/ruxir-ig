@@ -1,0 +1,161 @@
+---
+import Base from '../../layouts/Base.astro';
+import VariantNav from '../../components/VariantNav.astro';
+import ProjectArtwork from '../../components/ProjectArtwork.astro';
+import { featuredProject, projects, experience, education } from '../../data/site';
+---
+
+<Base title="Work · 2" class="w2" description="Project showcase — bento view.">
+  <VariantNav kind="work" current="2" />
+
+  <section class="w2">
+    <div class="container w2__head">
+      <span class="section-label">Showcase — /work</span>
+      <h1 class="w2__title">What I've <i>built.</i></h1>
+    </div>
+
+    <div class="container w2__grid">
+
+      <!-- featured, large -->
+      <a class="w2__card w2__card--feat" href={featuredProject.href} target="_blank" rel="noopener" data-reveal>
+        <div class="w2__cover"><ProjectArtwork artwork={featuredProject.artwork} title={featuredProject.title} wide /></div>
+        <div class="w2__body w2__body--feat">
+          <div class="w2__tags">
+            {featuredProject.tags.map((t, ti) => <span class:list={['tag', { 'tag--accent': ti === 0 }]}>{t}</span>)}
+          </div>
+          <h2 class="w2__ctitle">{featuredProject.title}</h2>
+          <p class="w2__csub">{featuredProject.subtitle}</p>
+          <p class="w2__cdesc">{featuredProject.details[0]}</p>
+          <div class="w2__featmeta">
+            <span><i class="w2__fdot"></i> {featuredProject.status}</span>
+            <span class="w2__featlinks">
+              <span>GitHub ↗</span>
+              {featuredProject.liveHref && <span>Live ↗</span>}
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <!-- regular project cells, varying sizes -->
+      {projects.map((p, i) => (
+        <a
+          class:list={['w2__card', { 'w2__card--wide': i === 0 || i === 3 }]}
+          href={p.href}
+          target="_blank"
+          rel="noopener"
+          data-reveal
+          style={`--stagger:${(i % 6) + 1}`}
+        >
+          <div class="w2__cover"><ProjectArtwork artwork={p.artwork} title={p.title} /></div>
+          <div class="w2__body">
+            <div class="w2__tags">
+              {p.tags.slice(0, 2).map((t, ti) => <span class:list={['tag', { 'tag--cold': ti === 0 }]}>{t}</span>)}
+            </div>
+            <h3 class="w2__ctitle w2__ctitle--sm">{p.title}</h3>
+            <p class="w2__cdesc">{p.description}</p>
+            <div class="w2__cardfoot">
+              <span class="w2__year">{p.year}</span>
+              <span class="w2__links">GitHub ↗{'liveHref' in p && p.liveHref ? ' · Live ↗' : ''}</span>
+            </div>
+          </div>
+        </a>
+      ))}
+
+      <!-- experience cell -->
+      <article class="w2__card w2__card--exp" data-reveal>
+        <span class="w2__celltag">Experience</span>
+        <h3 class="w2__company">{experience.company}</h3>
+        <p class="w2__role">{experience.role}</p>
+        <span class="w2__range">{experience.range} · {experience.location}</span>
+        <ul class="w2__bullets">
+          {experience.bullets.slice(0, 3).map((b) => <li>{b}</li>)}
+        </ul>
+        <div class="w2__etags">{experience.tags.map((t) => <span class="tag">{t}</span>)}</div>
+      </article>
+
+      <!-- education cell -->
+      <article class="w2__card w2__card--edu" data-reveal>
+        <span class="w2__celltag">Education</span>
+        <h3 class="w2__school">{education.school}</h3>
+        <p class="w2__degree">{education.degree}</p>
+        <span class="w2__range">{education.date}</span>
+      </article>
+
+    </div>
+  </section>
+</Base>
+
+<style>
+  .w2 { padding: 128px 0 var(--space-16); }
+  .w2__head { margin-bottom: var(--space-12); }
+  .w2__title { font-family: var(--font-display); font-weight: 400; font-size: clamp(44px, 8vw, 80px); line-height: 1; color: var(--text-primary); margin-top: var(--space-4); }
+  .w2__title i { font-style: italic; color: var(--accent-amber); }
+
+  .w2__grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--space-4);
+  }
+
+  .w2__card {
+    background: var(--surface-raised);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    transition: border-color var(--duration-base) var(--ease-out), transform var(--duration-slow) var(--ease-out), box-shadow var(--duration-slow) var(--ease-out);
+  }
+  .w2__card:hover { border-color: var(--border-strong); transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+
+  /* placements */
+  .w2__card--feat { grid-column: span 6; flex-direction: row; }
+  .w2__card--wide { grid-column: span 3; }
+  .w2__card:not(.w2__card--feat):not(.w2__card--wide):not(.w2__card--exp):not(.w2__card--edu) { grid-column: span 2; }
+  .w2__card--exp { grid-column: span 4; padding: var(--space-8); }
+  .w2__card--edu { grid-column: span 2; padding: var(--space-8); }
+
+  .w2__cover { width: 100%; }
+  .w2__card--feat .w2__cover { width: 56%; flex-shrink: 0; }
+  .w2__cover :global(.project-art) { border-radius: 0; height: 100%; aspect-ratio: auto; }
+  .w2__card:not(.w2__card--feat) .w2__cover :global(.project-art) { aspect-ratio: 16/10; }
+  .w2__card--feat .w2__cover :global(.project-art) { aspect-ratio: auto; }
+
+  .w2__body { padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-3); flex: 1; }
+  .w2__body--feat { padding: var(--space-10); justify-content: space-between; gap: var(--space-5); }
+  .w2__tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .w2__ctitle { font-family: var(--font-display); font-weight: 400; font-size: var(--text-h3); color: var(--text-primary); }
+  .w2__ctitle--sm { font-size: var(--text-h4); }
+  .w2__csub { font-family: var(--font-mono); font-size: var(--text-body-sm); color: var(--text-tertiary); }
+  .w2__cdesc { font-size: var(--text-body-sm); color: var(--text-tertiary); line-height: 1.6; }
+  .w2__featmeta { display: flex; justify-content: space-between; align-items: center; gap: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--border-subtle); font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: var(--text-label-ls); text-transform: uppercase; color: var(--text-secondary); }
+  .w2__fdot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-sage); margin-right: 6px; }
+  .w2__featlinks { display: flex; gap: var(--space-4); color: var(--accent-cold); }
+  .w2__cardfoot { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: var(--space-3); border-top: 1px solid var(--border-subtle); font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: var(--text-label-ls); color: var(--text-ghost); }
+  .w2__links { color: var(--accent-cold); }
+  .w2__year { color: var(--text-ghost); }
+
+  .w2__celltag { font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: var(--text-label-ls); text-transform: uppercase; color: var(--accent-primary); }
+  .w2__company, .w2__school { font-family: var(--font-display); font-weight: 400; font-size: var(--text-h4); color: var(--text-primary); margin: var(--space-4) 0 4px; }
+  .w2__role { font-family: var(--font-mono); font-size: var(--text-body-sm); color: var(--text-tertiary); margin-bottom: var(--space-2); }
+  .w2__degree { font-size: var(--text-body); color: var(--text-secondary); margin-bottom: var(--space-2); }
+  .w2__range { font-family: var(--font-mono); font-size: var(--text-caption); letter-spacing: var(--text-caption-ls); color: var(--text-ghost); }
+  .w2__bullets { list-style: none; display: flex; flex-direction: column; gap: var(--space-2); margin: var(--space-4) 0; }
+  .w2__bullets li { position: relative; padding-left: var(--space-5); font-size: var(--text-body-sm); color: var(--text-secondary); line-height: 1.6; }
+  .w2__bullets li::before { content: '—'; position: absolute; left: 0; color: var(--text-ghost); }
+  .w2__etags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  @media (max-width: 900px) {
+    .w2__card--feat { grid-column: span 6; flex-direction: column; }
+    .w2__card--feat .w2__cover { width: 100%; }
+    .w2__card--feat .w2__cover :global(.project-art) { aspect-ratio: 16/9; }
+    .w2__card--wide { grid-column: span 6; }
+    .w2__card:not(.w2__card--feat):not(.w2__card--wide):not(.w2__card--exp):not(.w2__card--edu) { grid-column: span 3; }
+    .w2__card--exp { grid-column: span 6; }
+    .w2__card--edu { grid-column: span 6; }
+  }
+  @media (max-width: 560px) {
+    .w2__card:not(.w2__card--feat):not(.w2__card--wide):not(.w2__card--exp):not(.w2__card--edu) { grid-column: span 6; }
+  }
+</style>

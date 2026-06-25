@@ -1,0 +1,143 @@
+---
+import Base from '../../layouts/Base.astro';
+import VariantNav from '../../components/VariantNav.astro';
+import { projects, experience, education, activities } from '../../data/site';
+
+const all = projects;
+const headerCols = '40px 1fr 280px 64px 96px 24px';
+---
+
+<Base title="Work · 1" class="w1" description="Projects, experience, and explorations — index view.">
+  <VariantNav kind="work" current="1" />
+
+  <section class="w1">
+    <div class="container w1__head">
+      <span class="section-label">Index — /work</span>
+      <h1 class="w1__title">Career &<br/><i>Projects</i></h1>
+      <p class="w1__sub">{all.length} entries · sorted by recency · click any row</p>
+    </div>
+
+    <div class="container w1__list">
+      <div class="w1__cols" style={`grid-template-columns:${headerCols}`}>
+        <span>№</span>
+        <span>Title</span>
+        <span class="w1__hide">Stack</span>
+        <span class="w1__hide">Year</span>
+        <span>Status</span>
+        <span></span>
+      </div>
+
+      {all.map((p, i) => (
+        <a class="w1__row" href={p.href} target="_blank" rel="noopener" data-reveal style={`--stagger:${(i % 6) + 1}`}>
+          <div class="w1__rowgrid" style={`grid-template-columns:${headerCols}`}>
+            <span class="w1__num">{String(i + 1).padStart(2, '0')}</span>
+            <span class="w1__nameblock">
+              <span class="w1__name">{p.title}</span>
+              <span class="w1__desc">{p.description}</span>
+            </span>
+            <span class="w1__tags w1__hide">
+              {p.tags.map((t, ti) => (
+                <span class:list={['tag', { 'tag--cold': ti === 0 }]}>{t}</span>
+              ))}
+            </span>
+            <span class="w1__year w1__hide">{p.year}</span>
+            <span class="w1__status"><span class="w1__sdot"></span>{p.status}</span>
+            <span class="w1__arrow">↗</span>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- experience + edu as dense blocks -->
+    <div class="container w1__meta">
+      <div class="w1__block" data-reveal>
+        <span class="section-label">Experience</span>
+        <div class="w1__exp">
+          <div class="w1__expcol">
+            <span class="w1__range">{experience.range}</span>
+            <span class="w1__loc">{experience.location}</span>
+          </div>
+          <div class="w1__expmain">
+            <h3 class="w1__company">{experience.company}</h3>
+            <p class="w1__role">{experience.role}</p>
+            <ul class="w1__bullets">
+              {experience.bullets.map((b) => <li>{b}</li>)}
+            </ul>
+            <div class="w1__etags">{experience.tags.map((t) => <span class="tag">{t}</span>)}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="w1__side" data-reveal style="--stagger:1">
+        <div class="w1__block">
+          <span class="section-label">Education</span>
+          <p class="w1__school">{education.school}</p>
+          <p class="w1__uni">{education.university}</p>
+          <p class="w1__degree">{education.degree}</p>
+          <p class="w1__date">{education.date}</p>
+        </div>
+        <div class="w1__block">
+          <span class="section-label">Activities</span>
+          <ul class="w1__acts">
+            {activities.map((a) => <li>{a}</li>)}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .w1 { padding: 128px 0 var(--space-16); }
+  .w1__head { margin-bottom: var(--space-16); }
+  .w1__title { font-family: var(--font-display); font-weight: 400; font-size: clamp(44px, 8vw, 80px); line-height: 1; color: var(--text-primary); margin: var(--space-4) 0 var(--space-4); }
+  .w1__title i { font-style: italic; color: var(--accent-amber); }
+  .w1__sub { font-family: var(--font-mono); font-size: var(--text-caption); letter-spacing: var(--text-caption-ls); color: var(--text-ghost); }
+
+  .w1__list { margin-bottom: var(--space-24); }
+  .w1__cols { display: grid; gap: var(--space-4); padding: var(--space-3) 0; border-bottom: 1px solid var(--border-strong); font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: var(--text-label-ls); text-transform: uppercase; color: var(--text-ghost); }
+
+  .w1__row { display: block; text-decoration: none; border-bottom: 1px solid var(--border-subtle); transition: background var(--duration-base) var(--ease-out); }
+  .w1__row:hover { background: var(--surface-raised); }
+  .w1__rowgrid { display: grid; gap: var(--space-4); align-items: center; padding: var(--space-5) var(--space-4); }
+  .w1__num { font-family: var(--font-mono); font-size: var(--text-body-sm); color: var(--text-ghost); }
+  .w1__nameblock { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .w1__name { font-family: var(--font-display); font-size: var(--text-h4); color: var(--text-primary); transition: color var(--duration-base) var(--ease-out); }
+  .w1__desc { font-size: var(--text-body-sm); color: var(--text-tertiary); line-height: 1.5; }
+  .w1__row:hover .w1__name { color: var(--accent-primary); }
+  .w1__tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .w1__year { font-family: var(--font-mono); font-size: var(--text-body-sm); color: var(--text-secondary); }
+  .w1__status { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: var(--text-body-sm); color: var(--text-secondary); }
+  .w1__sdot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-sage); }
+  .w1__arrow { font-family: var(--font-display); color: var(--text-ghost); transition: transform var(--duration-slow) var(--ease-out), color var(--duration-base) var(--ease-out); }
+  .w1__row:hover .w1__arrow { color: var(--accent-primary); transform: translate(2px, -2px); }
+
+  .w1__meta { display: grid; grid-template-columns: 1.6fr 1fr; gap: var(--space-16); }
+  .w1__block { margin-bottom: var(--space-12); }
+  .w1__exp { display: grid; grid-template-columns: 180px 1fr; gap: var(--space-8); }
+  .w1__expcol { display: flex; flex-direction: column; gap: 4px; padding-top: 4px; }
+  .w1__range { font-family: var(--font-mono); font-size: var(--text-caption); letter-spacing: var(--text-caption-ls); color: var(--text-tertiary); }
+  .w1__loc { font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: var(--text-label-ls); text-transform: uppercase; color: var(--text-ghost); }
+  .w1__company { font-family: var(--font-display); font-size: var(--text-h4); color: var(--text-primary); }
+  .w1__role { font-family: var(--font-mono); font-size: var(--text-body-sm); color: var(--text-tertiary); margin: 4px 0 var(--space-4); }
+  .w1__bullets { list-style: none; display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-4); }
+  .w1__bullets li { position: relative; padding-left: var(--space-5); font-size: var(--text-body-sm); color: var(--text-secondary); line-height: 1.6; }
+  .w1__bullets li::before { content: '—'; position: absolute; left: 0; color: var(--text-ghost); }
+  .w1__etags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .w1__side { display: flex; flex-direction: column; gap: var(--space-12); }
+  .w1__school { font-family: var(--font-display); font-size: var(--text-h4); color: var(--text-primary); margin-top: var(--space-3); }
+  .w1__uni { font-size: var(--text-body-sm); color: var(--text-tertiary); }
+  .w1__degree { font-size: var(--text-body); color: var(--text-secondary); margin-top: var(--space-1); }
+  .w1__date { font-family: var(--font-mono); font-size: var(--text-caption); letter-spacing: var(--text-caption-ls); color: var(--text-ghost); margin-top: var(--space-1); }
+  .w1__acts { list-style: none; display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-3); }
+  .w1__acts li { position: relative; padding-left: var(--space-5); font-size: var(--text-body-sm); color: var(--text-secondary); line-height: 1.6; }
+  .w1__acts li::before { content: '—'; position: absolute; left: 0; color: var(--text-ghost); }
+
+  @media (max-width: 900px) {
+    .w1__hide { display: none; }
+    .w1__meta { grid-template-columns: 1fr; gap: var(--space-12); }
+  }
+  @media (max-width: 640px) {
+    .w1__exp { grid-template-columns: 1fr; gap: var(--space-3); }
+  }
+</style>

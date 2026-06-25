@@ -1,5 +1,82 @@
 ---
 import Base from '../layouts/Base.astro';
+import ProjectArtwork from '../components/ProjectArtwork.astro';
+
+const featuredProject = {
+  title: 'mccia-tracelink',
+  subtitle: 'Supply-chain traceability platform',
+  href: 'https://github.com/ruxir-ig/mccia-tracelink',
+  liveHref: 'https://mccia-tracelink.onrender.com/',
+  artwork: 'bazaar' as const,
+  tags: ['TypeScript', 'Traceability', 'Graph flows'],
+  type: 'Full-stack platform',
+  status: 'Active development',
+  details: [
+    'Factory-floor supply-chain tracing built from the current MCCIA TraceLink repository.',
+    'Models contaminated-batch propagation, incomplete records, and operational handoffs across the chain.',
+    'Uses a public-domain Indian bazaar procession reference to match the chain-of-custody and movement theme.',
+  ],
+};
+
+const projects = [
+  {
+    title: 'candis',
+    href: 'https://github.com/ruxir-ig/candis',
+    artwork: 'namakura' as const,
+    tags: ['Python', 'Recruiting AI'],
+    description: 'Intelligent candidate discovery tooling for search, scoring, and shortlisting workflows.',
+  },
+  {
+    title: 'auscult',
+    href: 'https://github.com/ruxir-ig/auscult',
+    artwork: 'taqi' as const,
+    tags: ['Python', 'Healthcare AI', 'Observability'],
+    description: 'Passive observability layer for healthcare AI agents, shaped around monitoring rather than chat UI.',
+  },
+  {
+    title: 'personal-memory-engine',
+    href: 'https://github.com/ruxir-ig/personal-memory-engine',
+    artwork: 'mielot' as const,
+    tags: ['TypeScript', 'Memory', 'Local-first'],
+    description: 'A local-first memory engine for capturing, structuring, and revisiting personal context.',
+  },
+  {
+    title: 'nitch',
+    href: 'https://github.com/ruxir-ig/nitch',
+    artwork: 'hunters' as const,
+    tags: ['Nim', 'Linux', 'System fetch'],
+    description: 'Incredibly fast system-fetch tooling in Nim, maintained for Linux-first workflows.',
+  },
+  {
+    title: 'SAR Image Colorization',
+    href: 'https://github.com/ruxir-ig/SAR-Image-Colorization',
+    artwork: 'radar' as const,
+    tags: ['PyTorch', 'GANs', 'Remote sensing'],
+    description: 'GAN-based SAR image colorization that turns grayscale radar imagery into RGB terrain reconstructions.',
+  },
+  {
+    title: 'QKD_sim',
+    href: 'https://github.com/ruxir-ig/QKD_sim',
+    liveHref: 'https://qkd-sim.vercel.app',
+    artwork: 'jamieson' as const,
+    tags: ['TypeScript', 'Quantum', 'BB84'],
+    description: 'A browser simulator for the BB84 quantum key distribution protocol, with a deployed interactive build.',
+  },
+  {
+    title: 'MuseTalk API',
+    href: 'https://github.com/ruxir-ig/MuseTalk-API',
+    artwork: 'kaguya' as const,
+    tags: ['Python', 'GPU inference', 'Lip sync'],
+    description: 'REST API wrapper around MuseTalk for real-time talking-head generation and inference experiments.',
+  },
+  {
+    title: 'clawrrency',
+    href: 'https://github.com/ruxir-ig/clawrrency',
+    artwork: 'bosch' as const,
+    tags: ['TypeScript', 'AI agents', 'Currency'],
+    description: 'A cooperative digital currency system for AI bots, exploring agent incentives and exchange.',
+  },
+];
 ---
 
 <Base title="Work" description="Career timeline, projects, and technical explorations.">
@@ -72,69 +149,59 @@ import Base from '../layouts/Base.astro';
 
       <!-- Featured Project -->
       <div class="project-featured" data-reveal style="--stagger: 1">
-        <div class="project-featured-content">
-          <div class="project-tags">
-            <span class="tag tag--accent">Platform</span>
-            <span class="tag">Graph Traversal</span>
-            <span class="tag">Anomaly Detection</span>
+        <ProjectArtwork artwork={featuredProject.artwork} title={featuredProject.title} wide />
+        <div class="project-featured-body">
+          <div class="project-featured-content">
+            <div class="project-tags">
+              {featuredProject.tags.map((tag, index) => (
+                <span class:list={['tag', { 'tag--accent': index === 0 }]}>{tag}</span>
+              ))}
+            </div>
+            <h3 class="project-title">{featuredProject.title}</h3>
+            <p class="project-subtitle">{featuredProject.subtitle}</p>
+            <ul class="project-details">
+              {featuredProject.details.map((detail) => <li>{detail}</li>)}
+            </ul>
           </div>
-          <h3 class="project-title">TraceLink</h3>
-          <p class="project-subtitle">Supply Chain Traceability Platform</p>
-          <ul class="project-details">
-            <li>Evolved a hackathon prototype into an actively iterated platform with CI, deployment fixes, and frontend/backend integration</li>
-            <li>Implemented contaminated-batch tracing with BFS graph propagation and entropy-based anomaly detection</li>
-            <li>Probabilistic imputation for incomplete records and offline-first workflows for factory shop-floor use</li>
-          </ul>
-        </div>
-        <div class="project-featured-meta">
-          <div class="meta-block">
-            <span class="meta-label">Type</span>
-            <span class="meta-value">Full-Stack Platform</span>
-          </div>
-          <div class="meta-block">
-            <span class="meta-label">Status</span>
-            <span class="meta-value"><span class="status-dot"></span> Active Development</span>
+          <div class="project-featured-meta">
+            <div class="meta-block">
+              <span class="meta-label">Type</span>
+              <span class="meta-value">{featuredProject.type}</span>
+            </div>
+            <div class="meta-block">
+              <span class="meta-label">Status</span>
+              <span class="meta-value"><span class="status-dot"></span> {featuredProject.status}</span>
+            </div>
+            <div class="project-actions">
+              <a href={featuredProject.href} target="_blank" rel="noopener" class="project-link">GitHub -></a>
+              <a href={featuredProject.liveHref} target="_blank" rel="noopener" class="project-link project-link--muted">Live -></a>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Project Grid -->
       <div class="project-grid">
-        <div class="project-card" data-reveal style="--stagger: 2">
-          <div class="project-tags">
-            <span class="tag tag--cold">API</span>
-            <span class="tag">GPU</span>
+        {projects.map((project, index) => (
+          <div class="project-card" data-reveal style={`--stagger: ${index + 2}`}>
+            <ProjectArtwork artwork={project.artwork} title={project.title} />
+            <div class="project-card-body">
+              <div class="project-tags">
+                {project.tags.map((tag, tagIndex) => (
+                  <span class:list={['tag', { 'tag--cold': tagIndex === 0 }]}>{tag}</span>
+                ))}
+              </div>
+              <h3 class="project-card-title">{project.title}</h3>
+              <p class="project-card-desc">{project.description}</p>
+              <div class="project-card-footer">
+                <a href={project.href} target="_blank" rel="noopener" class="project-link">GitHub -></a>
+                {'liveHref' in project && project.liveHref && (
+                  <a href={project.liveHref} target="_blank" rel="noopener" class="project-link project-link--muted">Live -></a>
+                )}
+              </div>
+            </div>
           </div>
-          <h3 class="project-card-title">MuseTalk API</h3>
-          <p class="project-card-desc">REST API for real-time talking-head video generation with MuseTalk. Optimized GFPGAN pipeline for 1.8× inference throughput improvement.</p>
-          <div class="project-card-footer">
-            <a href="https://github.com/ruxir-ig/MuseTalk-API" target="_blank" rel="noopener" class="project-link">GitHub →</a>
-          </div>
-        </div>
-
-        <div class="project-card" data-reveal style="--stagger: 3">
-          <div class="project-tags">
-            <span class="tag tag--sage">Research</span>
-            <span class="tag">GANs</span>
-          </div>
-          <h3 class="project-card-title">SAR Image Colorization</h3>
-          <p class="project-card-desc">GAN-based PyTorch model to colorize grayscale SAR satellite imagery into RGB. Encoder-decoder experiments for terrain reconstruction. Top 25 SIH 2024.</p>
-          <div class="project-card-footer">
-            <a href="https://github.com/ruxir-ig/SAR-Image-Colorization" target="_blank" rel="noopener" class="project-link">GitHub →</a>
-          </div>
-        </div>
-
-        <div class="project-card" data-reveal style="--stagger: 4">
-          <div class="project-tags">
-            <span class="tag">OSS</span>
-            <span class="tag">Linux</span>
-          </div>
-          <h3 class="project-card-title">Open Source & Linux Tooling</h3>
-          <p class="project-card-desc">Maintain nitch-git on the Arch User Repository. Contribute to tooling projects including ascii-view and backend utilities. Linux-first development workflows.</p>
-          <div class="project-card-footer">
-            <a href="https://github.com/ruxir-ig" target="_blank" rel="noopener" class="project-link">GitHub →</a>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   </section>
@@ -256,6 +323,8 @@ import Base from '../layouts/Base.astro';
     background: var(--accent-primary);
     flex-shrink: 0;
     margin-top: 6px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(196, 67, 43, 0.12);
   }
 
   .timeline-content {
@@ -310,22 +379,43 @@ import Base from '../layouts/Base.astro';
 
   /* ─── FEATURED PROJECT ─── */
   .project-featured {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface-raised);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    margin-bottom: var(--space-6);
+    transition: border-color 0.3s ease,
+                transform 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+                box-shadow 0.3s ease;
+  }
+
+  .project-featured .mesh-cover {
+    aspect-ratio: 21 / 7;
+    border-radius: 0;
+  }
+
+  .project-featured :global(.project-art) {
+    border-radius: 0;
+  }
+
+  .project-featured-body {
     display: grid;
     grid-template-columns: 1fr 240px;
     gap: var(--space-8);
-    background: linear-gradient(135deg, var(--surface-raised) 0%, var(--surface-dim) 100%);
-    border: 1px solid var(--border-default);
     padding: var(--space-12);
-    margin-bottom: var(--space-6);
-    transition: border-color 0.3s ease;
   }
 
   .project-featured:hover {
     border-color: var(--border-strong);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
   }
 
   .project-tags {
     display: flex;
+    flex-wrap: wrap;
     gap: var(--space-2);
     margin-bottom: var(--space-4);
   }
@@ -403,23 +493,40 @@ import Base from '../layouts/Base.astro';
   /* ─── PROJECT GRID ─── */
   .project-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-4);
   }
 
   .project-card {
+    display: flex;
+    flex-direction: column;
     background: var(--surface-raised);
     border: 1px solid var(--border-default);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .project-card .mesh-cover {
+    border-radius: 0;
+  }
+
+  .project-card :global(.project-art) {
+    border-radius: 0;
+  }
+
+  .project-card-body {
     padding: var(--space-8);
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
-    transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    flex: 1;
   }
 
   .project-card:hover {
     border-color: var(--border-strong);
-    transform: translateY(-2px);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
   }
 
   .project-card-title {
@@ -437,6 +544,10 @@ import Base from '../layouts/Base.astro';
   }
 
   .project-card-footer {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
     margin-top: auto;
     padding-top: var(--space-4);
     border-top: 1px solid var(--border-subtle);
@@ -449,10 +560,21 @@ import Base from '../layouts/Base.astro';
     text-transform: uppercase;
     color: var(--accent-cold);
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: color 0.2s ease, transform 0.2s ease;
   }
 
   .project-link:hover { color: var(--accent-cold-hover); }
+
+  .project-link--muted {
+    color: var(--text-tertiary);
+  }
+
+  .project-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    padding-top: var(--space-2);
+  }
 
 
   /* ─── EDUCATION & ACTIVITIES ─── */
@@ -524,7 +646,8 @@ import Base from '../layouts/Base.astro';
     .timeline-date { text-align: left; padding-right: 0; }
     .timeline-line { display: none; }
     .timeline-content { padding-left: 0; }
-    .project-featured { grid-template-columns: 1fr; padding: var(--space-7); }
+    .project-featured .mesh-cover { aspect-ratio: 5 / 3; }
+    .project-featured-body { grid-template-columns: 1fr; gap: var(--space-6); padding: var(--space-8); }
     .project-featured-meta { border-left: none; padding-left: 0; border-top: 1px solid var(--border-subtle); padding-top: var(--space-5); }
     .project-grid { grid-template-columns: 1fr; }
     .edu-activities-grid { grid-template-columns: 1fr; gap: var(--space-10); }

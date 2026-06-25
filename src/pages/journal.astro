@@ -154,13 +154,18 @@ const entries = [
   .journal-entries {
     display: flex;
     flex-direction: column;
+    gap: var(--space-4);
   }
 
   .journal-entry {
     position: relative;
-    padding: var(--space-10) 0;
-    border-bottom: 1px solid var(--border-subtle);
-    transition: background 0.3s ease;
+    padding: var(--space-8);
+    border: 1px solid var(--border-default);
+    background: var(--surface-raised);
+    border-radius: var(--radius-card);
+    transition: border-color 0.3s ease,
+                transform 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+                box-shadow 0.3s ease;
     cursor: pointer;
     overflow: hidden;
   }
@@ -177,12 +182,10 @@ const entries = [
     transition: filter 0.24s ease, opacity 0.24s ease;
   }
 
-  .journal-entry:first-child {
-    border-top: 1px solid var(--border-subtle);
-  }
-
   .journal-entry:hover {
-    background: linear-gradient(90deg, transparent, var(--surface-dim) 20%, var(--surface-dim) 80%, transparent);
+    border-color: var(--border-strong);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
   }
 
   .entry-meta {
@@ -341,7 +344,7 @@ const entries = [
   @media (max-width: 768px) {
     .page-header { padding-top: 100px; }
     .journal-entry {
-      padding: var(--space-7) 0;
+      padding: var(--space-6);
     }
     .entry-inner {
       grid-template-columns: 1fr;

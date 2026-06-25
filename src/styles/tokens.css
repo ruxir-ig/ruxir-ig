@@ -1,11 +1,16 @@
 /* ═══════════════════════════════════════════════════════════════════════
-   DESIGN TOKENS — Nordic Cinematic / Fujifilm Cold Film
+   DESIGN TOKENS — Editorial Mesh · Cinematic Dark
    ═══════════════════════════════════════════════════════════════════════
-   A design system rooted in the tension between editorial cinema
-   and the clinical precision of backend engineering.
+   A fusion of two aesthetics held in tension:
+     · the cinematic darkness of a film still — crushed blacks,
+       filmic grain, desaturated highlands, the precision of
+       backend engineering
+     · the premium editorial softness of mesh gradient fields and
+       rounded architectural panels
    
    Inspired by: Sam Kolder grading, Fujifilm Classic Neg/Eterna,
-   crushed blacks, desaturated highlands, and 35mm grain.
+   and the quiet confidence of high-end editorial design —
+   adapted into the dark.
    ═══════════════════════════════════════════════════════════════════════ */
 
 :root {
@@ -120,12 +125,18 @@
   --section-gap-mobile:        80px;
 
   /* ─── RADII ────────────────────────────────────────────────────────
-     Sharp. Architectural. No rounded corners.
-     Exception: tiny pill badges get 2px max.
+     Editorial rounding — the softness of premium print and the
+     architecture of a film frame held in tension. Generous on
+     panels and cards; full pills on interactive chips.
   */
   --radius-none:               0;
-  --radius-xs:                 2px;     /* only for inline badges */
-  --radius-sm:                 3px;     /* subtle softening on small elements */
+  --radius-xs:                 4px;     /* inline code, tiny chips */
+  --radius-sm:                 8px;     /* subtle softening on small elements */
+  --radius-md:                 14px;    /* inputs, small cards */
+  --radius-lg:                 20px;    /* standard cards */
+  --radius-card:               24px;    /* work / article cards */
+  --radius-panel:              28px;    /* hero panel, large containers */
+  --radius-pill:               999px;   /* buttons, badges, status pills */
 
   /* ─── TRANSITIONS ──────────────────────────────────────────────────
      Deliberate, not bouncy. Like a slow dolly push.

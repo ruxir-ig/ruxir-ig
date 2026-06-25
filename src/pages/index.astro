@@ -1,37 +1,66 @@
 ---
 import Base from '../layouts/Base.astro';
+import ProjectArtwork from '../components/ProjectArtwork.astro';
+
+const selectedWork = [
+  {
+    title: 'mccia-tracelink',
+    href: '/work',
+    artwork: 'bazaar' as const,
+    featured: true,
+    tags: ['TypeScript', 'Traceability', 'Graph flows'],
+    description: 'Supply-chain traceability platform for contaminated-batch propagation, incomplete records, and factory-floor workflows.',
+  },
+  {
+    title: 'candis',
+    href: '/work',
+    artwork: 'namakura' as const,
+    tags: ['Python', 'Recruiting AI'],
+    description: 'Intelligent candidate discovery tooling for search, scoring, and shortlisting workflows.',
+  },
+  {
+    title: 'auscult',
+    href: '/work',
+    artwork: 'taqi' as const,
+    tags: ['Python', 'Healthcare AI'],
+    description: 'Passive observability layer for healthcare AI agents, focused on monitoring rather than another chat surface.',
+  },
+];
 ---
 
 <Base title="Home">
 
   <!-- ═══ HERO — THE OPENING SHOT ═══ -->
   <section class="hero">
-    <div class="hero-bg">
-      <img src="/hero.png" alt="" aria-hidden="true" />
-      <div class="hero-overlay"></div>
-    </div>
-    <div class="hero-content container">
-      <div class="hero-meta hero-animate" style="--delay: 0">
-        <span class="status-dot"></span>
-        <span>Pune, India</span>
+    <div class="hero-panel mesh-field hero-animate" style="--delay: 0">
+      <div class="hero-veil"></div>
+      <div class="hero-content">
+        <h1 class="hero-name">
+          <span class="hero-animate" style="--delay: 1">Ruchir</span>
+          <span class="hero-animate" style="--delay: 2">Kalokhe</span>
+        </h1>
+
+        <p class="hero-role hero-animate" style="--delay: 3">
+          Backend engineer leaning into
+          <em>AI&nbsp;research.</em>
+        </p>
+
+        <p class="hero-sub hero-animate" style="--delay: 4">
+          Building backend systems, ML infrastructure, and developer tooling —
+          moving deeper into research while staying grounded in
+          practical implementation.
+        </p>
+
+        <div class="hero-cta hero-animate" style="--delay: 5">
+          <a href="/work" class="btn-pill">View Work <span class="arrow">→</span></a>
+          <a href="mailto:ruchirkalokhe@gmail.com" class="btn-ghost">Get in Touch</a>
+        </div>
       </div>
-      <h1 class="hero-name">
-        <span class="hero-animate" style="--delay: 1">Ruchir</span>
-        <span class="hero-animate" style="--delay: 2">Kalokhe</span>
-      </h1>
-      <p class="hero-role hero-animate" style="--delay: 3">Backend Engineer & AI Research Enthusiast</p>
-      <p class="hero-sub hero-animate" style="--delay: 4">
-        Building backend systems and AI projects<br class="hide-mobile" />
-        while moving deeper into research.
-      </p>
-      <div class="hero-cta hero-animate" style="--delay: 5">
-        <a href="/work" class="btn-ghost">View Work</a>
-        <a href="mailto:ruchirkalokhe@gmail.com" class="btn-ghost">Get in Touch</a>
+
+      <div class="hero-scroll hero-animate" style="--delay: 6">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
       </div>
-    </div>
-    <div class="hero-scroll hero-animate" style="--delay: 6">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
     </div>
   </section>
 
@@ -103,45 +132,26 @@ import Base from '../layouts/Base.astro';
       </div>
 
       <div class="work-grid">
-        <a href="/work" class="work-card work-card--featured" data-reveal style="--stagger: 1">
-          <div class="work-card-inner">
-            <div class="work-card-tags">
-              <span class="tag tag--accent">Platform</span>
-              <span class="tag">BFS</span>
-              <span class="tag">Anomaly Detection</span>
+        {selectedWork.map((project, index) => (
+          <a
+            href={project.href}
+            class:list={['work-card', { 'work-card--featured': project.featured }]}
+            data-reveal
+            style={`--stagger: ${index + 1}`}
+          >
+            <ProjectArtwork artwork={project.artwork} title={project.title} wide={project.featured} />
+            <div class="work-card-inner">
+              <div class="work-card-tags">
+                {project.tags.map((tag, tagIndex) => (
+                  <span class:list={['tag', { 'tag--accent': index === 0 && tagIndex === 0, 'tag--cold': index !== 0 && tagIndex === 0 }]}>{tag}</span>
+                ))}
+              </div>
+              <h3 class="work-card-title">{project.title}</h3>
+              <p class="work-card-desc">{project.description}</p>
+              <span class="work-card-link">View Project -></span>
             </div>
-            <h3 class="work-card-title">TraceLink</h3>
-            <p class="work-card-desc">Supply chain traceability platform with contaminated-batch tracing,
-              entropy-based anomaly detection, and probabilistic imputation for incomplete records.</p>
-            <span class="work-card-link">View Project →</span>
-          </div>
-        </a>
-
-        <a href="/work" class="work-card" data-reveal style="--stagger: 2">
-          <div class="work-card-inner">
-            <div class="work-card-tags">
-              <span class="tag tag--cold">API</span>
-              <span class="tag">GPU Inference</span>
-            </div>
-            <h3 class="work-card-title">MuseTalk API</h3>
-            <p class="work-card-desc">REST API for real-time talking-head video generation.
-              1.8× inference throughput improvement via GFPGAN pipeline optimization.</p>
-            <span class="work-card-link">View Project →</span>
-          </div>
-        </a>
-
-        <a href="/work" class="work-card" data-reveal style="--stagger: 3">
-          <div class="work-card-inner">
-            <div class="work-card-tags">
-              <span class="tag tag--sage">Research</span>
-              <span class="tag">GANs</span>
-            </div>
-            <h3 class="work-card-title">SAR Colorization</h3>
-            <p class="work-card-desc">GAN-based model to colorize grayscale SAR satellite imagery.
-              Encoder-decoder experiments for terrain reconstruction. Top 25 SIH 2024.</p>
-            <span class="work-card-link">View Project →</span>
-          </div>
-        </a>
+          </a>
+        ))}
       </div>
 
       <div class="work-cta" data-reveal style="--stagger: 4">
@@ -156,67 +166,52 @@ import Base from '../layouts/Base.astro';
 <style>
   /* ─── HERO ─── */
   .hero {
+    padding: 88px var(--gutter) var(--space-12);
+  }
+
+  .hero-panel {
     position: relative;
-    min-height: 100vh;
+    min-height: calc(100vh - 88px - var(--space-12));
+    border-radius: var(--radius-panel);
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-lg);
     display: flex;
     align-items: center;
-    overflow: hidden;
+    justify-content: center;
   }
 
-  .hero-bg {
+  .hero-veil {
     position: absolute;
     inset: 0;
-    z-index: 0;
-  }
-
-  .hero-bg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.35;
-    filter: saturate(0.5) contrast(1.1);
-  }
-
-  .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(17, 17, 16, 0.3) 0%,
-      rgba(17, 17, 16, 0.6) 50%,
-      rgba(17, 17, 16, 1) 100%
+    z-index: 1;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse at center,
+      transparent 30%,
+      rgba(10, 10, 10, 0.55) 100%
     );
   }
 
   .hero-content {
     position: relative;
-    z-index: 1;
-    padding-top: 120px;
-    padding-bottom: 80px;
-  }
-
-  .hero-meta {
+    z-index: 2;
+    text-align: center;
+    max-width: 780px;
+    padding: var(--space-20) var(--gutter);
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: var(--space-3);
-    font-family: var(--font-mono);
-    font-size: var(--text-label);
-    font-weight: var(--text-label-weight);
-    letter-spacing: var(--text-label-ls);
-    text-transform: uppercase;
-    color: var(--text-tertiary);
-    margin-bottom: var(--space-6);
   }
 
   .hero-name {
     font-family: var(--font-display);
     font-weight: 400;
-    font-style: normal;
-    font-size: clamp(56px, 10vw, 120px);
+    font-size: clamp(56px, 9vw, 108px);
     line-height: 0.95;
     letter-spacing: -0.02em;
     color: var(--text-primary);
-    margin-bottom: var(--space-8);
+    margin: var(--space-6) 0 var(--space-5);
   }
 
   .hero-name span {
@@ -224,26 +219,36 @@ import Base from '../layouts/Base.astro';
   }
 
   .hero-role {
-    font-family: var(--font-mono);
-    font-size: var(--text-body-sm);
+    font-family: var(--font-display);
+    font-size: clamp(22px, 2.7vw, 34px);
     font-weight: 400;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--accent-primary);
-    margin-bottom: var(--space-6);
+    line-height: 1.3;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-5);
+    max-width: 640px;
+  }
+
+  .hero-role em {
+    font-style: italic;
+    font-family: var(--font-display);
+    color: var(--accent-amber);
+    white-space: nowrap;
   }
 
   .hero-sub {
     font-family: var(--font-body);
     font-size: var(--text-body);
-    color: var(--text-secondary);
-    max-width: 480px;
+    color: var(--text-tertiary);
+    max-width: 520px;
     margin-bottom: var(--space-10);
+    line-height: 1.7;
   }
 
   .hero-cta {
     display: flex;
     gap: var(--space-4);
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   /* Hero staggered entrance - page load animation */
@@ -264,13 +269,13 @@ import Base from '../layouts/Base.astro';
   /* Scroll indicator */
   .hero-scroll {
     position: absolute;
-    bottom: 40px;
-    right: var(--gutter);
+    bottom: 32px;
+    right: 32px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: var(--space-3);
-    z-index: 1;
+    z-index: 3;
   }
 
   .hero-scroll span {
@@ -368,49 +373,55 @@ import Base from '../layouts/Base.astro';
   }
 
   .work-card {
-    display: block;
+    display: flex;
+    flex-direction: column;
     text-decoration: none;
     background: var(--surface-raised);
     border: 1px solid var(--border-default);
-    padding: var(--space-8);
+    border-radius: var(--radius-card);
+    overflow: hidden;
     transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1),
                 border-color 300ms cubic-bezier(0.23, 1, 0.32, 1),
                 box-shadow 300ms cubic-bezier(0.23, 1, 0.32, 1);
     position: relative;
-    overflow: hidden;
-  }
-
-  .work-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(to right, var(--accent-primary), transparent);
-    opacity: 0;
-    transition: opacity 300ms ease;
   }
 
   .work-card:hover {
     border-color: var(--border-strong);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
   }
 
-  .work-card:hover::before { opacity: 1; }
-
   .work-card:active {
-    transform: translateY(-1px) scale(0.995);
+    transform: translateY(-2px) scale(0.995);
   }
 
   .work-card--featured {
     grid-column: 1 / -1;
-    background: linear-gradient(135deg, var(--surface-raised) 0%, var(--surface-dim) 100%);
+  }
+
+  .work-card--featured .mesh-cover {
+    aspect-ratio: 21 / 7;
+  }
+
+  .work-card :global(.project-art) {
+    border-radius: 0;
+  }
+
+  .work-card--featured .work-card-inner {
+    padding: var(--space-10) var(--space-12);
+  }
+
+  .work-card-inner {
+    padding: var(--space-8);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
   }
 
   .work-card-tags {
     display: flex;
+    flex-wrap: wrap;
     gap: var(--space-2);
     margin-bottom: var(--space-5);
   }
@@ -428,6 +439,7 @@ import Base from '../layouts/Base.astro';
     color: var(--text-tertiary);
     max-width: 560px;
     margin-bottom: var(--space-5);
+    line-height: 1.6;
   }
 
   .work-card-link {
@@ -437,6 +449,7 @@ import Base from '../layouts/Base.astro';
     text-transform: uppercase;
     color: var(--accent-primary);
     transition: color 0.2s ease;
+    margin-top: auto;
   }
 
   .work-card:hover .work-card-link { color: var(--accent-primary-hover); }
@@ -448,12 +461,17 @@ import Base from '../layouts/Base.astro';
 
   /* ─── RESPONSIVE ─── */
   @media (max-width: 768px) {
-    .hero-content { padding-top: 100px; }
-    .hero-cta { flex-direction: column; }
-    .hero-cta .btn-ghost { text-align: center; }
+    .hero { padding: 76px var(--margin-mobile) var(--space-10); }
+    .hero-panel { min-height: calc(100vh - 76px - var(--space-10)); }
+    .hero-content { padding: var(--space-16) var(--space-6); }
+    .hero-cta { flex-direction: column; width: 100%; }
+    .hero-cta .btn-pill,
+    .hero-cta .btn-ghost { text-align: center; justify-content: center; }
+    .hero-scroll { display: none; }
     .about-grid { grid-template-columns: 1fr; gap: var(--space-8); }
     .work-grid { grid-template-columns: 1fr; }
     .work-card--featured { grid-column: auto; }
-    .hero-scroll { display: none; }
+    .work-card--featured .mesh-cover { aspect-ratio: 5 / 3; }
+    .work-card--featured .work-card-inner { padding: var(--space-8); }
   }
 </style>

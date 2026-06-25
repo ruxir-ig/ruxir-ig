@@ -143,6 +143,7 @@ code {
   background: var(--surface-raised);
   padding: 2px 6px;
   border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xs);
 }
 
 pre {
@@ -152,6 +153,7 @@ pre {
   overflow-x: auto;
   font-size: var(--text-code);
   line-height: 1.6;
+  border-radius: var(--radius-md);
 }
 
 pre code {
@@ -254,6 +256,7 @@ hr {
   background: var(--accent-primary);
   border: 1px solid var(--accent-primary);
   padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-pill);
   cursor: pointer;
   transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1),
               background var(--duration-base) var(--ease-out),
@@ -287,6 +290,7 @@ hr {
   background: transparent;
   border: 1px solid var(--border-strong);
   padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-pill);
   cursor: pointer;
   transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1),
               border-color var(--duration-base) var(--ease-out),
@@ -304,6 +308,45 @@ hr {
   transform: scale(0.97);
 }
 
+/* Button — Pill (light, high-contrast CTA — the "Book a demo →" pattern) */
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  font-weight: var(--text-label-weight);
+  letter-spacing: var(--text-label-ls);
+  text-transform: uppercase;
+  color: var(--surface-base);
+  background: var(--text-primary);
+  border: 1px solid var(--text-primary);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1),
+              background var(--duration-base) var(--ease-out),
+              box-shadow var(--duration-base) var(--ease-out);
+}
+
+.btn-pill:hover {
+  background: #fff;
+  border-color: #fff;
+  box-shadow: 0 8px 30px rgba(240, 237, 232, 0.18);
+}
+
+.btn-pill:active {
+  transform: scale(0.97);
+}
+
+.btn-pill .arrow {
+  transition: transform 0.25s var(--ease-out);
+}
+
+.btn-pill:hover .arrow {
+  transform: translateX(3px);
+}
+
 /* Tag / Chip — technical labels */
 .tag {
   display: inline-flex;
@@ -317,6 +360,7 @@ hr {
   background: var(--surface-raised);
   border: 1px solid var(--border-subtle);
   padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
   white-space: nowrap;
   transition: border-color var(--duration-base) var(--ease-out),
               color var(--duration-base) var(--ease-out);
@@ -345,11 +389,12 @@ hr {
   background: var(--accent-sage-ghost);
 }
 
-/* Card — sharp edges, 1px border, tonal gradient */
+/* Card — soft rounding, 1px border, tonal gradient */
 .card {
   background: var(--surface-raised);
   border: 1px solid var(--border-default);
   padding: var(--space-6);
+  border-radius: var(--radius-lg);
   transition: border-color var(--duration-base) var(--ease-out),
               box-shadow var(--duration-slow) var(--ease-out);
 }
@@ -381,6 +426,7 @@ hr {
   overflow: hidden;
   background: var(--surface-void);
   border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
 }
 
 .img-frame img {
@@ -431,6 +477,97 @@ hr {
 .breadcrumb__sep {
   color: var(--text-ghost);
   user-select: none;
+}
+
+
+/* ─── MESH GRADIENTS — Editorial Color Fields ────────────────────────
+   Soft, blurred color fields in the filmic palette. The signature
+   surface treatment — dark cinematic mesh gradients.
+*/
+
+/* Hero / large panel mesh — the full filmic palette, softly spread */
+.mesh-field {
+  background-color: var(--surface-void);
+  background-image:
+    radial-gradient(at 16% 20%, rgba(196, 67, 43, 0.26) 0px, transparent 46%),
+    radial-gradient(at 84% 16%, rgba(139, 167, 196, 0.22) 0px, transparent 44%),
+    radial-gradient(at 78% 82%, rgba(201, 168, 76, 0.18) 0px, transparent 48%),
+    radial-gradient(at 20% 84%, rgba(138, 159, 140, 0.18) 0px, transparent 46%),
+    radial-gradient(at 50% 50%, rgba(17, 17, 16, 0.0) 0px, transparent 60%);
+}
+
+/* Card covers — each variant a distinct mood. Tall, rounded top. */
+.mesh-cover {
+  position: relative;
+  aspect-ratio: 5 / 3;
+  border-radius: var(--radius-card) var(--radius-card) 0 0;
+  overflow: hidden;
+  background-color: var(--surface-void);
+}
+
+.mesh-cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23c)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  opacity: 0.12;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.mesh-cover--red {
+  background-image:
+    radial-gradient(at 70% 30%, rgba(214, 90, 66, 0.55) 0px, transparent 55%),
+    radial-gradient(at 20% 70%, rgba(196, 67, 43, 0.45) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(143, 47, 30, 0.4) 0px, transparent 60%);
+}
+
+.mesh-cover--cold {
+  background-image:
+    radial-gradient(at 25% 25%, rgba(163, 189, 214, 0.5) 0px, transparent 55%),
+    radial-gradient(at 80% 60%, rgba(92, 122, 150, 0.45) 0px, transparent 52%),
+    radial-gradient(at 50% 90%, rgba(139, 167, 196, 0.35) 0px, transparent 50%);
+}
+
+.mesh-cover--sage {
+  background-image:
+    radial-gradient(at 30% 70%, rgba(160, 181, 162, 0.45) 0px, transparent 55%),
+    radial-gradient(at 75% 25%, rgba(93, 111, 95, 0.45) 0px, transparent 52%),
+    radial-gradient(at 50% 50%, rgba(139, 167, 196, 0.2) 0px, transparent 55%);
+}
+
+.mesh-cover--amber {
+  background-image:
+    radial-gradient(at 70% 65%, rgba(217, 188, 106, 0.5) 0px, transparent 55%),
+    radial-gradient(at 25% 30%, rgba(201, 168, 76, 0.4) 0px, transparent 52%),
+    radial-gradient(at 50% 50%, rgba(196, 67, 43, 0.22) 0px, transparent 55%);
+}
+
+
+/* ─── PILL BADGE — translucent status chip ─────────────────────────── */
+
+.pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  font-weight: var(--text-label-weight);
+  letter-spacing: var(--text-label-ls);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  background: rgba(240, 237, 232, 0.06);
+  border: 1px solid var(--border-default);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+}
+
+.pill-badge .status-dot {
+  width: 6px;
+  height: 6px;
 }
 
 
@@ -522,27 +659,37 @@ hr {
   left: 0;
   right: 0;
   z-index: var(--z-nav);
-  padding: var(--space-4) 0;
-  transition: background-color 0.4s cubic-bezier(0.23, 1, 0.32, 1),
-              backdrop-filter 0.4s cubic-bezier(0.23, 1, 0.32, 1),
-              border-color 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  padding: var(--space-4) var(--gutter);
+  transition: padding 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   border-bottom: 1px solid transparent;
 }
 
 .site-nav.scrolled {
-  background: rgba(17, 17, 16, 0.82);
-  backdrop-filter: blur(var(--blur-nav));
-  -webkit-backdrop-filter: blur(var(--blur-nav));
-  border-bottom-color: var(--border-subtle);
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-3);
 }
 
 .nav-inner {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 var(--gutter);
+  padding: var(--space-3) var(--space-5);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: background-color 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+              backdrop-filter 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+              border-color 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+              box-shadow 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+}
+
+.site-nav.scrolled .nav-inner {
+  background: rgba(17, 17, 16, 0.72);
+  backdrop-filter: blur(var(--blur-nav));
+  -webkit-backdrop-filter: blur(var(--blur-nav));
+  border-color: var(--border-subtle);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
 }
 
 .nav-logo {

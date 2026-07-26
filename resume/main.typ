@@ -1,112 +1,207 @@
-#set par(
-  justify: false,
-  leading: 0.66em
+// Ruchir Kalokhe — resume
+// Build: typst compile main.typ main.pdf
+
+#let ink = rgb("#111111")
+#let soft = rgb("#4a4a4a")
+#let rule-color = rgb("#c8c8c8")
+
+#set document(
+  title: "Ruchir Kalokhe's Resume",
+  author: "Ruchir Kalokhe",
+  keywords: ("software engineer", "machine learning engineer", "backend", "ML infrastructure"),
 )
 
-#import "@preview/simple-technical-resume:0.1.0": *
-
-#let name = "Ruchir Kalokhe"
-#let phone = "+91 85306 62440"
-#let email = "ruchirkalokhe@gmail.com"
-#let github = "ruxir-ig"
-#let linkedin = "ruchirkalokhe"
-#let personal-site = "ruchir.dev"
-
-#show: resume.with(
-  top-margin: 0.36in,
-  bottom-margin: 0.36in,
-  left-margin: 0.55in,
-  right-margin: 0.55in,
+#set page(paper: "us-letter", margin: (x: 0.55in, y: 0.42in))
+#set text(
   font: "Libertinus Serif",
-  font-size: 10pt,
-  personal-info-font-size: 9pt,
-  author-position: center,
-  personal-info-position: center,
-  author-name: name,
-  phone: phone,
-  email: email,
-  website: personal-site,
-  linkedin-user-id: linkedin,
-  github-username: github
+  size: 10pt,
+  fill: ink,
+  lang: "en",
+  top-edge: 0.7em,
+  bottom-edge: -0.15em,
+)
+#set par(justify: false, leading: 0.2em, spacing: 0.45em)
+#show link: set text(fill: ink)
+
+#let project-link(url, name) = link(
+  url,
+  underline(stroke: 0.45pt + soft, offset: 1.4pt, text(weight: "bold", name)),
 )
 
-#set list(spacing: 0.26em)
-#set heading(numbering: none)
-
-#show heading: it => {
-  v(0.42em)
-  set text(size: 10.8pt, weight: "bold")
-  it
-  v(0.06em)
+#let section(title) = {
+  v(5pt)
+  block(
+    below: 4.5pt,
+    stack(
+      spacing: 2.5pt,
+      text(size: 8.8pt, weight: "bold", tracking: 0.09em, upper(title)),
+      line(length: 100%, stroke: 0.5pt + rule-color),
+    ),
+  )
 }
 
-#custom-title("About", spacing-between: 0.08em)[
-  I like building things that sit somewhere between ML, web engineering, and developer tooling. Most of my learning has come from experimenting, shipping side projects, breaking systems, and working through the small deployment and product details until they feel right.
-]
-
-#custom-title("Experience", spacing-between: 0.08em)[
-  #grid(
-    columns: (70%, 30%),
-    align(left)[*In2peta Services Pvt. Ltd.* \
-      Gen AI Intern, Backend & ML Infrastructure],
-    align(right)[*Remote* \ Dec 2025 -- May 2026],
+// Manual bullets — native list spacing inverts wrap vs item gaps.
+#let points(..items) = {
+  let bodies = items.pos()
+  stack(
+    spacing: 6pt,
+    ..bodies.map(body => grid(
+      columns: (9pt, 1fr),
+      column-gutter: 0pt,
+      text(fill: soft)[•],
+      par(leading: 0.15em, body),
+    )),
   )
-  #v(-0.15em)
-  #[
-    - Built backend and inference infrastructure for IN2PETA's GPU model platform using TypeScript, Fastify, PostgreSQL, Redis, Prisma, BullMQ, and Docker
-    - Implemented job orchestration, model lifecycle flows, runtime packaging, API workflows, and model-serving paths for hosted AI workloads
-    - Worked across Docker builds, runtime configuration, environment handling, and Modal/Koyeb deployment flows
-    - Debugged production deployment issues across API, runtime, catalog, and inference layers with attention to observability and operational reliability
-    - Added and reviewed guardrails for billing safety, idempotency, rate limiting, access control, and deployment-safe operational behavior
+}
+
+// Role / project header: bold label on the left, dates flush right.
+#let heading-row(left-body, right-body) = block(
+  below: 2.5pt,
+  grid(
+    columns: (1fr, auto),
+    align: (left, right),
+    left-body,
+    text(size: 9.5pt, fill: soft, right-body),
+  ),
+)
+
+// ── Header ────────────────────────────────────────────────────────────
+#align(center)[
+  #text(size: 22pt, tracking: 0.02em, weight: "semibold")[Ruchir Kalokhe]
+
+  #v(4pt)
+
+  #text(size: 9.8pt, fill: soft)[
+    Pune, India #sym.dot.c
+    +91 85306 62440 #sym.dot.c
+    #link("mailto:ruchirkalokhe@gmail.com")[ruchirkalokhe\@gmail.com] #sym.dot.c
+    #link("https://ruchir.dev")[ruchir.dev] #sym.dot.c
+    #link("https://github.com/ruxir-ig")[github.com/ruxir-ig] #sym.dot.c
+    #link("https://linkedin.com/in/ruchirkalokhe")[linkedin.com/in/ruchirkalokhe]
   ]
 ]
 
-#custom-title("Projects", spacing-between: 0.08em)[
-  #project-heading("TraceLink — Supply Chain Traceability Platform")[
-    - Evolved a hackathon prototype into an actively iterated platform with CI, deployment fixes, runtime configuration, notifications/history handling, and frontend/backend integration
-    - Implemented contaminated-batch tracing with BFS graph propagation, entropy-based anomaly detection, and probabilistic imputation for incomplete records
-    - Continued improving deployment migration, operational reliability, offline-first workflows, and UX for factory shop-floor use
-  ]
+#v(3pt)
 
-  #project-heading("MuseTalk API")[
-    - Built a REST API for real-time talking-head video generation with MuseTalk, including model orchestration and deployment support
-    - Improved inference throughput by 1.8x by optimizing the GFPGAN enhancement pipeline
-    - Worked through runtime dependencies, inference paths, and serving concerns around a GPU-heavy media pipeline
-    - GitHub: https://github.com/ruxir-ig/MuseTalk-API
-  ]
+Engineer working across backend systems and ML infrastructure — multi-provider GPU inference, model
+serving, retrieval and ranking, and the billing, security, and reliability layers that keep them in
+production. Comfortable owning a feature from runtime container to API to evaluation harness.
 
-  #project-heading("SAR Image Colorization (Smart India Hackathon 2024)")[
-    - Built a GAN-based PyTorch model to colorize grayscale SAR satellite imagery into RGB
-    - Implemented encoder-decoder experiments for terrain reconstruction from low-context satellite imagery
-    - Reached Top 25 during internal SIH selections
-    - GitHub: https://github.com/ruxir-ig/SAR-Image-Colorization
-  ]
+// ── Experience ────────────────────────────────────────────────────────
+#section("Experience")
 
-  #project-heading("Open Source & Linux Tooling")[
-    - Maintain *nitch-git* on the Arch User Repository after adopting the abandoned package
-    - Contributed to tooling projects including *ascii-view* and backend utilities
-    - Work in Linux-first environments with attention to packaging, CLI ergonomics, and reproducible development workflows
-  ]
+#heading-row(
+  [*Gen AI Intern, Backend and ML* #h(4pt) #text(fill: soft)[|] #h(4pt) In2peta Services Pvt. Ltd.],
+  [Remote #sym.dot.c Dec 2025 – Present],
+)
+#block(below: 3pt, text(size: 9.2pt, fill: soft)[TypeScript, Fastify, PostgreSQL, Prisma, PgBoss, Docker])
+
+#points(
+  [Built the GPU platform backend in *TypeScript* and *Fastify* — multi-provider inference across
+   Modal, Koyeb, and RunPod with unified runtime contracts, PgBoss job orchestration on PostgreSQL,
+   provider routing, live endpoint resolution, and failover so long-running jobs keep serving when a
+   provider drops.],
+  [Automated Hugging Face model deployment (Dockerfiles, handlers, build workers, Prisma catalog)
+   so models go from registry to a live endpoint without manual packaging.],
+  [Integrated *LTX-2 and LTX-2.3 Distilled* video-generation runtimes with custom handlers, image
+   conditioning, and duration controls up to 60 seconds across Modal, Koyeb, and Docker.],
+  [Implemented usage-based billing and credit reservations across token, character, second, and image
+   modalities — Razorpay payments, invoicing, and idempotent Prisma/PostgreSQL workflows that block
+   overspend before inference runs.],
+  [Hardened Fastify APIs with scoped keys, plan-aware access control, webhook verification,
+   authenticated uploads, and SSRF/private-URL blocking; patched LiteLLM for Fireworks cached-token
+   pricing with regression coverage.],
+  [Owned model lifecycle from catalog registration through container build, provider deploy, live
+   invocation, and usage accounting; diagnosed production failures across API, runtime, and inference.],
+)
+
+// ── Projects ──────────────────────────────────────────────────────────
+#section("Projects")
+
+#heading-row(
+  [#project-link("https://github.com/ruxir-ig/auscult", "Auscult") #h(4pt) #text(fill: soft)[|] #h(4pt) #text(fill: soft)[Privacy-preserving observability for healthcare AI agents]],
+  [Python, Presidio, spaCy],
+)
+
+#points(
+  [Made agent runs auditable without retaining raw PHI — prompts, tool calls, outputs, and errors are
+   sanitized with Presidio/spaCy and deterministic Faker replacements *before* database write.],
+  [Fail-closed capture so sanitizer or queue failures never silently persist unsanitized text; JSON-safe
+   redaction, background writes, replay/export/purge, Alembic migrations, and a PHI eval harness under CI.],
+  [Shipped SDK wrappers and LangChain callbacks so apps get traces without changing their core call
+   path, plus a CLI for inspecting and comparing sanitized runs.],
+)
+
+#v(3pt)
+
+#heading-row(
+  [#project-link("https://github.com/ruxir-ig/candis", "Candis") #h(4pt) #text(fill: soft)[|] #h(4pt) #text(fill: soft)[LLM candidate discovery and ranking over 100K profiles]],
+  [Python, NumPy, embeddings, evals],
+)
+
+#points(
+  [Ranked top candidates from *100K profiles* in *~13 s* on CPU (NumPy path) via honeypot filters,
+   structured fit scoring, availability weighting, cached LLM reranking, and evidence-guided expansion.],
+  [Beat keyword stuffing — *15* injected weak profiles entered the top-100 under keyword matching,
+   *0* under Candis; pairwise LLM audit *83.7% win rate*, hand-qrel NDCG\@10 *0.93+*, prompt-injection
+   audit with *0* effect on final ranking.],
+)
+
+#v(3pt)
+
+#heading-row(
+  [#project-link("https://github.com/ruxir-ig/MuseTalk-API", "MuseTalk API") #h(4pt) #text(fill: soft)[|] #h(4pt) #text(fill: soft)[GPU inference service for real-time lip synchronization]],
+  [FastAPI, Docker, CUDA],
+)
+
+#points(
+  [Turned a research video model into a production GPU FastAPI service — Docker deploy, health checks,
+   model setup, image-driven inference, and chunked downloads for large outputs.],
+  [Cut GFPGAN enhancement time by *~1.8#sym.times* (e.g. *25–28 min → ~15 min* on RTX 4060) by removing
+   redundant face detection; fixed OpenMMLab/MMPose and Docker build-isolation failures.],
+)
+
+#v(3pt)
+
+#heading-row(
+  [#project-link("https://github.com/ruxir-ig/mccia-tracelink", "TraceLink") #h(4pt) #text(fill: soft)[|] #h(4pt) #text(fill: soft)[Manufacturing supply-chain traceability platform]],
+  [FastAPI, React, Docker],
+)
+
+#points(
+  [Shipped a live factory-floor platform (Render + CI) for intake → batches → QC → dispatch → complaints,
+   with forward/reverse tracing and blast-radius / financial-exposure analysis in milliseconds.],
+  [Ingests *40k+ rows in seconds* via batch inserts and SHA-256 duplicate detection; operator UX for
+   searchable traces, notification history, and Firebase-authenticated dashboards.],
+)
+
+#v(2.5pt)
+#text(size: 9pt, fill: soft)[
+  More: #link("https://github.com/ruxir-ig/SAR-Image-Colorization")[SAR Colorization],
+  #link("https://github.com/Harsh-4210/Team-Artemis-")[AssetFlow] —
+  #link("https://github.com/ruxir-ig")[github.com/ruxir-ig]
 ]
 
-#custom-title("Skills", spacing-between: 0.08em)[
-  - *Languages & Frameworks:* Python, TypeScript, JavaScript, Fastify, Node.js, TensorFlow, PyTorch
-  - *ML & Systems:* Model Serving, GPU Inference, SGLang, GANs, Async Systems, REST APIs
-  - *Infrastructure:* Docker, PostgreSQL, Redis, Prisma, BullMQ, Modal, Linux
-]
+// ── Skills ────────────────────────────────────────────────────────────
+#section("Technical Skills")
 
-#custom-title("Education", spacing-between: 0.08em)[
-  #grid(
-    columns: (70%, 30%),
-    align(left)[*PES Modern College of Engineering (Savitribai Phule Pune University)* \
-      B.E. in Artificial Intelligence and Data Science],
-    align(right)[*Pune, India* \
-      Aug 2023 -- Jun 2027],
-  )
-]
+#points(
+  [*Languages* #h(4pt) Python, TypeScript, SQL, C],
+  [*Machine Learning* #h(4pt) PyTorch, TensorFlow, Hugging Face, Diffusers, CUDA, scikit-learn, Presidio, spaCy],
+  [*Backend* #h(4pt) FastAPI, Fastify, Node.js, REST APIs, PgBoss, asynchronous workers, SDK design],
+  [*Infrastructure* #h(4pt) Docker, PostgreSQL, Prisma, Modal, RunPod, Koyeb, GitHub Actions, Linux],
+)
 
-#custom-title("Activities", spacing-between: 0.08em)[
-  - Organizer and contributor at Google Developer Group on Campus PES MCOE hackathons and technical events
-  - Participated in AI and systems hackathons including MCCIA AI Hackathon 2026
-  - Build and maintain practical side projects across ML infrastructure, backend systems, Linux tooling, and web workflows
-]
+// ── Education ─────────────────────────────────────────────────────────
+#section("Education")
+
+#heading-row(
+  [*B.E., Artificial Intelligence and Data Science* #h(4pt) #text(fill: soft)[|] #h(4pt) Savitribai Phule Pune University · PES MCOE],
+  [Pune, India #sym.dot.c Aug 2023 – Jun 2027],
+)
+
+#points(
+  [*Open source & research* #h(4pt) Contributed 24-bit truecolor to _ascii-view_ (C); *maintainer* of
+   _nitch_; GAN SAR-to-RGB colorization in PyTorch (top 25 internal SIH); BB84 QKD simulator.
+   *Community* #h(4pt) GDG on Campus organizer, PES MCOE — IMACE 2026.],
+)

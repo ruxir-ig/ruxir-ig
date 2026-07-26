@@ -1,85 +1,54 @@
 # Ruchir Kalokhe
 
-ruchirkalokhe@gmail.com | +91 85306 62440 | [GitHub](https://github.com/ruxir-ig) | [LinkedIn](https://linkedin.com/in/ruchirkalokhe) | [ruchir.dev](https://ruchir.dev)
+Pune, India · +91 85306 62440 · ruchirkalokhe@gmail.com · [ruchir.dev](https://ruchir.dev) · [github.com/ruxir-ig](https://github.com/ruxir-ig) · [linkedin.com/in/ruchirkalokhe](https://linkedin.com/in/ruchirkalokhe)
 
----
-
-## Summary
-
-Backend and data-oriented engineering student building reliable async pipelines, database-backed services, and production infrastructure. Interested in data engineering, distributed systems, and analytics platforms.
-
-
-## Skills
-
-- Python, SQL, PostgreSQL, Redis, BullMQ, Prisma
- - Docker, REST APIs, async job processing, webhook-based integrations
- - Cloud platforms: Modal, RunPod, Koyeb
- - Applied ML: PyTorch, TensorFlow, scikit-learn
-
+Engineer working across backend systems and ML infrastructure — multi-provider GPU inference, model serving, retrieval and ranking, and the billing, security, and reliability layers that keep them in production. Comfortable owning a feature from runtime container to API to evaluation harness.
 
 ## Experience
 
-### Generative AI Intern
-**In2peta Services Private Limited** | *Remote*
+**Gen AI Intern, Backend and ML** | In2peta Services Pvt. Ltd. · Remote · Dec 2025 – Present
 
-- Built a distributed compute platform that routed long-running jobs across multiple cloud GPU providers with failover for higher service reliability
- - Designed an async processing pipeline using BullMQ and Redis; implemented polling, webhook delivery, retries, and end-to-end job lifecycle tracking
- - Shipped Docker-based REST APIs for production ML workloads, packaging model execution behind stable service interfaces and operational workflows
- - Implemented usage billing and persistence with Prisma ORM and PostgreSQL, tying application events to durable storage while remediating 15+ production security issues
-
-
-
-## Leadership & Activities
-
-### IMACE 2026 - Management Team Member, GDSC PESMCOE
-- Managed, organized, and judged hackathon events for IMACE 2026
- - Coordinated GQuiz Up, Pitch and Innovate, and Poster Presentation events
- - Supported AI/ML community programs and an open innovation hackathon for PES Modern College of Engineering
-
-
+- Built the GPU platform backend in **TypeScript** and **Fastify** — multi-provider inference across Modal, Koyeb, and RunPod with unified runtime contracts, PgBoss job orchestration on PostgreSQL, provider routing, live endpoint resolution, and failover so long-running jobs keep serving when a provider drops.
+- Automated Hugging Face model deployment (Dockerfiles, handlers, build workers, Prisma catalog) so models go from registry to a live endpoint without manual packaging.
+- Integrated **LTX-2 and LTX-2.3 Distilled** video-generation runtimes with custom handlers, image conditioning, and duration controls up to 60 seconds across Modal, Koyeb, and Docker.
+- Implemented usage-based billing and credit reservations across token, character, second, and image modalities — Razorpay payments, invoicing, and idempotent Prisma/PostgreSQL workflows that block overspend before inference runs.
+- Hardened Fastify APIs with scoped keys, plan-aware access control, webhook verification, authenticated uploads, and SSRF/private-URL blocking; patched LiteLLM for Fireworks cached-token pricing with regression coverage.
+- Owned model lifecycle from catalog registration through container build, provider deploy, live invocation, and usage accounting; diagnosed production failures across API, runtime, and inference.
 
 ## Projects
 
-### MINEX - Smart India Hackathon 2025
-- AI-driven sustainability analysis tool for metallurgy with an AutoML and predictive modeling workflow over structured domain data
- - Focused on turning input data into comparable outputs for lifecycle analysis and decision support
- - Website: https://circular-metal-lab.vercel.app/
+**[Auscult](https://github.com/ruxir-ig/auscult)** — Privacy-preserving observability for healthcare AI agents · Python, Presidio, spaCy
 
-### MuseTalk API - Real-Time Lip Synchronization
-- Built a production-oriented REST API for video generation with Docker-based deployment, health checks, and streaming downloads for large outputs
- - Optimized the GFPGAN enhancement pipeline to reduce redundant face detection, improving processing speed by about 1.8x on benchmark runs
- - GitHub: https://github.com/ruxir-ig/MuseTalk-API
+- Made agent runs auditable without retaining raw PHI — prompts, tool calls, outputs, and errors are sanitized with Presidio/spaCy and deterministic Faker replacements before database write.
+- Fail-closed capture so sanitizer or queue failures never silently persist unsanitized text; JSON-safe redaction, background writes, replay/export/purge, Alembic migrations, and a PHI eval harness under CI.
+- Shipped SDK wrappers and LangChain callbacks so apps get traces without changing their core call path, plus a CLI for inspecting and comparing sanitized runs.
 
-### Clawrrency - Cooperative Currency System for AI Bots
-- Designed a TypeScript system for bot-to-bot digital transactions with a SQLite-backed ledger, SDK/CLI packages, and validator-network architecture
- - Modeled protocol components for governance, identity, and transaction validation, emphasizing system design over one-off application logic
- - GitHub: https://github.com/ruxir-ig/clawrrency
+**[Candis](https://github.com/ruxir-ig/candis)** — LLM candidate discovery and ranking over 100K profiles · Python, NumPy, embeddings, evals
 
+- Ranked top candidates from **100K profiles** in **~13 s** on CPU (NumPy path) via honeypot filters, structured fit scoring, availability weighting, cached LLM reranking, and evidence-guided expansion.
+- Beat keyword stuffing — **15** injected weak profiles entered the top-100 under keyword matching, **0** under Candis; pairwise LLM audit **83.7% win rate**, hand-qrel NDCG@10 **0.93+**, prompt-injection audit with **0** effect on final ranking.
 
+**[MuseTalk API](https://github.com/ruxir-ig/MuseTalk-API)** — GPU inference service for real-time lip synchronization · FastAPI, Docker, CUDA
 
-## Certifications
+- Turned a research video model into a production GPU FastAPI service — Docker deploy, health checks, model setup, image-driven inference, and chunked downloads for large outputs.
+- Cut GFPGAN enhancement time by **~1.8×** (e.g. **25–28 min → ~15 min** on RTX 4060) by removing redundant face detection; fixed OpenMMLab/MMPose and Docker build-isolation failures.
 
-- **Python 3.4.3, JavaScript, Java** certificates from Spoken Tutorial, IIT Bombay
+**[TraceLink](https://github.com/ruxir-ig/mccia-tracelink)** — Manufacturing supply-chain traceability platform · FastAPI, React, Docker
 
+- Shipped a live factory-floor platform (Render + CI) for intake → batches → QC → dispatch → complaints, with forward/reverse tracing and blast-radius / financial-exposure analysis in milliseconds.
+- Ingests **40k+ rows in seconds** via batch inserts and SHA-256 duplicate detection; operator UX for searchable traces, notification history, and Firebase-authenticated dashboards.
 
-## Accomplishments
+More: [SAR Colorization](https://github.com/ruxir-ig/SAR-Image-Colorization) · [AssetFlow](https://github.com/Harsh-4210/Team-Artemis-) — [github.com/ruxir-ig](https://github.com/ruxir-ig)
 
-- **Smart India Hackathon** - Top 25 in internal SIH 2024 (SAR Colorization); **HackRx** mentoring and **GeeksVishwa** ranked 23rd
- - **Open Source** - Contributed to ascii-view, nitch and filed a public t3code issue
+## Technical Skills
 
+- **Languages** — Python, TypeScript, SQL, C
+- **Machine Learning** — PyTorch, TensorFlow, Hugging Face, Diffusers, CUDA, scikit-learn, Presidio, spaCy
+- **Backend** — FastAPI, Fastify, Node.js, REST APIs, PgBoss, asynchronous workers, SDK design
+- **Infrastructure** — Docker, PostgreSQL, Prisma, Modal, RunPod, Koyeb, GitHub Actions, Linux
 
 ## Education
 
-### PES Modern College of Engineering (Savitribai Phule Pune University)
-**Bachelors of Engineering** - Artificial Intelligence and Data Science  
-*Pune, India*
+**B.E., Artificial Intelligence and Data Science** | Savitribai Phule Pune University · PES MCOE · Pune, India · Aug 2023 – Jun 2027
 
-- Relevant coursework: Data Structures, Database Management Systems, Artificial Intelligence, Machine Learning
-
-### Hutchings High School & Junior College
-**High School Diploma** - CISCE 10th Board Exam  
-*Pune, India*
-
-- Grade: 84%
-
-
+- **Open source & research** — Contributed 24-bit truecolor to ascii-view (C); maintainer of nitch; GAN SAR-to-RGB colorization in PyTorch (top 25 internal SIH); BB84 QKD simulator. **Community** — GDG on Campus organizer, PES MCOE — IMACE 2026.

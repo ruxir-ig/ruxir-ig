@@ -89,9 +89,18 @@ button {
   inset: 0;
   z-index: var(--z-shader);
   pointer-events: none;
-  opacity: 0.38;
-  contain: strict;
-  transform: translateZ(0);
+  opacity: 1;
+  contain: size layout;
+}
+
+/* Astro islands collapse to 0×0 — force the WebGL host to fill the viewport */
+.site-shader > astro-island,
+.site-shader > astro-island > .atmosphere {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .hero-visual {
@@ -100,20 +109,58 @@ button {
   z-index: calc(var(--z-shader) + 1);
   pointer-events: none;
   overflow: hidden;
-  opacity: var(--hero-fade, 1);
-  will-change: opacity;
+  opacity: 1;
   contain: strict;
 }
 
 .hero-visual__img {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  inset: -2%;
+  width: 104%;
+  height: 104%;
   object-fit: cover;
   object-position: center 42%;
-  filter: saturate(1.05) contrast(1.04);
-  transform: translateZ(0);
+  transform: scale(var(--hero-scroll-scale, 1)) translateZ(0);
+  filter:
+    hue-rotate(var(--hero-hue, 0deg))
+    saturate(var(--hero-sat, 1.05))
+    brightness(calc(var(--hero-bright, 1) * var(--hero-scroll-bright, 1)))
+    contrast(var(--hero-contrast, 1.04))
+    sepia(var(--hero-sepia, 0))
+    blur(var(--hero-scroll-blur, 0px));
+  transition:
+    filter 520ms var(--ease-out),
+    transform 80ms linear,
+    opacity 400ms var(--ease-out);
+  will-change: filter, transform;
+  animation: hero-idle-breathe 14s ease-in-out infinite alternate;
+}
+
+/* When WebGL image shaders are live, the photo is rendered there — hide the static img */
+html[data-atmosphere='live'] .hero-visual__img {
+  opacity: 0;
+  animation: none;
+}
+
+@keyframes hero-idle-breathe {
+  from {
+    filter:
+      hue-rotate(calc(var(--hero-hue, 0deg) - 4deg))
+      saturate(calc(var(--hero-sat, 1.05) * 0.98))
+      brightness(calc(var(--hero-bright, 1) * var(--hero-scroll-bright, 1) * 0.99))
+      contrast(var(--hero-contrast, 1.04))
+      sepia(var(--hero-sepia, 0))
+      blur(var(--hero-scroll-blur, 0px));
+  }
+  to {
+    filter:
+      hue-rotate(calc(var(--hero-hue, 0deg) + 6deg))
+      saturate(calc(var(--hero-sat, 1.05) * 1.06))
+      brightness(calc(var(--hero-bright, 1) * var(--hero-scroll-bright, 1) * 1.02))
+      contrast(calc(var(--hero-contrast, 1.04) * 1.02))
+      sepia(var(--hero-sepia, 0))
+      blur(var(--hero-scroll-blur, 0px));
+  }
 }
 
 .hero-visual__veil {
@@ -122,17 +169,17 @@ button {
   background:
     linear-gradient(
       180deg,
-      oklch(from var(--bg) l c h / 0.15) 0%,
-      transparent 28%,
-      oklch(from var(--bg) l c h / 0.45) 62%,
-      var(--hero-veil-end) 100%
+      oklch(from var(--bg) l c h / 0.12) 0%,
+      transparent 30%,
+      oklch(from var(--bg) l c h / 0.28) 70%,
+      oklch(from var(--bg) l c h / 0.55) 100%
     ),
     linear-gradient(
       90deg,
       var(--hero-veil-side) 0%,
       transparent 38%,
       transparent 62%,
-      oklch(from var(--bg) l c h / 0.25) 100%
+      oklch(from var(--bg) l c h / 0.2) 100%
     );
 }
 
@@ -141,16 +188,16 @@ html[data-theme='light'] .hero-visual__veil {
   background:
     linear-gradient(
       180deg,
-      oklch(0.965 0.006 95 / 0.2) 0%,
-      oklch(0.965 0.006 95 / 0.12) 35%,
-      oklch(0.965 0.006 95 / 0.66) 72%,
-      var(--bg) 100%
+      oklch(0.965 0.006 95 / 0.18) 0%,
+      oklch(0.965 0.006 95 / 0.08) 40%,
+      oklch(0.965 0.006 95 / 0.42) 78%,
+      oklch(0.965 0.006 95 / 0.62) 100%
     ),
     linear-gradient(
       90deg,
-      oklch(0.965 0.006 95 / 0.88) 0%,
-      oklch(0.965 0.006 95 / 0.55) 34%,
-      oklch(0.965 0.006 95 / 0.14) 58%,
+      oklch(0.965 0.006 95 / 0.82) 0%,
+      oklch(0.965 0.006 95 / 0.45) 34%,
+      oklch(0.965 0.006 95 / 0.12) 58%,
       transparent 78%
     );
 }
@@ -159,23 +206,17 @@ html[data-theme='dark'] .hero-visual__veil {
   background:
     linear-gradient(
       180deg,
-      oklch(0.18 0.025 250 / 0.2) 0%,
-      transparent 32%,
-      oklch(0.18 0.025 250 / 0.55) 68%,
-      var(--bg) 100%
+      oklch(0.18 0.025 250 / 0.18) 0%,
+      transparent 36%,
+      oklch(0.18 0.025 250 / 0.35) 72%,
+      oklch(0.18 0.025 250 / 0.55) 100%
     ),
     linear-gradient(
       90deg,
-      oklch(0.18 0.025 250 / 0.78) 0%,
-      oklch(0.18 0.025 250 / 0.42) 36%,
+      oklch(0.18 0.025 250 / 0.72) 0%,
+      oklch(0.18 0.025 250 / 0.35) 36%,
       transparent 62%
     );
-}
-
-/* Texture must stay quieter than text: dark dither fronts are bright,
-   so the page-level opacity has to drop well below the light theme's. */
-html[data-theme='dark'] .site-shader {
-  opacity: 0.3;
 }
 
 @media (max-width: 860px) {
@@ -185,12 +226,9 @@ html[data-theme='dark'] .site-shader {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-visual {
-    opacity: 0.35 !important;
-  }
-
-  html[data-theme='light'] .hero-visual {
-    opacity: 0.2 !important;
+  .hero-visual__img {
+    animation: none;
+    transition: none;
   }
 }
 

@@ -38,8 +38,9 @@
   --space-2xl: 6rem;
   --space-3xl: 9rem;
 
-  --measure: 65ch;
-  --rail: min(1120px, calc(100% - 2.5rem));
+  --measure: 58ch;
+  --rail: min(780px, calc(100% - 2.5rem));
+  --page: min(780px, 100%);
   --nav-h: 4rem;
   --z-nav: 40;
   --z-shader: 0;

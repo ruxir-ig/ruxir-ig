@@ -1,11 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
 import { Atmosphere } from '../components/Atmosphere';
-import { nav, now, profile, projects, thoughts } from '../data/site';
+import { FloatControls } from '../components/FloatControls';
+import { HeroLinks } from '../components/HeroLinks';
+import { profile, projects, thoughts } from '../data/site';
 import '../styles/site.css';
-
-const featured = projects.filter((p) => p.featured);
-const rest = projects.filter((p) => !p.featured);
 ---
 
 <Base>
@@ -29,115 +28,26 @@ const rest = projects.filter((p) => !p.featured);
     </div>
 
     <div class="site-content">
-      <header class="site-nav">
-        <div class="rail site-nav__inner">
-          <a class="site-nav__brand pressable" href="#about">ruchir.dev</a>
-          <nav aria-label="Primary">
-            <ul class="site-nav__links">
-              {
-                nav.map((item) => (
-                  <li>
-                    <a href={item.href}>{item.label}</a>
-                  </li>
-                ))
-              }
-            </ul>
-          </nav>
-          <div class="site-nav__actions">
-            <button
-              type="button"
-              class="site-nav__theme pressable"
-              data-theme-toggle
-              aria-label="Toggle light and dark theme"
-              title="Toggle theme"
-            >
-              <span data-theme-label aria-hidden="true"></span>
-            </button>
-            <a class="site-nav__cta pressable" href={profile.resume}>
-              Resume
-              <span class="site-nav__cta-icon" aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </div>
-      </header>
+      <FloatControls client:load />
 
-      <main>
-        <section class="rail hero" id="about" data-hero>
+      <main class="page">
+        <section class="hero" id="about" data-hero>
           <p class="meta" data-reveal>Pune · Open to opportunities</p>
-          <div class="hero__grid">
-            <div>
-              <h1 class="display" data-reveal>
-                {profile.first}
-                <br />
-                <span class="serif-italic">{profile.last}</span>
-              </h1>
-              <p class="hero__role" data-reveal>{profile.role}</p>
-              <p class="hero__bio lede" data-reveal>{profile.bio}</p>
-              <div class="hero__links" data-reveal>
-                <a href={`mailto:${profile.email}`}>Email</a>
-                <a href={profile.github} rel="noopener noreferrer" target="_blank">GitHub</a>
-                <a href={profile.linkedin} rel="noopener noreferrer" target="_blank">LinkedIn</a>
-                <a href={profile.resume}>Resume PDF</a>
-              </div>
-            </div>
-            <dl class="hero__meta" data-reveal>
-              <div>
-                <dt>Now</dt>
-                <dd>{now.role}</dd>
-                <dd>{now.company}</dd>
-              </div>
-              <div>
-                <dt>Focus</dt>
-                <dd>Backend · ML infra · Research</dd>
-              </div>
-              <div>
-                <dt>Currently</dt>
-                <dd>{now.summary}</dd>
-              </div>
-            </dl>
-          </div>
+          <h1 class="display" data-reveal>
+            {profile.first}
+            <br />
+            <span class="serif-italic">{profile.last}</span>
+          </h1>
+          <p class="hero__role" data-reveal>{profile.role}</p>
+          <p class="hero__bio lede" data-reveal>{profile.bio}</p>
+          <HeroLinks client:visible profile={profile} />
         </section>
 
-        <section class="rail section" id="work">
-          <div class="section__head">
-            <p class="section__kicker">Selected work</p>
-            <h2 class="section-title">Projects that earn a closer look</h2>
-          </div>
-
+        <section class="section" id="work">
+          <h2 class="section-label">Projects</h2>
           <div class="work-list">
             {
-              featured.map((project) => (
-                <a
-                  class="work-item work-item--featured pressable"
-                  href={project.liveHref ?? project.href}
-                  data-shader={project.shader}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  <div>
-                    <h3 class="work-item__title">{project.title}</h3>
-                    <p class="work-item__subtitle">{project.subtitle}</p>
-                    <p class="work-item__desc">{project.description}</p>
-                    <ul class="work-item__highlights">
-                      {project.highlights.map((item) => (
-                        <li>{item}</li>
-                      ))}
-                    </ul>
-                    <ul class="work-item__tags">
-                      {project.tags.map((tag) => (
-                        <li>{tag}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <span class="work-item__side">
-                    <span class="work-item__year">{project.year}</span>
-                    {project.liveHref && <span class="work-item__live">live ↗</span>}
-                  </span>
-                </a>
-              ))
-            }
-            {
-              rest.map((project) => (
+              projects.map((project) => (
                 <a
                   class="work-item pressable"
                   href={project.liveHref ?? project.href}
@@ -145,37 +55,20 @@ const rest = projects.filter((p) => !p.featured);
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  <div>
-                    <h3 class="work-item__title">{project.title}</h3>
-                    <p class="work-item__subtitle">{project.subtitle}</p>
-                    <p class="work-item__desc">{project.description}</p>
-                    <ul class="work-item__tags">
-                      {project.tags.map((tag) => (
-                        <li>{tag}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <span class="work-item__side">
-                    <span class="work-item__year">{project.year}</span>
-                    {project.liveHref && <span class="work-item__live">live ↗</span>}
-                  </span>
+                  <span class="work-item__title">{project.title}</span>
+                  <span class="work-item__desc">{project.subtitle}</span>
                 </a>
               ))
             }
           </div>
         </section>
 
-        <section class="rail section" id="notes">
-          <div class="section__head">
-            <p class="section__kicker">Notes</p>
-            <h2 class="section-title">Short thoughts worth keeping open</h2>
-            <p class="lede">Brief notes from shipping systems that sit between ML, backends, and tooling.</p>
-          </div>
-          <div class="notes-grid">
+        <section class="section" id="notes">
+          <h2 class="section-label">Notes</h2>
+          <div class="notes-list">
             {
               thoughts.map((note) => (
                 <article class="note">
-                  <p class="meta">{note.date}</p>
                   <h3 class="note__title">{note.title}</h3>
                   <p class="note__excerpt">{note.excerpt}</p>
                 </article>
@@ -197,31 +90,17 @@ const rest = projects.filter((p) => !p.featured);
           />
           <div class="site-footer__art-veil"></div>
         </div>
-        <div class="rail site-footer__inner">
-          <div>
-            <button
-              type="button"
-              class="site-footer__sign-btn pressable"
-              data-theme-toggle
-              aria-label="Toggle light and dark theme"
-              title="Toggle theme"
-            >
-              <svg
-                class="site-footer__sign"
-                viewBox="0 0 650 200"
-                width="220"
-                height="60"
-                aria-hidden="true"
-              >
-                <path
-                  d="M 238 40 L 418 40 L 223 160 L 373 100 L 478 40 L 238 40 L 493 100 L 73 100 L 553 100 L 538 40 L 493 100 L 373 100 L 178 40"
-                  stroke="currentColor"
-                  stroke-width="3"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"></path>
-              </svg>
-            </button>
+        <div class="page site-footer__inner">
+          <div class="site-footer__sign" aria-hidden="true">
+            <svg viewBox="0 0 650 200" width="180" height="52">
+              <path
+                d="M 238 40 L 418 40 L 223 160 L 373 100 L 478 40 L 238 40 L 493 100 L 73 100 L 553 100 L 538 40 L 493 100 L 373 100 L 178 40"
+                stroke="currentColor"
+                stroke-width="3"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
           </div>
           <div class="site-footer__contact">
             <a href={`mailto:${profile.email}`}>{profile.email}</a>

@@ -5,20 +5,12 @@ export const profile = {
   role: 'Backend engineer leaning into AI research.',
   tagline:
     'Building backend systems, ML infrastructure, and developer tooling while moving deeper into research.',
-  bio: `Most of my learning has come from experimenting, shipping side projects, breaking systems, and working through the small deployment and product details until they feel right. I am leaning more toward AI research while staying grounded in backend engineering and practical implementation.`,
+  bio: 'Love AI — building with it, and building it.',
   email: 'ruchirkalokhe@gmail.com',
   github: 'https://github.com/ruxir-ig',
   linkedin: 'https://linkedin.com/in/ruchirkalokhe',
   location: 'Pune, India',
   resume: '/resume/ruchir-kalokhe.pdf',
-};
-
-export const now = {
-  role: 'Gen AI Intern — Backend & ML',
-  company: 'In2peta Services Pvt. Ltd.',
-  range: 'Dec 2025 — Present',
-  summary:
-    'GPU platform backend in TypeScript and Fastify: multi-provider inference, job orchestration, model lifecycle, billing safety, and production hardening.',
 };
 
 export type ShaderKey = 'idle' | 'auscult' | 'candis' | 'musetalk' | 'tracelink' | 'sar' | 'other';
@@ -122,25 +114,13 @@ export const projects: Project[] = [
     shader: 'sar',
   },
   {
-    id: 'qkd',
-    title: 'QKD Sim',
-    subtitle: 'BB84 quantum key distribution in the browser',
-    href: 'https://github.com/ruxir-ig/QKD_sim',
-    liveHref: 'https://qkd-sim.vercel.app',
-    tags: ['TypeScript', 'BB84'],
-    description:
-      'Interactive browser simulator for the BB84 protocol, deployed as a shareable build.',
-    highlights: ['Protocol steps made legible for learning and demos'],
-    year: '2025',
-    shader: 'other',
-  },
-  {
     id: 'nitch',
     title: 'nitch',
-    subtitle: 'Fast system-fetch for Linux',
+    subtitle: 'Fast system-fetch for Linux — maintainer',
     href: 'https://github.com/ruxir-ig/nitch',
     tags: ['Nim', 'Linux'],
-    description: 'Incredibly fast system-fetch tooling in Nim, maintained for Linux-first workflows.',
+    description:
+      'Incredibly fast system-fetch tooling in Nim. I maintain it for Linux-first workflows, focused on speed and clarity.',
     highlights: ['Maintainer; focused on speed and clarity'],
     year: '2025',
     shader: 'other',
@@ -175,8 +155,3 @@ export const thoughts: Thought[] = [
   },
 ];
 
-export const nav = [
-  { label: 'About', href: '#about' },
-  { label: 'Work', href: '#work' },
-  { label: 'Notes', href: '#notes' },
-] as const;

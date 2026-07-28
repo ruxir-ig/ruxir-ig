@@ -46,3 +46,7 @@ Thumbs.db
 .vscode/*
 !.vscode/extensions.json
 !.vscode/launch.json
+.cursor/
+
+# Local design references (not needed in repo)
+assets/brand/

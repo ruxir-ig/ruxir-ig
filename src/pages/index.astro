@@ -1,477 +1,234 @@
 ---
 import Base from '../layouts/Base.astro';
-import ProjectArtwork from '../components/ProjectArtwork.astro';
+import { Atmosphere } from '../components/Atmosphere';
+import { nav, now, profile, projects, thoughts } from '../data/site';
+import '../styles/site.css';
 
-const selectedWork = [
-  {
-    title: 'mccia-tracelink',
-    href: '/work',
-    artwork: 'bazaar' as const,
-    featured: true,
-    tags: ['TypeScript', 'Traceability', 'Graph flows'],
-    description: 'Supply-chain traceability platform for contaminated-batch propagation, incomplete records, and factory-floor workflows.',
-  },
-  {
-    title: 'candis',
-    href: '/work',
-    artwork: 'namakura' as const,
-    tags: ['Python', 'Recruiting AI'],
-    description: 'Intelligent candidate discovery tooling for search, scoring, and shortlisting workflows.',
-  },
-  {
-    title: 'auscult',
-    href: '/work',
-    artwork: 'taqi' as const,
-    tags: ['Python', 'Healthcare AI'],
-    description: 'Passive observability layer for healthcare AI agents, focused on monitoring rather than another chat surface.',
-  },
-];
+const featured = projects.filter((p) => p.featured);
+const rest = projects.filter((p) => !p.featured);
 ---
 
-<Base title="Home">
-
-  <!-- ═══ HERO — THE OPENING SHOT ═══ -->
-  <section class="hero">
-    <div class="hero-panel mesh-field hero-animate" style="--delay: 0">
-      <div class="hero-veil"></div>
-      <div class="hero-content">
-        <h1 class="hero-name">
-          <span class="hero-animate" style="--delay: 1">Ruchir</span>
-          <span class="hero-animate" style="--delay: 2">Kalokhe</span>
-        </h1>
-
-        <p class="hero-role hero-animate" style="--delay: 3">
-          Backend engineer leaning into
-          <em>AI&nbsp;research.</em>
-        </p>
-
-        <p class="hero-sub hero-animate" style="--delay: 4">
-          Building backend systems, ML infrastructure, and developer tooling —
-          moving deeper into research while staying grounded in
-          practical implementation.
-        </p>
-
-        <div class="hero-cta hero-animate" style="--delay: 5">
-          <a href="/work" class="btn-pill">View Work <span class="arrow">→</span></a>
-          <a href="mailto:ruchirkalokhe@gmail.com" class="btn-ghost">Get in Touch</a>
-        </div>
-      </div>
-
-      <div class="hero-scroll hero-animate" style="--delay: 6">
-        <span>Scroll</span>
-        <div class="scroll-line"></div>
-      </div>
+<Base>
+  <div class="site-shell">
+    <div class="site-shader">
+      <Atmosphere client:load />
     </div>
-  </section>
 
+    <div class="hero-visual" data-hero-visual aria-hidden="true">
+      <img
+        class="hero-visual__img"
+        data-hero-img
+        src="/visuals/hero-coast.jpg"
+        alt=""
+        width="1024"
+        height="574"
+        decoding="async"
+        fetchpriority="high"
+      />
+      <div class="hero-visual__veil"></div>
+    </div>
 
-  <!-- ═══ ABOUT — THE PULL QUOTE ═══ -->
-  <section class="section about-section">
-    <div class="container">
-      <div data-reveal>
-        <span class="section-label">01 — About</span>
-      </div>
-
-      <div class="about-grid">
-        <blockquote class="about-quote" data-reveal style="--stagger: 1">
-          "I like building things that sit somewhere between ML, web engineering, and developer tooling."
-        </blockquote>
-
-        <div class="about-details" data-reveal style="--stagger: 2">
-          <div class="detail-item">
-            <span class="detail-label">Currently</span>
-            <span class="detail-value">Gen AI Intern @ In2peta</span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">Education</span>
-            <span class="detail-value">B.E. in AI & Data Science</span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">University</span>
-            <span class="detail-value">PES Modern College, Pune</span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">Focus</span>
-            <span class="detail-value">AI Research · Backend · Systems</span>
+    <div class="site-content">
+      <header class="site-nav">
+        <div class="rail site-nav__inner">
+          <a class="site-nav__brand pressable" href="#about">ruchir.dev</a>
+          <nav aria-label="Primary">
+            <ul class="site-nav__links">
+              {
+                nav.map((item) => (
+                  <li>
+                    <a href={item.href}>{item.label}</a>
+                  </li>
+                ))
+              }
+            </ul>
+          </nav>
+          <div class="site-nav__actions">
+            <button
+              type="button"
+              class="site-nav__theme pressable"
+              data-theme-toggle
+              aria-label="Toggle light and dark theme"
+              title="Toggle theme"
+            >
+              <span data-theme-label aria-hidden="true"></span>
+            </button>
+            <a class="site-nav__cta pressable" href={profile.resume}>
+              Resume
+              <span class="site-nav__cta-icon" aria-hidden="true">↗</span>
+            </a>
           </div>
         </div>
-      </div>
+      </header>
 
-      <p class="about-body" data-reveal style="--stagger: 3">
-        Most of my learning has come from experimenting, shipping side projects, breaking systems,
-        and working through the small deployment and product details until they feel right.
-        I am now leaning more toward AI research while staying grounded in backend engineering,
-        systems thinking, and practical implementation.
-      </p>
-
-      <div class="about-skills" data-reveal style="--stagger: 4">
-        <span class="tag">Python</span>
-        <span class="tag">TypeScript</span>
-        <span class="tag">PyTorch</span>
-        <span class="tag">TensorFlow</span>
-        <span class="tag">Fastify</span>
-        <span class="tag">Docker</span>
-        <span class="tag">PostgreSQL</span>
-        <span class="tag">Redis</span>
-        <span class="tag">Prisma</span>
-        <span class="tag">BullMQ</span>
-        <span class="tag">SGLang</span>
-        <span class="tag">Linux</span>
-        <span class="tag">Modal</span>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ═══ SELECTED WORK ═══ -->
-  <section class="section work-preview">
-    <div class="container">
-      <div data-reveal>
-        <span class="section-label">02 — Selected Work</span>
-        <h2 class="section-title">Beyond the Terminal.</h2>
-      </div>
-
-      <div class="work-grid">
-        {selectedWork.map((project, index) => (
-          <a
-            href={project.href}
-            class:list={['work-card', { 'work-card--featured': project.featured }]}
-            data-reveal
-            style={`--stagger: ${index + 1}`}
-          >
-            <ProjectArtwork artwork={project.artwork} title={project.title} wide={project.featured} />
-            <div class="work-card-inner">
-              <div class="work-card-tags">
-                {project.tags.map((tag, tagIndex) => (
-                  <span class:list={['tag', { 'tag--accent': index === 0 && tagIndex === 0, 'tag--cold': index !== 0 && tagIndex === 0 }]}>{tag}</span>
-                ))}
+      <main>
+        <section class="rail hero" id="about" data-hero>
+          <p class="meta" data-reveal>Pune · Open to opportunities</p>
+          <div class="hero__grid">
+            <div>
+              <h1 class="display" data-reveal>
+                {profile.first}
+                <br />
+                <span class="serif-italic">{profile.last}</span>
+              </h1>
+              <p class="hero__role" data-reveal>{profile.role}</p>
+              <p class="hero__bio lede" data-reveal>{profile.bio}</p>
+              <div class="hero__links" data-reveal>
+                <a href={`mailto:${profile.email}`}>Email</a>
+                <a href={profile.github} rel="noopener noreferrer" target="_blank">GitHub</a>
+                <a href={profile.linkedin} rel="noopener noreferrer" target="_blank">LinkedIn</a>
+                <a href={profile.resume}>Resume PDF</a>
               </div>
-              <h3 class="work-card-title">{project.title}</h3>
-              <p class="work-card-desc">{project.description}</p>
-              <span class="work-card-link">View Project -></span>
             </div>
-          </a>
-        ))}
-      </div>
+            <dl class="hero__meta" data-reveal>
+              <div>
+                <dt>Now</dt>
+                <dd>{now.role}</dd>
+                <dd>{now.company}</dd>
+              </div>
+              <div>
+                <dt>Focus</dt>
+                <dd>Backend · ML infra · Research</dd>
+              </div>
+              <div>
+                <dt>Currently</dt>
+                <dd>{now.summary}</dd>
+              </div>
+            </dl>
+          </div>
+        </section>
 
-      <div class="work-cta" data-reveal style="--stagger: 4">
-        <a href="/work" class="btn-ghost">All Projects & Career →</a>
-      </div>
+        <section class="rail section" id="work">
+          <div class="section__head">
+            <p class="section__kicker">Selected work</p>
+            <h2 class="section-title">Projects that earn a closer look</h2>
+          </div>
+
+          <div class="work-list">
+            {
+              featured.map((project) => (
+                <a
+                  class="work-item work-item--featured pressable"
+                  href={project.liveHref ?? project.href}
+                  data-shader={project.shader}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <div>
+                    <h3 class="work-item__title">{project.title}</h3>
+                    <p class="work-item__subtitle">{project.subtitle}</p>
+                    <p class="work-item__desc">{project.description}</p>
+                    <ul class="work-item__highlights">
+                      {project.highlights.map((item) => (
+                        <li>{item}</li>
+                      ))}
+                    </ul>
+                    <ul class="work-item__tags">
+                      {project.tags.map((tag) => (
+                        <li>{tag}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <span class="work-item__side">
+                    <span class="work-item__year">{project.year}</span>
+                    {project.liveHref && <span class="work-item__live">live ↗</span>}
+                  </span>
+                </a>
+              ))
+            }
+            {
+              rest.map((project) => (
+                <a
+                  class="work-item pressable"
+                  href={project.liveHref ?? project.href}
+                  data-shader={project.shader}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <div>
+                    <h3 class="work-item__title">{project.title}</h3>
+                    <p class="work-item__subtitle">{project.subtitle}</p>
+                    <p class="work-item__desc">{project.description}</p>
+                    <ul class="work-item__tags">
+                      {project.tags.map((tag) => (
+                        <li>{tag}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <span class="work-item__side">
+                    <span class="work-item__year">{project.year}</span>
+                    {project.liveHref && <span class="work-item__live">live ↗</span>}
+                  </span>
+                </a>
+              ))
+            }
+          </div>
+        </section>
+
+        <section class="rail section" id="notes">
+          <div class="section__head">
+            <p class="section__kicker">Notes</p>
+            <h2 class="section-title">Short thoughts worth keeping open</h2>
+            <p class="lede">Brief notes from shipping systems that sit between ML, backends, and tooling.</p>
+          </div>
+          <div class="notes-grid">
+            {
+              thoughts.map((note) => (
+                <article class="note">
+                  <p class="meta">{note.date}</p>
+                  <h3 class="note__title">{note.title}</h3>
+                  <p class="note__excerpt">{note.excerpt}</p>
+                </article>
+              ))
+            }
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer" id="contact">
+        <div class="site-footer__art" aria-hidden="true">
+          <img
+            src="/visuals/footer-sunset.jpg"
+            alt=""
+            width="1024"
+            height="576"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="site-footer__art-veil"></div>
+        </div>
+        <div class="rail site-footer__inner">
+          <div>
+            <button
+              type="button"
+              class="site-footer__sign-btn pressable"
+              data-theme-toggle
+              aria-label="Toggle light and dark theme"
+              title="Toggle theme"
+            >
+              <svg
+                class="site-footer__sign"
+                viewBox="0 0 650 200"
+                width="220"
+                height="60"
+                aria-hidden="true"
+              >
+                <path
+                  d="M 238 40 L 418 40 L 223 160 L 373 100 L 478 40 L 238 40 L 493 100 L 73 100 L 553 100 L 538 40 L 493 100 L 373 100 L 178 40"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+            </button>
+          </div>
+          <div class="site-footer__contact">
+            <a href={`mailto:${profile.email}`}>{profile.email}</a>
+            <a href={profile.github} rel="noopener noreferrer" target="_blank">github.com/ruxir-ig</a>
+          </div>
+        </div>
+      </footer>
     </div>
-  </section>
-
+  </div>
 </Base>
-
-
-<style>
-  /* ─── HERO ─── */
-  .hero {
-    padding: 88px var(--gutter) var(--space-12);
-  }
-
-  .hero-panel {
-    position: relative;
-    min-height: calc(100vh - 88px - var(--space-12));
-    border-radius: var(--radius-panel);
-    overflow: hidden;
-    border: 1px solid var(--border-subtle);
-    box-shadow: var(--shadow-lg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .hero-veil {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    background: radial-gradient(
-      ellipse at center,
-      transparent 30%,
-      rgba(10, 10, 10, 0.55) 100%
-    );
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    max-width: 780px;
-    padding: var(--space-20) var(--gutter);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .hero-name {
-    font-family: var(--font-display);
-    font-weight: 400;
-    font-size: clamp(56px, 9vw, 108px);
-    line-height: 0.95;
-    letter-spacing: -0.02em;
-    color: var(--text-primary);
-    margin: var(--space-6) 0 var(--space-5);
-  }
-
-  .hero-name span {
-    display: block;
-  }
-
-  .hero-role {
-    font-family: var(--font-display);
-    font-size: clamp(22px, 2.7vw, 34px);
-    font-weight: 400;
-    line-height: 1.3;
-    color: var(--text-secondary);
-    margin-bottom: var(--space-5);
-    max-width: 640px;
-  }
-
-  .hero-role em {
-    font-style: italic;
-    font-family: var(--font-display);
-    color: var(--accent-amber);
-    white-space: nowrap;
-  }
-
-  .hero-sub {
-    font-family: var(--font-body);
-    font-size: var(--text-body);
-    color: var(--text-tertiary);
-    max-width: 520px;
-    margin-bottom: var(--space-10);
-    line-height: 1.7;
-  }
-
-  .hero-cta {
-    display: flex;
-    gap: var(--space-4);
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  /* Hero staggered entrance - page load animation */
-  .hero-animate {
-    opacity: 0;
-    transform: translateY(24px);
-    animation: hero-reveal 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-    animation-delay: calc(var(--delay) * 120ms + 200ms);
-  }
-
-  @keyframes hero-reveal {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Scroll indicator */
-  .hero-scroll {
-    position: absolute;
-    bottom: 32px;
-    right: 32px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-3);
-    z-index: 3;
-  }
-
-  .hero-scroll span {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--text-ghost);
-    writing-mode: vertical-rl;
-  }
-
-  .scroll-line {
-    width: 1px;
-    height: 48px;
-    background: linear-gradient(to bottom, var(--text-ghost), transparent);
-    animation: scroll-pulse 2s ease-in-out infinite;
-  }
-
-  @keyframes scroll-pulse {
-    0%, 100% { opacity: 1; transform: scaleY(1); }
-    50% { opacity: 0.3; transform: scaleY(0.6); }
-  }
-
-
-  /* ─── ABOUT ─── */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: var(--space-12);
-    margin-bottom: var(--space-12);
-    align-items: start;
-  }
-
-  .about-quote {
-    font-family: var(--font-display);
-    font-size: clamp(24px, 3vw, 36px);
-    font-weight: 400;
-    font-style: italic;
-    line-height: 1.35;
-    color: var(--text-primary);
-    border-left: 2px solid var(--accent-primary);
-    padding-left: var(--space-8);
-    margin: 0;
-  }
-
-  .about-details {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-5);
-    padding-top: var(--space-2);
-  }
-
-  .detail-item {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  .detail-label {
-    font-family: var(--font-mono);
-    font-size: var(--text-label);
-    font-weight: var(--text-label-weight);
-    letter-spacing: var(--text-label-ls);
-    text-transform: uppercase;
-    color: var(--text-ghost);
-  }
-
-  .detail-value {
-    font-family: var(--font-body);
-    font-size: var(--text-body-sm);
-    color: var(--text-secondary);
-  }
-
-  .about-body {
-    font-size: var(--text-body-lg);
-    line-height: 1.7;
-    color: var(--text-secondary);
-    max-width: 720px;
-    margin-bottom: var(--space-10);
-  }
-
-  .about-skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-  }
-
-
-  /* ─── WORK PREVIEW ─── */
-  .work-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-4);
-    margin-bottom: var(--space-8);
-  }
-
-  .work-card {
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    background: var(--surface-raised);
-    border: 1px solid var(--border-default);
-    border-radius: var(--radius-card);
-    overflow: hidden;
-    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1),
-                border-color 300ms cubic-bezier(0.23, 1, 0.32, 1),
-                box-shadow 300ms cubic-bezier(0.23, 1, 0.32, 1);
-    position: relative;
-  }
-
-  .work-card:hover {
-    border-color: var(--border-strong);
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-  }
-
-  .work-card:active {
-    transform: translateY(-2px) scale(0.995);
-  }
-
-  .work-card--featured {
-    grid-column: 1 / -1;
-  }
-
-  .work-card--featured .mesh-cover {
-    aspect-ratio: 21 / 7;
-  }
-
-  .work-card :global(.project-art) {
-    border-radius: 0;
-  }
-
-  .work-card--featured .work-card-inner {
-    padding: var(--space-10) var(--space-12);
-  }
-
-  .work-card-inner {
-    padding: var(--space-8);
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-
-  .work-card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-    margin-bottom: var(--space-5);
-  }
-
-  .work-card-title {
-    font-family: var(--font-display);
-    font-size: var(--text-h3);
-    font-weight: 400;
-    color: var(--text-primary);
-    margin-bottom: var(--space-3);
-  }
-
-  .work-card-desc {
-    font-size: var(--text-body-sm);
-    color: var(--text-tertiary);
-    max-width: 560px;
-    margin-bottom: var(--space-5);
-    line-height: 1.6;
-  }
-
-  .work-card-link {
-    font-family: var(--font-mono);
-    font-size: var(--text-label);
-    letter-spacing: var(--text-label-ls);
-    text-transform: uppercase;
-    color: var(--accent-primary);
-    transition: color 0.2s ease;
-    margin-top: auto;
-  }
-
-  .work-card:hover .work-card-link { color: var(--accent-primary-hover); }
-
-  .work-cta {
-    text-align: center;
-    padding-top: var(--space-4);
-  }
-
-  /* ─── RESPONSIVE ─── */
-  @media (max-width: 768px) {
-    .hero { padding: 76px var(--margin-mobile) var(--space-10); }
-    .hero-panel { min-height: calc(100vh - 76px - var(--space-10)); }
-    .hero-content { padding: var(--space-16) var(--space-6); }
-    .hero-cta { flex-direction: column; width: 100%; }
-    .hero-cta .btn-pill,
-    .hero-cta .btn-ghost { text-align: center; justify-content: center; }
-    .hero-scroll { display: none; }
-    .about-grid { grid-template-columns: 1fr; gap: var(--space-8); }
-    .work-grid { grid-template-columns: 1fr; }
-    .work-card--featured { grid-column: auto; }
-    .work-card--featured .mesh-cover { aspect-ratio: 5 / 3; }
-    .work-card--featured .work-card-inner { padding: var(--space-8); }
-  }
-</style>

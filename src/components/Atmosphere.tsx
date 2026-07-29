@@ -16,6 +16,7 @@ type Mood = {
 
 const moods: Record<ShaderKey, Mood> = {
   idle: { hue: '0deg', sat: '1.05', bright: '1', contrast: '1.04', sepia: '0' },
+  assetflow: { hue: '165deg', sat: '0.92', bright: '0.98', contrast: '1.1', sepia: '0.04' },
   auscult: { hue: '95deg', sat: '0.78', bright: '0.96', contrast: '1.08', sepia: '0.12' },
   candis: { hue: '-18deg', sat: '1.25', bright: '1.04', contrast: '1.1', sepia: '0.18' },
   musetalk: { hue: '200deg', sat: '0.9', bright: '0.98', contrast: '1.06', sepia: '0.05' },
@@ -72,6 +73,22 @@ const presets: Record<ShaderKey, DitherPreset | GlassPreset> = {
     originalColors: true,
     inverted: false,
     speed: 0.12,
+  },
+  assetflow: {
+    kind: 'glass',
+    shape: 'pattern',
+    distortionShape: 'flat',
+    size: 0.44,
+    angle: 18,
+    distortion: 0.48,
+    blur: 0.1,
+    shadows: 0.34,
+    highlights: 0.2,
+    stretch: 0.12,
+    grainOverlay: 0.06,
+    colorShadow: '#162d35',
+    colorHighlight: '#b9e4dc',
+    speed: 0.32,
   },
   auscult: {
     kind: 'glass',

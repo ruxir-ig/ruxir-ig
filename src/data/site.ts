@@ -13,7 +13,15 @@ export const profile = {
   resume: '/resume/ruchir-kalokhe.pdf',
 };
 
-export type ShaderKey = 'idle' | 'auscult' | 'candis' | 'musetalk' | 'tracelink' | 'sar' | 'other';
+export type ShaderKey =
+  | 'idle'
+  | 'assetflow'
+  | 'auscult'
+  | 'candis'
+  | 'musetalk'
+  | 'tracelink'
+  | 'sar'
+  | 'other';
 
 export interface Project {
   id: string;
@@ -30,6 +38,23 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    id: 'assetflow',
+    title: 'AssetFlow',
+    subtitle: 'Enterprise asset and resource management for the Odoo Hackathon',
+    href: 'https://github.com/ruxir-ig/AssetFlow',
+    tags: ['React', 'Express', 'PostgreSQL'],
+    description:
+      'Tracks physical assets, shared-resource bookings, maintenance approvals, and audit cycles through role-based workflows.',
+    highlights: [
+      'Blocks double-allocation and overlapping bookings in the service layer',
+      'Approval-driven maintenance, transfers, and audit consequences',
+      'React and Express monorepo backed by PostgreSQL and Prisma',
+    ],
+    year: '2026',
+    featured: true,
+    shader: 'assetflow',
+  },
   {
     id: 'auscult',
     title: 'Auscult',
@@ -154,4 +179,3 @@ export const thoughts: Thought[] = [
       'The interesting work is rarely the model alone. Health checks, packaging, and cutting redundant detection often matter more than another parameter tweak.',
   },
 ];
-

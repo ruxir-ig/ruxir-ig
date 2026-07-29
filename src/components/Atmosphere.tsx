@@ -192,10 +192,6 @@ function resolveMaxPixels() {
   return gecko ? 480_000 : 900_000;
 }
 
-function isDarkTheme() {
-  return typeof document !== 'undefined' && document.documentElement.dataset.theme === 'dark';
-}
-
 function applyMood(key: ShaderKey) {
   const mood = moods[key];
   const root = document.documentElement;
@@ -216,7 +212,6 @@ export function Atmosphere() {
   const [reduceMotion, setReduceMotion] = useState(true);
   const [variant, setVariant] = useState<ShaderKey>('idle');
   const [paused, setPaused] = useState(false);
-  const [dark, setDark] = useState(false);
   const [maxPixels, setMaxPixels] = useState(900_000);
   const softTimer = useRef<number | null>(null);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -224,7 +219,6 @@ export function Atmosphere() {
 
   useEffect(() => {
     setMaxPixels(resolveMaxPixels());
-    setDark(isDarkTheme());
     applyMood('idle');
 
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -236,12 +230,6 @@ export function Atmosphere() {
     };
     updateMotion();
     motion.addEventListener('change', updateMotion);
-
-    const onTheme = () => {
-      setDark(isDarkTheme());
-      applyMood(variantRef.current);
-    };
-    window.addEventListener('themechange', onTheme);
 
     const applyVariant = (key: ShaderKey) => {
       if (variantRef.current === key) return;
@@ -293,7 +281,6 @@ export function Atmosphere() {
 
     return () => {
       motion.removeEventListener('change', updateMotion);
-      window.removeEventListener('themechange', onTheme);
       work?.removeEventListener('pointerover', onEnter);
       work?.removeEventListener('focusin', onEnter);
       work?.removeEventListener('pointerleave', onLeaveWork);
@@ -325,9 +312,9 @@ export function Atmosphere() {
               image={HERO_IMAGE}
               fit="cover"
               scale={1}
-              colorFront={dark ? ditherPreset.darkFront : ditherPreset.colorFront}
-              colorBack={dark ? ditherPreset.darkBack : ditherPreset.colorBack}
-              colorHighlight={dark ? ditherPreset.darkHighlight : ditherPreset.colorHighlight}
+              colorFront={ditherPreset.darkFront}
+              colorBack={ditherPreset.darkBack}
+              colorHighlight={ditherPreset.darkHighlight}
               type={ditherPreset.type}
               size={ditherPreset.size}
               colorSteps={ditherPreset.colorSteps}

@@ -1,53 +1,4 @@
 :root {
-  /* Soft chalk field, charcoal ink, oxblood accent */
-  color-scheme: light;
-  --bg: oklch(0.965 0.006 95);
-  --bg-elevated: oklch(0.985 0.004 95);
-  --ink: oklch(0.22 0.02 40);
-  --ink-muted: oklch(0.42 0.02 40);
-  --ink-faint: oklch(0.58 0.015 40);
-  --line: oklch(0.22 0.02 40 / 0.12);
-  --accent: oklch(0.42 0.12 25);
-  --accent-soft: oklch(0.42 0.12 25 / 0.12);
-  --glass: oklch(0.965 0.006 95 / 0.42);
-  --glass-border: oklch(0.22 0.02 40 / 0.1);
-  --hero-veil-side: oklch(0.965 0.006 95 / 0.72);
-  --hero-veil-end: var(--bg);
-  --shader-back: #f3f1ec;
-  --theme-color: #f3f1ec;
-
-  --shader-idle: #8a8078;
-  --shader-auscult: #5c6b5a;
-  --shader-candis: #7a4e3a;
-  --shader-musetalk: #4a5a6b;
-  --shader-tracelink: #6b4f3a;
-  --shader-sar: #5a5e4a;
-  --shader-other: #6a5a4a;
-
-  --font-display: 'Instrument Serif', 'Times New Roman', serif;
-  --font-mono: 'Space Mono', ui-monospace, monospace;
-
-  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
-
-  --space-xs: 0.5rem;
-  --space-sm: 0.75rem;
-  --space-md: 1.25rem;
-  --space-lg: 2rem;
-  --space-xl: 3.5rem;
-  --space-2xl: 6rem;
-  --space-3xl: 9rem;
-
-  --measure: 58ch;
-  --rail: min(780px, calc(100% - 2.5rem));
-  --page: min(780px, 100%);
-  --nav-h: 4rem;
-  --z-nav: 40;
-  --z-shader: 0;
-  --z-content: 1;
-}
-
-html[data-theme='dark'] {
   color-scheme: dark;
   /* Night coast: deep teal-navy, warm sunset accent */
   --bg: oklch(0.18 0.025 250);
@@ -72,15 +23,32 @@ html[data-theme='dark'] {
   --shader-tracelink: #b88a5a;
   --shader-sar: #7a8a6a;
   --shader-other: #8a7a6a;
+
+  --font-display: 'Instrument Serif', 'Times New Roman', serif;
+  --font-mono: 'Space Mono', ui-monospace, monospace;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3.5rem;
+  --space-2xl: 6rem;
+  --space-3xl: 9rem;
+
+  --measure: 58ch;
+  --rail: min(780px, calc(100% - 2.5rem));
+  --page: min(780px, 100%);
+  --nav-h: 4rem;
+  --z-nav: 40;
+  --z-shader: 0;
+  --z-content: 1;
 }
 
 @media (prefers-reduced-transparency: reduce) {
   :root {
-    --accent-soft: oklch(0.9 0.03 25);
-    --glass: oklch(0.965 0.006 95 / 0.94);
-  }
-
-  html[data-theme='dark'] {
     --accent-soft: oklch(0.35 0.06 45);
     --glass: oklch(0.22 0.03 250 / 0.94);
   }

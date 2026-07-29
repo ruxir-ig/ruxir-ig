@@ -17,7 +17,7 @@ const ogImage = new URL('/visuals/hero-coast.jpg', Astro.site);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -34,21 +34,6 @@ const ogImage = new URL('/visuals/hero-coast.jpg', Astro.site);
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
-    <script is:inline>
-      (() => {
-        const stored = localStorage.getItem('theme');
-        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const theme =
-          stored === 'light' || stored === 'dark'
-            ? stored
-            : systemDark
-              ? 'dark'
-              : 'light';
-        document.documentElement.dataset.theme = theme;
-        const meta = document.querySelector('meta[name="theme-color"]');
-        if (meta) meta.setAttribute('content', theme === 'dark' ? '#141a28' : '#f3f1ec');
-      })();
-    </script>
     <link rel="icon" href="/favicon.png" type="image/png" sizes="128x128" />
     <link rel="apple-touch-icon" href="/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -63,30 +48,5 @@ const ogImage = new URL('/visuals/hero-coast.jpg', Astro.site);
     <a class="skip-link" href="#about">Skip to content</a>
     <SmoothScroll />
     <slot />
-    <script>
-      const root = document.documentElement;
-      const meta = document.querySelector('meta[name="theme-color"]');
-      const media = window.matchMedia('(prefers-color-scheme: dark)');
-
-      const applyTheme = (theme, { persist = true } = {}) => {
-        root.dataset.theme = theme;
-        if (persist) localStorage.setItem('theme', theme);
-        if (meta) meta.setAttribute('content', theme === 'dark' ? '#141a28' : '#f3f1ec');
-        window.dispatchEvent(new CustomEvent('themechange', { detail: { theme } }));
-      };
-
-      document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
-        button.addEventListener('click', () => {
-          const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
-          applyTheme(next);
-        });
-      });
-
-      // Follow system when user hasn't chosen yet
-      media.addEventListener('change', (event) => {
-        if (localStorage.getItem('theme')) return;
-        applyTheme(event.matches ? 'dark' : 'light', { persist: false });
-      });
-    </script>
   </body>
 </html>

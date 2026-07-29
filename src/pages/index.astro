@@ -1,7 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
 import { Atmosphere } from '../components/Atmosphere';
-import { FloatControls } from '../components/FloatControls';
 import { HeroLinks } from '../components/HeroLinks';
 import { profile, projects, thoughts } from '../data/site';
 import '../styles/site.css';
@@ -28,8 +27,6 @@ import '../styles/site.css';
     </div>
 
     <div class="site-content">
-      <FloatControls client:load />
-
       <main class="page">
         <section class="hero" id="about" data-hero>
           <p class="meta" data-reveal>Pune · Open to opportunities</p>

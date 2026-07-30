@@ -1,35 +1,11 @@
 ---
-/** Lenis scroll + keep coast photo; animate filters instead of fading it away */
+/** Lenis smooth scroll — hero stays fixed; no scroll-driven zoom */
 ---
 
 <script>
   import Lenis from 'lenis';
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const root = document.documentElement;
-  const hero = document.querySelector('[data-hero]');
-
-  const updateHeroFilters = (scrollY = window.scrollY) => {
-    if (!hero) return;
-
-    if (reduceMotion) {
-      root.style.setProperty('--hero-scroll-bright', '1');
-      root.style.setProperty('--hero-scroll-blur', '0px');
-      root.style.setProperty('--hero-scroll-scale', '1');
-      return;
-    }
-
-    const range = Math.max(hero.offsetHeight * 0.85, window.innerHeight * 0.55);
-    const progress = Math.min(Math.max(scrollY / range, 0), 1);
-    const eased = progress * progress;
-
-    // Keep the photo — just breathe it: slight dim + micro blur + slow zoom
-    root.style.setProperty('--hero-scroll-bright', (1 - eased * 0.18).toFixed(3));
-    root.style.setProperty('--hero-scroll-blur', `${(eased * 1.25).toFixed(2)}px`);
-    root.style.setProperty('--hero-scroll-scale', (1 + eased * 0.04).toFixed(4));
-  };
-
-  updateHeroFilters();
 
   if (!reduceMotion) {
     const isGecko = CSS.supports('-moz-appearance', 'none');
@@ -47,7 +23,6 @@
 
     let scrolling = false;
     let idleTimer = 0;
-    let rafQueued = false;
 
     const setScrolling = (active) => {
       if (scrolling === active) return;
@@ -55,20 +30,12 @@
       document.documentElement.toggleAttribute('data-scrolling', active);
     };
 
-    lenis.on('scroll', ({ scroll, velocity }) => {
+    lenis.on('scroll', ({ velocity }) => {
       const moving = Math.abs(velocity) > 0.08;
       if (moving) {
         setScrolling(true);
         window.clearTimeout(idleTimer);
         idleTimer = window.setTimeout(() => setScrolling(false), 120);
-      }
-
-      if (!rafQueued) {
-        rafQueued = true;
-        requestAnimationFrame(() => {
-          rafQueued = false;
-          updateHeroFilters(scroll);
-        });
       }
     });
 
@@ -80,9 +47,5 @@
       },
       { passive: true },
     );
-
-    window.addEventListener('resize', () => updateHeroFilters(lenis.scroll), { passive: true });
-  } else {
-    window.addEventListener('scroll', () => updateHeroFilters(), { passive: true });
   }
 </script>

@@ -17,14 +17,13 @@
 .atmosphere__shader {
   position: absolute;
   inset: 0;
-  /* Mood + scroll filters — no transform (breaks Paper device-pixel sizing) */
+  /* Mood filters only — no transform (breaks Paper device-pixel sizing) */
   filter:
     hue-rotate(var(--hero-hue, 0deg))
     saturate(var(--hero-sat, 1.05))
-    brightness(calc(var(--hero-bright, 1) * var(--hero-scroll-bright, 1)))
+    brightness(var(--hero-bright, 1))
     contrast(var(--hero-contrast, 1.04))
-    sepia(var(--hero-sepia, 0))
-    blur(var(--hero-scroll-blur, 0px));
+    sepia(var(--hero-sepia, 0));
   transition: filter 520ms var(--ease-out), opacity 420ms var(--ease-out);
   will-change: filter;
   animation: hero-idle-breathe 14s ease-in-out infinite alternate;
@@ -52,19 +51,17 @@
     filter:
       hue-rotate(calc(var(--hero-hue, 0deg) - 4deg))
       saturate(calc(var(--hero-sat, 1.05) * 0.98))
-      brightness(calc(var(--hero-bright, 1) * var(--hero-scroll-bright, 1) * 0.99))
+      brightness(calc(var(--hero-bright, 1) * 0.99))
       contrast(var(--hero-contrast, 1.04))
-      sepia(var(--hero-sepia, 0))
-      blur(var(--hero-scroll-blur, 0px));
+      sepia(var(--hero-sepia, 0));
   }
   to {
     filter:
       hue-rotate(calc(var(--hero-hue, 0deg) + 6deg))
       saturate(calc(var(--hero-sat, 1.05) * 1.06))
-      brightness(calc(var(--hero-bright, 1) * var(--hero-scroll-bright, 1) * 1.02))
+      brightness(calc(var(--hero-bright, 1) * 1.02))
       contrast(calc(var(--hero-contrast, 1.04) * 1.02))
-      sepia(var(--hero-sepia, 0))
-      blur(var(--hero-scroll-blur, 0px));
+      sepia(var(--hero-sepia, 0));
   }
 }
 

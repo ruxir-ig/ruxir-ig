@@ -32,7 +32,7 @@ export function HeroLinks({ profile }: { profile: Profile }) {
         </span>
         <span className="hero__link-label">LinkedIn</span>
       </a>
-      <a className="hero__link" href={profile.resume}>
+      <a className="hero__link" href={profile.resume} rel="noopener noreferrer" target="_blank">
         <span className="hero__link-bubble" aria-hidden="true">
           <File01Icon size={18} />
         </span>

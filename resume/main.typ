@@ -1,4 +1,4 @@
-// Ruchir Kalokhe — resume
+// Ruchir Kalokhe resume
 // Build: typst compile main.typ main.pdf
 
 #let ink = rgb("#111111")
@@ -40,7 +40,7 @@
   )
 }
 
-// Manual bullets — native list spacing inverts wrap vs item gaps.
+// Manual bullets: native list spacing inverts wrap vs item gaps.
 #let points(..items) = {
   let bodies = items.pos()
   stack(
@@ -83,7 +83,7 @@
 
 #v(3pt)
 
-Engineer working across backend systems and ML infrastructure — multi-provider GPU inference, model
+Engineer working across backend systems and ML infrastructure: multi-provider GPU inference, model
 serving, retrieval and ranking, and the billing, security, and reliability layers that keep them in
 production. Comfortable owning a feature from runtime container to API to evaluation harness.
 
@@ -97,7 +97,7 @@ production. Comfortable owning a feature from runtime container to API to evalua
 #block(below: 3pt, text(size: 9.2pt, fill: soft)[TypeScript, Fastify, PostgreSQL, Prisma, PgBoss, Docker])
 
 #points(
-  [Built the GPU platform backend in *TypeScript* and *Fastify* — multi-provider inference across
+  [Built the GPU platform backend in *TypeScript* and *Fastify*, enabling multi-provider inference across
    Modal, Koyeb, and RunPod with unified runtime contracts, PgBoss job orchestration on PostgreSQL,
    provider routing, live endpoint resolution, and failover so long-running jobs keep serving when a
    provider drops.],
@@ -106,7 +106,7 @@ production. Comfortable owning a feature from runtime container to API to evalua
   [Integrated *LTX-2 and LTX-2.3 Distilled* video-generation runtimes with custom handlers, image
    conditioning, and duration controls up to 60 seconds across Modal, Koyeb, and Docker.],
   [Implemented usage-based billing and credit reservations across token, character, second, and image
-   modalities — Razorpay payments, invoicing, and idempotent Prisma/PostgreSQL workflows that block
+   modalities, with Razorpay payments, invoicing, and idempotent Prisma/PostgreSQL workflows that block
    overspend before inference runs.],
   [Hardened Fastify APIs with scoped keys, plan-aware access control, webhook verification,
    authenticated uploads, and SSRF/private-URL blocking; patched LiteLLM for Fireworks cached-token
@@ -124,7 +124,7 @@ production. Comfortable owning a feature from runtime container to API to evalua
 )
 
 #points(
-  [Made agent runs auditable without retaining raw PHI — prompts, tool calls, outputs, and errors are
+  [Made agent runs auditable without retaining raw PHI: prompts, tool calls, outputs, and errors are
    sanitized with Presidio/spaCy and deterministic Faker replacements *before* database write.],
   [Fail-closed capture so sanitizer or queue failures never silently persist unsanitized text; JSON-safe
    redaction, background writes, replay/export/purge, Alembic migrations, and a PHI eval harness under CI.],
@@ -142,7 +142,7 @@ production. Comfortable owning a feature from runtime container to API to evalua
 #points(
   [Ranked top candidates from *100K profiles* in *~13 s* on CPU (NumPy path) via honeypot filters,
    structured fit scoring, availability weighting, cached LLM reranking, and evidence-guided expansion.],
-  [Beat keyword stuffing — *15* injected weak profiles entered the top-100 under keyword matching,
+  [Beat keyword stuffing: *15* injected weak profiles entered the top-100 under keyword matching,
    *0* under Candis; pairwise LLM audit *83.7% win rate*, hand-qrel NDCG\@10 *0.93+*, prompt-injection
    audit with *0* effect on final ranking.],
 )
@@ -155,7 +155,7 @@ production. Comfortable owning a feature from runtime container to API to evalua
 )
 
 #points(
-  [Turned a research video model into a production GPU FastAPI service — Docker deploy, health checks,
+  [Turned a research video model into a production GPU FastAPI service with Docker deploy, health checks,
    model setup, image-driven inference, and chunked downloads for large outputs.],
   [Cut GFPGAN enhancement time by *~1.8#sym.times* (e.g. *25–28 min → ~15 min* on RTX 4060) by removing
    redundant face detection; fixed OpenMMLab/MMPose and Docker build-isolation failures.],
@@ -178,7 +178,7 @@ production. Comfortable owning a feature from runtime container to API to evalua
 #v(2.5pt)
 #text(size: 9pt, fill: soft)[
   More: #link("https://github.com/ruxir-ig/SAR-Image-Colorization")[SAR Colorization],
-  #link("https://github.com/Harsh-4210/Team-Artemis-")[AssetFlow] —
+  #link("https://github.com/Harsh-4210/Team-Artemis-")[AssetFlow] #sym.dot.c
   #link("https://github.com/ruxir-ig")[github.com/ruxir-ig]
 ]
 
@@ -202,6 +202,7 @@ production. Comfortable owning a feature from runtime container to API to evalua
 
 #points(
   [*Open source & research* #h(4pt) Contributed 24-bit truecolor to _ascii-view_ (C); *maintainer* of
-   _nitch_; GAN SAR-to-RGB colorization in PyTorch (top 25 internal SIH); BB84 QKD simulator.
-   *Community* #h(4pt) GDG on Campus organizer, PES MCOE — IMACE 2026.],
+   _nitch_; GAN SAR-to-RGB colorization in PyTorch (top 25 internal SIH); BB84 QKD simulator.],
+  [*Community* #h(4pt) Member of Google Developer Group on Campus (AIML) - organised IMACE 2026
+   hackathon and events, and served on the judging jury.],
 )

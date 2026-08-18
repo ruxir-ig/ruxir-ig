@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { Atmosphere } from '../components/Atmosphere';
 import { HeroLinks } from '../components/HeroLinks';
+import { ProjectsList } from '../components/ProjectsList';
 import { profile, projects, thoughts } from '../data/site';
 import '../styles/site.css';
 ---
@@ -42,22 +43,7 @@ import '../styles/site.css';
 
         <section class="section" id="work">
           <h2 class="section-label">Projects</h2>
-          <div class="work-list">
-            {
-              projects.map((project) => (
-                <a
-                  class="work-item pressable"
-                  href={project.liveHref ?? project.href}
-                  data-shader={project.shader}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  <span class="work-item__title">{project.title}</span>
-                  <span class="work-item__desc">{project.subtitle}</span>
-                </a>
-              ))
-            }
-          </div>
+          <ProjectsList client:load projects={projects} />
         </section>
 
         <section class="section" id="notes">

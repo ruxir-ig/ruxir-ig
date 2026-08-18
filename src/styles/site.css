@@ -162,7 +162,6 @@
   gap: 1.25rem 2.25rem;
   align-items: baseline;
   padding-block: clamp(1.55rem, 3.2vh, 2.1rem);
-  border-bottom: 1px solid var(--line);
   text-decoration: none;
   color: inherit;
   transition: transform 140ms var(--ease-out);

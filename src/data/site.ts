@@ -23,18 +23,66 @@ export type ShaderKey =
   | 'sar'
   | 'other';
 
+export type ProjectLinkType = 'github' | 'live' | 'pypi' | 'docs' | 'other';
+
+export interface ProjectLinkItem {
+  label: string;
+  url: string;
+  type?: ProjectLinkType;
+  hint?: string;
+}
+
 export interface Project {
   id: string;
   title: string;
   subtitle: string;
   href: string;
   liveHref?: string;
+  pypiHref?: string;
+  links?: ProjectLinkItem[];
   tags: string[];
   description: string;
   highlights: string[];
   year: string;
   featured?: boolean;
   shader: ShaderKey;
+}
+
+export function getProjectLinks(project: Project): ProjectLinkItem[] {
+  if (project.links && project.links.length > 0) {
+    return project.links;
+  }
+  const result: ProjectLinkItem[] = [];
+  const seenUrls = new Set<string>();
+
+  if (project.href) {
+    result.push({
+      label: 'GitHub',
+      url: project.href,
+      type: 'github',
+      hint: 'Source code',
+    });
+    seenUrls.add(project.href.trim().toLowerCase());
+  }
+  if (project.liveHref && !seenUrls.has(project.liveHref.trim().toLowerCase())) {
+    result.push({
+      label: 'Live App',
+      url: project.liveHref,
+      type: 'live',
+      hint: 'Live deployment',
+    });
+    seenUrls.add(project.liveHref.trim().toLowerCase());
+  }
+  if (project.pypiHref && !seenUrls.has(project.pypiHref.trim().toLowerCase())) {
+    result.push({
+      label: 'PyPI',
+      url: project.pypiHref,
+      type: 'pypi',
+      hint: 'pip install',
+    });
+    seenUrls.add(project.pypiHref.trim().toLowerCase());
+  }
+  return result;
 }
 
 export const projects: Project[] = [
@@ -60,6 +108,7 @@ export const projects: Project[] = [
     title: 'Auscult',
     subtitle: 'Privacy-preserving observability for healthcare AI agents',
     href: 'https://github.com/ruxir-ig/auscult',
+    pypiHref: 'https://pypi.org/project/auscult/',
     tags: ['Python', 'Presidio', 'spaCy'],
     description:
       'Agent runs stay auditable without retaining raw PHI. Prompts, tool calls, outputs, and errors are sanitized before database write.',

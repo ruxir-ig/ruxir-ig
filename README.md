@@ -1,4 +1,5 @@
-
+![](https://komarev.com/ghpvc/?username=ruxir-ig&color=grey&style=flat)
+ 
 [<img src="./assets/Ruchir Kalokhe-signature.svg" alt="Digital Signature" width="300"/>](https://signature.cnrad.dev/)
 
 

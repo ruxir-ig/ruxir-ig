@@ -31,10 +31,13 @@ import '../styles/site.css';
       <main class="page">
         <section class="hero" id="about" data-hero>
           <p class="meta" data-reveal>Pune · Open to opportunities</p>
-          <h1 class="display" data-reveal>
-            {profile.first}
-            <br />
-            <span class="serif-italic">{profile.last}</span>
+          <h1 class="display name-intro">
+            <span class="name-intro__line">
+              <span class="name-intro__word name-intro__word--first">{profile.first}</span>
+            </span>
+            <span class="name-intro__line">
+              <span class="name-intro__word name-intro__word--last serif-italic">{profile.last}</span>
+            </span>
           </h1>
           <p class="hero__role" data-reveal>{profile.role}</p>
           <p class="hero__bio lede" data-reveal>{profile.bio}</p>

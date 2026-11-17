@@ -22,6 +22,123 @@
   text-shadow: 0 1px 24px color-mix(in oklab, var(--bg) 70%, transparent);
 }
 
+/* Opening lockup, once on load. Ruchir rises into its line. Kalokhe is
+   then drawn out from behind it: a hold, a small stick, a catch short
+   of the mark, one overshoot, then rest. Clip lives on the line so the
+   words travel through a fixed edge; the shadow sits on the heading so
+   that edge does not slice it. */
+.name-intro {
+  display: flex;
+  flex-direction: column;
+  filter: drop-shadow(0 1px 24px color-mix(in oklab, var(--bg) 70%, transparent));
+}
+
+.hero .name-intro,
+.hero .name-intro .serif-italic {
+  text-shadow: none;
+}
+
+.name-intro__line {
+  display: block;
+  overflow: clip;
+  padding: 0.24em 0.22em;
+  margin: -0.24em -0.22em;
+}
+
+/* The first line stays above the second, so Kalokhe is covered where
+   the two lines overlap and has to be drawn out from behind Ruchir. */
+.name-intro__line:first-child {
+  position: relative;
+  z-index: 1;
+}
+
+.name-intro__word {
+  display: block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .name-intro__word--first {
+    animation: name-rise 1080ms linear both;
+    animation-delay: 80ms;
+  }
+
+  .name-intro__word--last {
+    animation: name-drag 1560ms linear both;
+    animation-delay: 1160ms;
+  }
+}
+
+@keyframes name-rise {
+  0% {
+    transform: translateY(calc(100% + 0.3em));
+    animation-timing-function: cubic-bezier(0.28, 0.12, 0.32, 1);
+  }
+  /* still clearly below the line, so the rise reads */
+  42% {
+    transform: translateY(46%);
+    animation-timing-function: cubic-bezier(0.18, 0.45, 0.22, 1);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes name-drag {
+  0% {
+    transform: translateY(calc(-100% - 0.34em));
+    animation-timing-function: cubic-bezier(0.4, 0, 0.65, 0.08);
+  }
+  /* held behind the line above */
+  14% {
+    transform: translateY(calc(-100% - 0.26em));
+    animation-timing-function: cubic-bezier(0.22, 0.12, 0.28, 1);
+  }
+  /* pulled out until most of the word is showing */
+  32% {
+    transform: translateY(-16%);
+    animation-timing-function: linear;
+  }
+  /* slips back under the word above — the stick */
+  42% {
+    transform: translateY(-48%);
+    animation-timing-function: linear;
+  }
+  /* held against that resistance */
+  50% {
+    transform: translateY(-44%);
+    animation-timing-function: cubic-bezier(0.4, 0, 0.28, 1);
+  }
+  /* tugged again; friction takes the speed off */
+  66% {
+    transform: translateY(-20%);
+    animation-timing-function: cubic-bezier(0.12, 0.55, 0.3, 1);
+  }
+  /* caught short of the mark and held */
+  78% {
+    transform: translateY(-12%);
+    animation-timing-function: linear;
+  }
+  86% {
+    transform: translateY(-11%);
+    animation-timing-function: cubic-bezier(0.42, 0, 0.22, 1);
+  }
+  /* set a little past the mark, then let go */
+  94% {
+    transform: translateY(0.18em);
+    animation-timing-function: cubic-bezier(0.25, 0, 0.2, 1);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .name-intro__word {
+    animation: none;
+    transform: none;
+  }
+}
+
 .hero > .meta {
   color: var(--ink);
   text-shadow: 0 1px 18px color-mix(in oklab, var(--bg) 75%, transparent);

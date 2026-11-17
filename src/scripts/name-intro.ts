@@ -108,6 +108,14 @@ function elasticPull(dx: number, dy: number, radius: number) {
   return { x: dx * scale, y: dy * scale };
 }
 
+/** Kalokhe is stuck behind Ruchir at first: it gives a little, slips back, then breaks free toward the pointer. */
+function breakFree(time: number) {
+  const t = clamp(time / 0.6, 0, 1);
+  const smooth = t * t * t * (t * (6 * t - 15) + 10);
+  const slip = Math.sin(Math.PI * clamp(time / 0.3, 0, 1)) * 0.09;
+  return smooth - slip * (1 - t);
+}
+
 function wordTransform(body: Spring) {
   return `translate3d(${body.x.toFixed(2)}px,${body.y.toFixed(2)}px,0) rotate(${body.rot.toFixed(2)}deg) skewX(${body.skew.toFixed(2)}deg)`;
 }
@@ -213,8 +221,7 @@ export function bootNameIntro() {
   const lastWord = root?.querySelector<HTMLElement>('.name-intro__word--last');
   const firstMotion = firstWord?.querySelector<HTMLElement>('.name-intro__motion');
   const lastMotion = lastWord?.querySelector<HTMLElement>('.name-intro__motion');
-  const catchEl = root?.querySelector<HTMLElement>('[data-name-catch]');
-  if (!root || !firstWord || !lastWord || !firstMotion || !lastMotion || !catchEl) return;
+  if (!root || !firstWord || !lastWord || !firstMotion || !lastMotion) return;
 
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
@@ -284,27 +291,26 @@ export function bootNameIntro() {
     };
   };
 
-  const placeCatch = () => {
-    const links = document.querySelector('.hero__links');
+  /** Hovering Ruchir, or the empty spot where Kalokhe will rest, starts the pull. */
+  const overName = (x: number, y: number) => {
     const box = root.getBoundingClientRect();
-    const top = -Math.min(220, Math.max(128, window.innerHeight * 0.2));
-    let bottom = Math.max(fontSize * 0.9, 64);
-    if (links) {
-      const limit = links.getBoundingClientRect().top - box.top - 36;
-      if (limit > fontSize) bottom = Math.min(Math.max(limit, fontSize), fontSize * 2.6);
-    }
-    const left = -Math.min(180, Math.max(40, box.left - 16));
-    const rightEdge = Math.min(window.innerWidth - 12, box.left + Math.max(fontSize * 11, 640));
-    catchEl.style.left = `${left}px`;
-    catchEl.style.top = `${top}px`;
-    catchEl.style.width = `${Math.max(fontSize * 8, rightEdge - box.left - left)}px`;
-    catchEl.style.height = `${Math.max(fontSize * 2.2, bottom - top)}px`;
+    const pad = fontSize * 0.3;
+    const left = box.left + firstWord.offsetLeft - pad;
+    const right = box.left + lastWord.offsetLeft + lastMotion.offsetWidth + pad;
+    const top = box.top + firstWord.offsetTop - pad;
+    const bottom = box.top + firstWord.offsetTop + firstWord.offsetHeight + pad;
+    return x >= left && x <= right && y >= top && y <= bottom;
   };
 
   const fade = () => {
     const traveled = Math.hypot(kalokhe.x - parkX, kalokhe.y - parkY);
     const edge = Math.max(34, fontSize * 0.48);
     const t = clamp(traveled / edge, 0, 1);
+    return t * t * (3 - 2 * t);
+  };
+
+  const riseOpacity = () => {
+    const t = clamp(1 - ruchir.y / (fontSize * RISE_EM * 0.8), 0, 1);
     return t * t * (3 - 2 * t);
   };
 
@@ -315,8 +321,8 @@ export function bootNameIntro() {
   };
 
   const disarm = () => {
-    catchEl.removeEventListener('pointerenter', onEnter);
-    catchEl.removeEventListener('pointerleave', onLeave);
+    document.documentElement.removeEventListener('pointerleave', onLeave);
+    window.removeEventListener('blur', onLeave);
     window.removeEventListener('pointermove', onMove);
     window.removeEventListener('pointermove', onWatch);
   };
@@ -360,7 +366,8 @@ export function bootNameIntro() {
     pullTime = 0;
     window.removeEventListener('pointermove', onWatch);
     window.addEventListener('pointermove', onMove, { passive: true });
-    catchEl.addEventListener('pointerleave', onLeave);
+    document.documentElement.addEventListener('pointerleave', onLeave);
+    window.addEventListener('blur', onLeave);
     ensureLoop();
   }
 
@@ -369,13 +376,7 @@ export function bootNameIntro() {
       window.removeEventListener('pointermove', onWatch);
       return;
     }
-    const rect = catchEl.getBoundingClientRect();
-    const inside =
-      event.clientX >= rect.left &&
-      event.clientX <= rect.right &&
-      event.clientY >= rect.top &&
-      event.clientY <= rect.bottom;
-    if (inside) onEnter(event);
+    if (overName(event.clientX, event.clientY)) onEnter(event);
   }
 
   const finishKalokhe = () => {
@@ -456,7 +457,7 @@ export function bootNameIntro() {
   }
 
   function render() {
-    if (ruchirLive) paintWord(firstMotion, ruchir);
+    if (ruchirLive) paintWord(firstMotion, ruchir, riseOpacity());
     if (phase === 'pull' || phase === 'settle') paintWord(lastMotion, kalokhe, fade());
   }
 
@@ -467,10 +468,13 @@ export function bootNameIntro() {
 
     if (phase === 'pull') {
       const center = restCenter();
-      const pulled = elasticPull(pointer.x - center.x, pointer.y - center.y, radius);
-      aimX = pulled.x;
-      aimY = pulled.y;
-      if (pullTime > 0.5 && stillFor > 0.16) release();
+      const dx = pointer.x - center.x;
+      const dy = pointer.y - center.y;
+      const pulled = elasticPull(dx, dy, radius);
+      const tug = breakFree(pullTime);
+      aimX = parkX + (pulled.x - parkX) * tug;
+      aimY = parkY + (pulled.y - parkY) * tug;
+      if ((pullTime > 0.75 && stillFor > 0.22) || Math.hypot(dx, dy) > radius * 1.9) release();
     }
 
     const steps = dt > 0.02 ? 2 : 1;
@@ -501,22 +505,19 @@ export function bootNameIntro() {
     ruchir.rot = -5;
     kalokhe.x = parkX;
     kalokhe.y = parkY;
-    paintWord(firstMotion, ruchir);
+    paintWord(firstMotion, ruchir, 0);
     paintWord(lastMotion, kalokhe, 0);
     for (const letter of firstLetters) letter.el.style.transform = letterTransform(letter);
     document.documentElement.classList.add('name-booted');
 
     if (mode === 'drag') {
-      placeCatch();
-      catchEl.addEventListener('pointerenter', onEnter);
-      window.addEventListener('pointermove', onWatch);
+      window.addEventListener('pointermove', onWatch, { passive: true });
     }
 
     window.addEventListener('resize', () => {
       const previousParkX = parkX;
       const previousParkY = parkY;
       measure();
-      if (mode === 'drag' && phase !== 'done') placeCatch();
       if (phase === 'hidden') {
         kalokhe.x += parkX - previousParkX;
         kalokhe.y += parkY - previousParkY;

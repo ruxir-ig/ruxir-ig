@@ -2,7 +2,7 @@ export const profile = {
   name: 'Ruchir Kalokhe',
   first: 'Ruchir',
   last: 'Kalokhe',
-  role: 'Backend engineer leaning into AI research.',
+  role: 'making stuff with ai',
   tagline:
     'Building backend systems, ML infrastructure, and developer tooling while moving deeper into research.',
   bio: 'Love AI — building with it, and building it.',

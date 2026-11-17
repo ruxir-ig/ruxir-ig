@@ -8,6 +8,13 @@ import '../styles/site.css';
 ---
 
 <Base>
+  <script is:inline>
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      document.documentElement.dataset.nameMotion = fine ? 'drag' : 'touch';
+    })();
+  </script>
   <div class="site-shell">
     <div class="site-shader">
       <Atmosphere client:load />
@@ -31,10 +38,25 @@ import '../styles/site.css';
       <main class="page">
         <section class="hero" id="about" data-hero>
           <p class="meta" data-reveal>Pune · Open to opportunities</p>
-          <h1 class="display" data-reveal>
-            {profile.first}
-            <br />
-            <span class="serif-italic">{profile.last}</span>
+          <h1 class="display name-intro" data-name-intro aria-label={`${profile.first} ${profile.last}`}>
+            <span class="name-intro__word name-intro__word--first">
+              <span class="name-intro__motion">
+                {
+                  profile.first.split('').map((letter) => (
+                    <span class="name-intro__letter">{letter}</span>
+                  ))
+                }
+              </span>
+            </span>
+            <span class="name-intro__word name-intro__word--last serif-italic">
+              <span class="name-intro__motion">
+                {
+                  profile.last.split('').map((letter) => (
+                    <span class="name-intro__letter">{letter}</span>
+                  ))
+                }
+              </span>
+            </span>
           </h1>
           <p class="hero__role" data-reveal>{profile.role}</p>
           <p class="hero__bio lede" data-reveal>{profile.bio}</p>
@@ -93,4 +115,9 @@ import '../styles/site.css';
       </footer>
     </div>
   </div>
+  <script>
+    import { bootNameIntro } from '../scripts/name-intro';
+
+    bootNameIntro();
+  </script>
 </Base>

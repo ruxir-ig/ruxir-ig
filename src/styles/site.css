@@ -22,14 +22,17 @@
   text-shadow: 0 1px 24px color-mix(in oklab, var(--bg) 70%, transparent);
 }
 
-/* Opening lockup, once on load. Ruchir rises into its line. Kalokhe is
-   then drawn out from behind it: a hold, a small stick, a catch short
-   of the mark, one overshoot, then rest. Clip lives on the line so the
-   words travel through a fixed edge; the shadow sits on the heading so
-   that edge does not slice it. */
-.name-intro {
+/* One line. Ruchir rises, then Kalokhe is drawn out from behind it.
+   Letters scale a little out of step so the words flex while they move. */
+.hero .display.name-intro {
   display: flex;
-  flex-direction: column;
+  flex-flow: row nowrap;
+  align-items: baseline;
+  column-gap: 0.28em;
+  width: max-content;
+  max-width: 100%;
+  font-size: clamp(1.7rem, 8.4vw, 4.5rem);
+  white-space: nowrap;
   filter: drop-shadow(0 1px 24px color-mix(in oklab, var(--bg) 70%, transparent));
 }
 
@@ -38,42 +41,53 @@
   text-shadow: none;
 }
 
-.name-intro__line {
-  display: block;
+.name-intro__word {
+  display: inline-block;
   overflow: clip;
-  padding: 0.24em 0.22em;
-  margin: -0.24em -0.22em;
+  overflow-clip-margin: 0.28em;
 }
 
-/* The first line stays above the second, so Kalokhe is covered where
-   the two lines overlap and has to be drawn out from behind Ruchir. */
-.name-intro__line:first-child {
+.name-intro__word--first {
   position: relative;
   z-index: 1;
 }
 
-.name-intro__word {
-  display: block;
+.name-intro__motion,
+.name-intro__letter {
+  display: inline-block;
+}
+
+.name-intro__letter {
+  transform-origin: 50% 70%;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .name-intro__word--first {
+  .name-intro__word--first .name-intro__motion {
     animation: name-rise 1080ms linear both;
     animation-delay: 80ms;
   }
 
-  .name-intro__word--last {
+  .name-intro__word--last .name-intro__motion {
     animation: name-drag 1560ms linear both;
     animation-delay: 1160ms;
+  }
+
+  .name-intro__word--first .name-intro__letter {
+    animation: name-soft 980ms linear both;
+    animation-delay: calc(80ms + var(--i) * 45ms);
+  }
+
+  .name-intro__word--last .name-intro__letter {
+    animation: name-soft 1400ms linear both;
+    animation-delay: calc(1160ms + var(--i) * 50ms);
   }
 }
 
 @keyframes name-rise {
   0% {
-    transform: translateY(calc(100% + 0.3em));
+    transform: translateY(calc(100% + 0.28em));
     animation-timing-function: cubic-bezier(0.28, 0.12, 0.32, 1);
   }
-  /* still clearly below the line, so the rise reads */
   42% {
     transform: translateY(46%);
     animation-timing-function: cubic-bezier(0.18, 0.45, 0.22, 1);
@@ -85,55 +99,66 @@
 
 @keyframes name-drag {
   0% {
-    transform: translateY(calc(-100% - 0.34em));
+    transform: translateX(calc(-100% - 0.4em));
     animation-timing-function: cubic-bezier(0.4, 0, 0.65, 0.08);
   }
-  /* held behind the line above */
+  /* held behind Ruchir */
   14% {
-    transform: translateY(calc(-100% - 0.26em));
+    transform: translateX(calc(-100% - 0.28em));
     animation-timing-function: cubic-bezier(0.22, 0.12, 0.28, 1);
   }
-  /* pulled out until most of the word is showing */
   32% {
-    transform: translateY(-16%);
+    transform: translateX(-16%);
     animation-timing-function: linear;
   }
-  /* slips back under the word above — the stick */
+  /* slips back — the stick */
   42% {
-    transform: translateY(-48%);
+    transform: translateX(-44%);
     animation-timing-function: linear;
   }
-  /* held against that resistance */
   50% {
-    transform: translateY(-44%);
+    transform: translateX(-38%);
     animation-timing-function: cubic-bezier(0.4, 0, 0.28, 1);
   }
-  /* tugged again; friction takes the speed off */
   66% {
-    transform: translateY(-20%);
+    transform: translateX(-18%);
     animation-timing-function: cubic-bezier(0.12, 0.55, 0.3, 1);
   }
-  /* caught short of the mark and held */
   78% {
-    transform: translateY(-12%);
+    transform: translateX(-9%);
     animation-timing-function: linear;
   }
   86% {
-    transform: translateY(-11%);
+    transform: translateX(-8%);
     animation-timing-function: cubic-bezier(0.42, 0, 0.22, 1);
   }
-  /* set a little past the mark, then let go */
   94% {
-    transform: translateY(0.18em);
+    transform: translateX(0.12em);
     animation-timing-function: cubic-bezier(0.25, 0, 0.2, 1);
   }
   100% {
-    transform: translateY(0);
+    transform: translateX(0);
+  }
+}
+
+@keyframes name-soft {
+  0% {
+    transform: scale(0.9, 1.14);
+  }
+  36% {
+    transform: scale(1.1, 0.9);
+  }
+  62% {
+    transform: scale(0.96, 1.06);
+  }
+  100% {
+    transform: none;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .name-intro__word {
+  .name-intro__motion,
+  .name-intro__letter {
     animation: none;
     transform: none;
   }

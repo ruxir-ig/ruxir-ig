@@ -31,12 +31,28 @@ import '../styles/site.css';
       <main class="page">
         <section class="hero" id="about" data-hero>
           <p class="meta" data-reveal>Pune · Open to opportunities</p>
-          <h1 class="display name-intro">
-            <span class="name-intro__line">
-              <span class="name-intro__word name-intro__word--first">{profile.first}</span>
+          <h1 class="display name-intro" aria-label={`${profile.first} ${profile.last}`}>
+            <span class="name-intro__word name-intro__word--first">
+              <span class="name-intro__motion">
+                {
+                  profile.first.split('').map((letter, i) => (
+                    <span class="name-intro__letter" style={`--i: ${i}`}>
+                      {letter}
+                    </span>
+                  ))
+                }
+              </span>
             </span>
-            <span class="name-intro__line">
-              <span class="name-intro__word name-intro__word--last serif-italic">{profile.last}</span>
+            <span class="name-intro__word name-intro__word--last serif-italic">
+              <span class="name-intro__motion">
+                {
+                  profile.last.split('').map((letter, i) => (
+                    <span class="name-intro__letter" style={`--i: ${i}`}>
+                      {letter}
+                    </span>
+                  ))
+                }
+              </span>
             </span>
           </h1>
           <p class="hero__role" data-reveal>{profile.role}</p>

@@ -112,4 +112,72 @@ import '../styles/site.css';
       </footer>
     </div>
   </div>
+  <script>
+    const bootName = async () => {
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const root = document.querySelector('.name-intro');
+      const motion = root?.querySelector('.name-intro__word--last .name-intro__motion');
+      if (!root || !motion || reduce.matches) return;
+
+      if (document.fonts?.ready) await document.fonts.ready;
+
+      const letters = [...motion.querySelectorAll('.name-intro__letter')];
+      const first = root.querySelector('.name-intro__word--first');
+      const fontSize = parseFloat(getComputedStyle(motion).fontSize);
+      const gap = fontSize * 0.28;
+      const wordWidth = motion.offsetWidth;
+      const firstWidth = first.offsetWidth;
+      const park = -((wordWidth + firstWidth) / 2 + gap);
+      const tuck = `inset(0px ${Math.ceil(Math.max(0, (wordWidth - firstWidth) / 2) + 6)}px 0px ${Math.ceil(Math.max(0, (wordWidth - firstWidth) / 2) + 6)}px)`;
+      root.style.setProperty('--name-last', `${wordWidth}px`);
+
+      const pull = motion.animate(
+        [
+          { transform: `translate(${park}px, 0px) rotate(0deg)`, clipPath: tuck, opacity: 0, offset: 0 },
+          { transform: `translate(${park - fontSize * 0.22}px, ${fontSize * 0.16}px) rotate(-3deg)`, clipPath: tuck, opacity: 0, offset: 0.12 },
+          { transform: `translate(${park + fontSize * 0.15}px, ${fontSize * 1.35}px) rotate(-9deg)`, clipPath: 'inset(-80% -30% -80% -30%)', opacity: 1, offset: 0.26 },
+          { transform: `translate(${park * 0.12}px, ${fontSize * -1.65}px) rotate(8deg)`, clipPath: 'none', opacity: 1, offset: 0.44 },
+          { transform: `translate(${park * 0.5}px, ${fontSize * 1.15}px) rotate(-4deg)`, clipPath: 'none', opacity: 1, offset: 0.6 },
+          { transform: `translate(${fontSize * 0.7}px, ${fontSize * -0.48}px) rotate(3deg)`, clipPath: 'none', opacity: 1, offset: 0.76 },
+          { transform: `translate(${fontSize * -0.32}px, ${fontSize * 0.42}px) rotate(-1.6deg)`, clipPath: 'none', opacity: 1, offset: 0.88 },
+          { transform: 'none', clipPath: 'none', opacity: 1, offset: 1 },
+        ],
+        { duration: 1700, fill: 'both', easing: 'linear' },
+      );
+
+      const letterAnims = letters.map((letter, index) => {
+        const shift = index * 0.028;
+        return letter.animate(
+          [
+            { transform: 'none', offset: 0 },
+            { transform: 'none', offset: 0.12 },
+            { transform: 'scale(1.14, 0.84) rotate(3deg)', offset: Math.min(0.34 + shift, 0.55) },
+            { transform: 'scale(0.9, 1.16) rotate(-2.5deg)', offset: Math.min(0.56 + shift, 0.78) },
+            { transform: 'scale(1.06, 0.94) rotate(1.4deg)', offset: Math.min(0.8 + shift * 0.3, 0.92) },
+            { transform: 'none', offset: 1 },
+          ],
+          { duration: 1700, fill: 'both', easing: 'linear' },
+        );
+      });
+
+      const anims = [pull, ...letterAnims];
+      for (const anim of anims) {
+        anim.pause();
+        anim.currentTime = 0;
+      }
+
+      const go = (rate) => {
+        for (const anim of anims) {
+          anim.playbackRate = rate;
+          if (anim.playState !== 'running') anim.play();
+        }
+      };
+
+      root.addEventListener('pointerenter', () => go(1));
+      root.addEventListener('pointerleave', () => go(-1));
+      if (root.matches(':hover')) go(1);
+    };
+
+    bootName();
+  </script>
 </Base>

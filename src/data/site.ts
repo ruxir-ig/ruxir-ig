@@ -213,7 +213,7 @@ export const projects: Project[] = [
   {
     id: 'codex-firefox',
     title: 'Codex for Firefox',
-    subtitle: 'Linux support for Codex computer use in Firefox and Zen — Contributed',
+    subtitle: 'Contributed for Linux support in Codex for Firefox and Zen',
     href: 'https://github.com/SunkenInTime/codex-computer-use-firefox-zen/pull/16',
     links: [
       {

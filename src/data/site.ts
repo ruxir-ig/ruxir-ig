@@ -19,7 +19,6 @@ export type ShaderKey =
   | 'auscult'
   | 'candis'
   | 'dealflow'
-  | 'taspac'
   | 'firefox'
   | 'musetalk'
   | 'tracelink'
@@ -39,7 +38,7 @@ export const experience: Role[] = [
     org: 'In2peta',
     orgHref: 'https://in2peta.com/',
     title: 'Gen AI Intern · Backend & ML',
-    period: 'Dec 2025 — now',
+    period: 'Dec 2025 — Oct 2026',
     summary:
       'Backend for a multi-provider GPU inference platform: Modal, Koyeb, and RunPod behind one runtime contract, usage-based billing with credit reservations, and Hugging Face models shipped to live endpoints without hand packaging. Since September, also building GrowthCrew, a lead-generation and outreach product spun out of the platform.',
   },
@@ -212,26 +211,9 @@ export const projects: Project[] = [
     shader: 'dealflow',
   },
   {
-    id: 'taspac',
-    title: 'taspac',
-    subtitle: 'Repo-aware task packets that brief AI coding agents before they start',
-    href: 'https://github.com/ruxir-ig/taspac',
-    pypiHref: 'https://pypi.org/project/taspac/',
-    tags: ['Python', 'CLI'],
-    description:
-      'Give it a repository and a plain-English task; it returns a markdown packet with relevant files, nearby snippets, likely commands, recent commits, risks, and a focused agent prompt.',
-    highlights: [
-      'Lightweight file scoring heuristics instead of embedding infrastructure',
-      'Infers commands from package.json, Makefile, and pyproject.toml',
-      'Works with Claude Code, Codex, Cursor, or Aider: no extra chat UI',
-    ],
-    year: '2026',
-    shader: 'taspac',
-  },
-  {
     id: 'codex-firefox',
     title: 'Codex for Firefox',
-    subtitle: 'Linux support for Codex computer use in Firefox and Zen — merged upstream',
+    subtitle: 'Linux support for Codex computer use in Firefox and Zen — Contributed',
     href: 'https://github.com/SunkenInTime/codex-computer-use-firefox-zen/pull/16',
     links: [
       {

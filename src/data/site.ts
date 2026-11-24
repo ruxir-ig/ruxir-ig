@@ -5,7 +5,6 @@ export const profile = {
   role: 'making stuff with ai',
   tagline:
     'Building backend systems, ML infrastructure, and developer tooling while moving deeper into research.',
-  bio: 'Love AI — building with it, and building it.',
   email: 'ruchirkalokhe@gmail.com',
   github: 'https://github.com/ruxir-ig',
   linkedin: 'https://linkedin.com/in/ruchirkalokhe',
@@ -15,13 +14,36 @@ export const profile = {
 
 export type ShaderKey =
   | 'idle'
+  | 'hydrous'
   | 'assetflow'
   | 'auscult'
   | 'candis'
+  | 'dealflow'
+  | 'taspac'
+  | 'firefox'
   | 'musetalk'
   | 'tracelink'
   | 'sar'
   | 'other';
+
+export interface Role {
+  org: string;
+  orgHref?: string;
+  title: string;
+  period: string;
+  summary: string;
+}
+
+export const experience: Role[] = [
+  {
+    org: 'In2peta',
+    orgHref: 'https://in2peta.com/',
+    title: 'Gen AI Intern · Backend & ML',
+    period: 'Dec 2025 — now',
+    summary:
+      'Backend for a multi-provider GPU inference platform: Modal, Koyeb, and RunPod behind one runtime contract, usage-based billing with credit reservations, and Hugging Face models shipped to live endpoints without hand packaging. Since September, also building GrowthCrew, a lead-generation and outreach product spun out of the platform.',
+  },
+];
 
 export type ProjectLinkType = 'github' | 'live' | 'pypi' | 'docs' | 'other';
 
@@ -87,6 +109,23 @@ export function getProjectLinks(project: Project): ProjectLinkItem[] {
 
 export const projects: Project[] = [
   {
+    id: 'hydrous',
+    title: 'Hydrous',
+    subtitle: 'Agent memory that keeps time: what was true then, not just now',
+    href: 'https://github.com/ruxir-ig/hydrous',
+    tags: ['Python', 'TypeScript', 'MCP'],
+    description:
+      'Bi-temporal, versioned memory for agents. Superseded facts close their validity interval instead of being overwritten, so retrieval can answer point-in-time questions. Built for Hack with Hydra.',
+    highlights: [
+      'As-of retrieval, quality-gated extraction, and feedback-loop prevention',
+      'Local SQLite, HydraDB OSS graph, or HydraDB cloud behind one interface',
+      'Python and TypeScript SDKs, HTTP server, MCP, and a LongMemEval harness',
+    ],
+    year: '2026',
+    featured: true,
+    shader: 'hydrous',
+  },
+  {
     id: 'assetflow',
     title: 'AssetFlow',
     subtitle: 'Enterprise asset and resource management for the Odoo Hackathon',
@@ -111,11 +150,11 @@ export const projects: Project[] = [
     pypiHref: 'https://pypi.org/project/auscult/',
     tags: ['Python', 'Presidio', 'spaCy'],
     description:
-      'Agent runs stay auditable without retaining raw PHI. Prompts, tool calls, outputs, and errors are sanitized before database write.',
+      'Agent runs stay auditable without retaining raw PHI. Prompts, tool calls, outputs, and errors are sanitized before database write, and a guard masks PHI in files and tool results before the agent ever reads them.',
     highlights: [
       'Fail-closed capture so sanitizer failures never persist unsanitized text',
-      'SDK wrappers and LangChain callbacks without changing the core call path',
-      'PHI eval harness under CI with replay, export, and purge',
+      'OpenAI, Anthropic, LangChain/LangGraph, and Codex CLI capture without changing the call path',
+      'PHI eval harness under CI with replay, compare, export, and purge',
     ],
     year: '2026',
     featured: true,
@@ -155,6 +194,68 @@ export const projects: Project[] = [
     year: '2026',
     featured: true,
     shader: 'tracelink',
+  },
+  {
+    id: 'dealflow',
+    title: 'DealFlow360',
+    subtitle: 'B2B quote-to-cash on one PostgreSQL database — team build',
+    href: 'https://github.com/orion-catchers/dealflow',
+    tags: ['Next.js', 'Prisma', 'PostgreSQL'],
+    description:
+      'Catalog → quote → approval → customer portal → fulfillment → billing, where policy decides which approvals a quote needs and customers accept exactly one current revision.',
+    highlights: [
+      'Auth hardening: atomic reset-token claims, login rate limits, session purge, admin audit',
+      'Role-based capability scoping across navigation, routes, setup, and catalog',
+      'Fixed price-rule and variant-pricing resolution in the quotation engine',
+    ],
+    year: '2026',
+    shader: 'dealflow',
+  },
+  {
+    id: 'taspac',
+    title: 'taspac',
+    subtitle: 'Repo-aware task packets that brief AI coding agents before they start',
+    href: 'https://github.com/ruxir-ig/taspac',
+    pypiHref: 'https://pypi.org/project/taspac/',
+    tags: ['Python', 'CLI'],
+    description:
+      'Give it a repository and a plain-English task; it returns a markdown packet with relevant files, nearby snippets, likely commands, recent commits, risks, and a focused agent prompt.',
+    highlights: [
+      'Lightweight file scoring heuristics instead of embedding infrastructure',
+      'Infers commands from package.json, Makefile, and pyproject.toml',
+      'Works with Claude Code, Codex, Cursor, or Aider: no extra chat UI',
+    ],
+    year: '2026',
+    shader: 'taspac',
+  },
+  {
+    id: 'codex-firefox',
+    title: 'Codex for Firefox',
+    subtitle: 'Linux support for Codex computer use in Firefox and Zen — merged upstream',
+    href: 'https://github.com/SunkenInTime/codex-computer-use-firefox-zen/pull/16',
+    links: [
+      {
+        label: 'Add-on',
+        url: 'https://addons.mozilla.org/firefox/addon/codex-computer-use-for-zen/',
+        type: 'other',
+        hint: 'Firefox Add-ons',
+      },
+      {
+        label: 'PR',
+        url: 'https://github.com/SunkenInTime/codex-computer-use-firefox-zen/pull/16',
+        type: 'other',
+        hint: 'Merged pull request',
+      },
+    ],
+    tags: ['TypeScript', 'Linux', 'Open source'],
+    description:
+      'Added Linux x64 native-bridge packaging and host discovery to an open-source port of OpenAI’s Codex browser extension, with install rollback and a best-effort Zen manifest.',
+    highlights: [
+      'Linux x64 native-messaging bridge packaging and host discovery',
+      'Install rollback that restores prior state on failure',
+    ],
+    year: '2026',
+    shader: 'firefox',
   },
   {
     id: 'musetalk',

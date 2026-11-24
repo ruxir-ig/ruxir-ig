@@ -17,7 +17,6 @@
 .hero .display,
 .hero .serif-italic,
 .hero__role,
-.hero__bio,
 .hero__links a {
   text-shadow: 0 1px 24px color-mix(in oklab, var(--bg) 70%, transparent);
 }
@@ -140,11 +139,6 @@
   max-width: 32ch;
   font-size: clamp(1.05rem, 1.8vw, 1.2rem);
   color: var(--ink-muted);
-}
-
-.hero__bio {
-  color: var(--ink-muted);
-  margin-top: 1.35rem;
 }
 
 .hero__links {
@@ -292,6 +286,59 @@
   color: var(--ink-muted);
   max-width: 42ch;
   transition: color 180ms var(--ease-out);
+}
+
+.experience-list {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+
+.experience {
+  display: grid;
+  grid-template-columns: minmax(9rem, 0.34fr) minmax(0, 1fr);
+  gap: 0.5rem 2.25rem;
+  padding-block: clamp(1.5rem, 3vh, 2rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.experience__meta {
+  display: grid;
+  gap: 0.4rem;
+  align-content: start;
+}
+
+.experience__org {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.experience__org a {
+  color: inherit;
+  text-decoration-color: var(--line);
+  text-underline-offset: 0.25em;
+}
+
+.experience__org a:hover {
+  color: var(--accent);
+}
+
+.experience__period,
+.experience__title {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+}
+
+.experience__title {
+  color: var(--ink-muted);
+}
+
+.experience__summary {
+  color: var(--ink-muted);
+  font-size: 0.88rem;
+  max-width: 52ch;
 }
 
 .notes-list {

@@ -457,8 +457,8 @@ export function bootNameIntro() {
   }
 
   function render() {
-    if (ruchirLive) paintWord(firstMotion, ruchir, riseOpacity());
-    if (phase === 'pull' || phase === 'settle') paintWord(lastMotion, kalokhe, fade());
+    if (ruchirLive) paintWord(firstMotion!, ruchir, riseOpacity());
+    if (phase === 'pull' || phase === 'settle') paintWord(lastMotion!, kalokhe, fade());
   }
 
   function tick(now: number) {
